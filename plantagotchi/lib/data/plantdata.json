@@ -1,0 +1,73 @@
+[
+  {
+    "id": "uuid-1",
+    "commonName": "Säulenkaktus",
+    "scientificName": "Cereus peruvianus",
+    "type": "Sukkulente",
+    "description": "Kakteen sind robuste, pflegeleichte Pflanzen, die wenig Wasser benötigen und sonnige Standorte bevorzugen.",
+    "wateringFrequency": {
+        "summer": "Alle 14 Tage (Mai-September)",
+        "winter": "1x im Monat (Oktober-April)"
+    },
+    "waterReminderInterval": {
+        "summer": 14,
+        "winter": 30
+    },
+    "fertilizingFrequency": {
+        "summer": "1x im Monat (Mai-September)",
+        "winter": "Keine Düngung erforderlich (Oktober-April)"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 14,
+        "winter": 30
+    },
+    "lightRequirement": "Sonnig",
+    "temperatureRange": {
+        "summer": "12-30 °C",
+        "winter": "12-18 °C"
+    },
+    "soil": "Kakteenerde",
+    "needsPruning": false,
+    "pruningMonths": "",
+    "flowers": true,
+    "floweringSeason": "Juni-September",
+    "Repotting": "Alle 3-4 Jahre",
+    "growthRate": "Langsam",
+    "maintenance": "Sehr niedrig",
+    "careLevel": "Einfach",
+    "location": "Sommer: Draußen, Wind- und Regengeschützer Platz oder Drinnen | Winter: Drinnen",
+    "isToxic": false,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "avatarSkins": [
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
+    ]
+  },
+  {
+    "id": "uuid-2",
+    "commonName": "Monstera",
+    "scientificName": "Monstera deliciosa",
+    "type": "Zimmerpflanze",
+    "description": "Monstera ist eine tropische Kletterpflanze mit dekorativen Blättern und eignet sich gut für Innenräume.",
+    "wateringFrequency": "Alle 7 Tage",
+    "fertilizingFrequency": "Alle 4 Wochen",
+    "lightRequirement": "Helles, indirektes Licht",
+    "temperatureRange": "18–27 °C",
+    "needsPruning": true,
+    "pruningMonths": "April, Mai",
+    "flowers": false,
+    "floweringSeason": "",
+    "needsRepotting": true,
+    "growthRate": "Mittel",
+    "maintenance": "Mittel",
+    "careLevel": "Einfach",
+    "isIndoor": true,
+    "image": "assets/images/plants/monstera.png",
+    "avatarSkinDefault": "assets/avatars/monstera/default.png",
+    "avatarSkins": [
+      "assets/avatars/monstera/skin1.png",
+      "assets/avatars/monstera/skin2.png"
+    ]
+  }
+]
