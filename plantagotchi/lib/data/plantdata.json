@@ -1,42 +1,42 @@
 [
   {
-    "id": "uuid-1",
-    "commonName": "Säulenkaktus",
-    "scientificName": "Cereus peruvianus",
+    "id": "abd51cde-eee1-49ce-9604-4e7dce677d59",
+    "commonName": "Kaktus",
+    "scientificName": "Cactaceae",
     "type": "Sukkulente",
-    "description": "Kakteen sind robuste, pflegeleichte Pflanzen, die wenig Wasser benötigen und sonnige Standorte bevorzugen.",
+    "description": "Kakteen sind pflegeleichte Pflanzen, die wenig Wasser benötigen und sonnige Standorte bevorzugen. Sie speichern Wasser in ihren Geweben und sind ideal für trockene Umgebungen.",
     "wateringFrequency": {
-        "summer": "Alle 14 Tage (Mai-September)",
-        "winter": "1x im Monat (Oktober-April)"
+        "summer": "Alle 17 Tage",
+        "winter": "1x im Monat"
     },
     "waterReminderInterval": {
-        "summer": 14,
+        "summer": 17,
         "winter": 30
     },
     "fertilizingFrequency": {
-        "summer": "1x im Monat (Mai-September)",
-        "winter": "Keine Düngung erforderlich (Oktober-April)"
+        "summer": "Alle 14 Tage",
+        "winter": "Keine Düngung erforderlich"
     },
     "fertilizingReminderInterval": {
         "summer": 14,
-        "winter": 30
+        "winter": null
     },
-    "lightRequirement": "Sonnig",
+    "lightRequirement": "Sonnig bis sehr hell",
     "temperatureRange": {
-        "summer": "12-30 °C",
-        "winter": "12-18 °C"
+        "summer": "20-30 °C",
+        "winter": ">10 °C"
     },
     "soil": "Kakteenerde",
     "needsPruning": false,
-    "pruningMonths": "",
+    "pruningMonths": null,
     "flowers": true,
-    "floweringSeason": "Juni-September",
-    "Repotting": "Alle 3-4 Jahre",
+    "floweringSeason": "Frühjahr bis Sommer, je nach Art",
+    "Repotting": "Alle 2–3 Jahre",
     "growthRate": "Langsam",
-    "maintenance": "Sehr niedrig",
     "careLevel": "Einfach",
-    "location": "Sommer: Draußen, Wind- und Regengeschützer Platz oder Drinnen | Winter: Drinnen",
+    "location": "Innenräume mit direktem Sonnenlicht; im Sommer auch im Freien an geschütztem Ort",
     "isToxic": false,
+    "petFriendly": false,
     "image": "assets/images/plants/kaktus.png",
     "avatarSkinDefault": "assets/avatars/kaktus/default.png",
     "avatarSkins": [
@@ -45,29 +45,228 @@
     ]
   },
   {
-    "id": "uuid-2",
+    "id": "70b95dd5-a2df-4984-bd50-0764f10a56de",
     "commonName": "Monstera",
     "scientificName": "Monstera deliciosa",
-    "type": "Zimmerpflanze",
-    "description": "Monstera ist eine tropische Kletterpflanze mit dekorativen Blättern und eignet sich gut für Innenräume.",
-    "wateringFrequency": "Alle 7 Tage",
-    "fertilizingFrequency": "Alle 4 Wochen",
-    "lightRequirement": "Helles, indirektes Licht",
-    "temperatureRange": "18–27 °C",
+    "type": "Kletterpflanze",
+    "description": "Die Monstera deliciosa ist eine pflegeleichte Zimmerpflanze mit charakteristischen, geschlitzten Blättern. Sie bevorzugt helle bis halbschattige Standorte ohne direkte Sonneneinstrahlung und trägt zur Verbesserung des Raumklimas bei.",
+    "wateringFrequency": {
+        "summer": "Alle 10 Tage",
+        "winter": "Alle 21 Tage"
+    },
+    "waterReminderInterval": {
+        "summer": 10,
+        "winter": 21
+    },
+    "fertilizingFrequency": {
+        "summer": "Alle 14 Tage",
+        "winter": "Keine Düngung"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 14,
+        "winter": null
+    },
+    "lightRequirement": "Hell bis halbschattig; keine direkte Sonneneinstrahlung",
+    "temperatureRange": {
+        "summer": "18-25 °C",
+        "winter": ">15 °C"
+    },
+    "soil": "Zimmerpflanzen-/Grünpflanzenerde",
     "needsPruning": true,
-    "pruningMonths": "April, Mai",
+    "pruningMonths": "Ganzjährig möglich; ideal im Frühjahr",
     "flowers": false,
-    "floweringSeason": "",
-    "needsRepotting": true,
+    "floweringSeason": null,
+    "Repotting": "Alle 2 Jahre zwischen Dezember und April",
     "growthRate": "Mittel",
-    "maintenance": "Mittel",
-    "careLevel": "Einfach",
-    "isIndoor": true,
-    "image": "assets/images/plants/monstera.png",
-    "avatarSkinDefault": "assets/avatars/monstera/default.png",
+    "careLevel": "Mittel",
+    "location": "Innenräume mit hoher Luftfeuchtigkeit",
+    "isToxic": true,
+    "petFriendly": false,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
     "avatarSkins": [
-      "assets/avatars/monstera/skin1.png",
-      "assets/avatars/monstera/skin2.png"
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
+    ]
+  },
+  {
+    "id": "35100b63-2356-41b2-adcf-b3b593d5d3fc",
+    "commonName": "Chrysanthemen",
+    "scientificName": "Chrysanthemum",
+    "type": "Korbblütler",
+    "description": "Chrysanthemen sind blühfreudige Zierpflanzen, die besonders im Herbst mit ihren farbenfrohen Blüten auffallen. Sie bevorzugen sonnige Standorte und regelmäßiges Gießen, ohne Staunässe.",
+    "wateringFrequency": {
+        "summer": "Jeden Tag",
+        "winter": "alle 8 Tage"
+    },
+    "waterReminderInterval": {
+        "summer": 1,
+        "winter": 8
+    },
+    "fertilizingFrequency": {
+        "summer": "alle 14 Tage",
+        "winter": "Keine Düngung erforderlich"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 14,
+        "winter": 0
+    },
+    "lightRequirement": "Sonnig bis Halbschatten",
+    "temperatureRange": {
+        "summer": "12-30 °C",
+        "winter": "12-18 °C"
+    },
+    "soil": "Blumen-/Gemüse-/Kräutererde",
+    "needsPruning": true,
+    "pruningMonths": "Nach der Blüte",
+    "flowers": true,
+    "floweringSeason": "August-Dezember",
+    "Repotting": "Alle 2 Jahre",
+    "growthRate": "Langsam",
+    "careLevel": "Einfach",
+    "location": "Draußen, keine direkte Sonne, trocken, windgeschützt",
+    "isToxic": false,
+    "petFriendly": false,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "avatarSkins": [
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
+    ]
+  },
+  {
+    "id": "5785a41c-9f06-44c3-a44b-2b15b673580c",
+    "commonName": "Orchidee",
+    "scientificName": "Orchidaceae",
+    "type": "Orchideengewächse",
+    "description": "Die Orchidee ist eine beliebte Zimmerpflanze mit eleganten Blüten. Sie bevorzugt helle, indirekte Lichtverhältnisse und eine hohe Luftfeuchtigkeit.",
+    "wateringFrequency": {
+        "summer": "Alle 7 Tage",
+        "winter": "Alle 14 Tage"
+    },
+    "waterReminderInterval": {
+        "summer": 7,
+        "winter": 14
+    },
+    "fertilizingFrequency": {
+        "summer": "Alle 7 tage mit Orchideendünger",
+        "winter": "Alle 3 Wochen"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 7,
+        "winter": 21
+    },
+    "lightRequirement": "Helles, indirektes Licht",
+    "temperatureRange": {
+        "summer": "18-25 °C",
+        "winter": ">15 °C"
+    },
+    "soil": "Spezielle Orchideenerde mit grober Struktur",
+    "needsPruning": true,
+    "pruningMonths": "Nach der Blüte",
+    "flowers": true,
+    "floweringSeason": "Mehrmals jährlich",
+    "Repotting": "Alle 1-2 Jahre",
+    "growthRate": "Mittel",
+    "careLevel": "Mittel",
+    "location": "Fensterbank mit Ost- oder Westausrichtung; im Sommer auch draußen an geschütztem Ort",
+    "isToxic": false,
+    "petFriendly": true,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "avatarSkins": [
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
+    ]
+  },
+  {
+    "id": "783fd027-20ff-4387-b553-5a00363eee06",
+    "commonName": "Bogenhanf",
+    "scientificName": "Sansevieria",
+    "type": "Sukkulente",
+    "description": "Der Bogenhanf ist eine äußerst pflegeleichte Zimmerpflanze mit aufrecht wachsenden, schwertförmigen Blättern. Er kommt mit wenig Wasser aus und gedeiht auch an halbschattigen Standorten.",
+    "wateringFrequency": {
+        "summer": "Alle 14 Tage",
+        "winter": "1x im Monat"
+    },
+    "waterReminderInterval": {
+        "summer": 14,
+        "winter": 30
+    },
+    "fertilizingFrequency": {
+        "summer": "Monatlich",
+        "winter": "Keine Düngung erforderlich"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 60,
+        "winter": null
+    },
+    "lightRequirement": "Helles bis halbschattiges Licht; verträgt auch direkte Sonne",
+    "temperatureRange": {
+        "summer": "18-30 °C",
+        "winter": ">12 °C"
+    },
+    "soil": "Kakteenerde oder torffreie Universalerde",
+    "needsPruning": false,
+    "pruningMonths": null,
+    "flowers": false,
+    "floweringSeason": null,
+    "Repotting": "Alle 3-5 Jahre",
+    "growthRate": "Langsam",
+    "careLevel": "Einfach",
+    "location": "Innenräume mit indirektem Licht; im Sommer auch im Freien an geschütztem Ort",
+    "isToxic": true,
+    "petFriendly": false,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "avatarSkins": [
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
+    ]
+  },
+  {
+    "id": "7774f4e6-9424-4a23-82f5-20731800636a",
+    "commonName": "Elefantenfuß",
+    "scientificName": "Beaucarnea recurvata",
+    "type": "Drachenbaumgewächse ",
+    "description": "Der Elefantenfuß ist eine pflegeleichte Zimmerpflanze mit verdicktem Stamm, der als Wasserspeicher dient. Er bevorzugt sonnige Standorte und benötigt nur selten Wasser.",
+    "wateringFrequency": {
+        "summer": "Alle 14 Tage",
+        "winter": "1x im Monat"
+    },
+    "waterReminderInterval": {
+        "summer": 14,
+        "winter": 30
+    },
+    "fertilizingFrequency": {
+        "summer": "Alle 4 Wochen",
+        "winter": "Keine Düngung erforderlich"
+    },
+    "fertilizingReminderInterval": {
+        "summer": 28,
+        "winter": null
+    },
+    "lightRequirement": "Sonnig bis hell",
+    "temperatureRange": {
+        "summer": "20-30 °C",
+        "winter": ">12 °C"
+    },
+    "soil": "Kakteenerde",
+    "needsPruning": true,
+    "pruningMonths": "Zu Beginn der Wachstumsperiode im Frühling",
+    "flowers": false,
+    "floweringSeason": null,
+    "Repotting": "Alle 3-5 Jahre",
+    "growthRate": "Langsam",
+    "careLevel": "Einfach",
+    "location": "Innenräume mit direktem Sonnenlicht, Ost- oder Westfensterplätze ohne Zugluft",
+    "isToxic": false,
+    "petFriendly": false,
+    "image": "assets/images/plants/kaktus.png",
+    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "avatarSkins": [
+      "assets/avatars/kaktus/skin1.png",
+      "assets/avatars/kaktus/skin2.png"
     ]
   }
 ]
