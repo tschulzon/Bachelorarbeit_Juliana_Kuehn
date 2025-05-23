@@ -1,0 +1,11 @@
+{
+        "id": "1",
+        "username": "Testuser",
+        "profilePicture": "assets/images/profile-avatar-woman-long-black.png",
+        "level": 1,
+        "xp": 0,
+        "coins": 0,
+        "badges": [],
+        "plants": [],
+        "ownedSkins": []
+}

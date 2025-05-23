@@ -55,6 +55,8 @@ class PlantTemplate {
     required this.avatarSkins,
   });
 
+// Das brauchen wir um etwas in die Datenbank zu speichern
+  // und um es wieder auszulesen,  sinnvoll, wenn du das Objekt irgendwo wieder speichern, übertragen oder cachen willst
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -85,6 +87,7 @@ class PlantTemplate {
     };
   }
 
+// Daraus lesen wir Daten aus dem JSON File und erstellen ein Dart Objekt
   factory PlantTemplate.fromJson(Map<String, dynamic> json) {
     return PlantTemplate(
       id: json['id'],

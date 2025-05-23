@@ -1,37 +1,70 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
-void main() {
-  runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:plantagotchi/models/user.dart';
+import 'package:plantagotchi/services/shared_prefs_helper.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final storage = StorageService();
+  User? user = await storage.loadUser();
+
+  if (user == null) {
+    String jsonString = await rootBundle
+        .loadString('assets/data/testuser.json'); // Load JSON from assets
+
+    user = User.fromJson(jsonDecode(jsonString)); // Decode JSON to User object
+    await storage.saveUser(user);
+  }
+
+  runApp(MyApp(initialUser: user));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final User? initialUser;
+  const MyApp({super.key, required this.initialUser});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print('Initial User: ${initialUser?.username}'); // Debugging line
+
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: const ColorScheme(
+          brightness: Brightness.light,
+          primary: Color(0xFFD9C55F),
+          onPrimary: Color(0xFF5A7302),
+          secondary: Color(0xFF8BC34A),
+          onSecondary: Colors.black,
+          error: Color(0xFFF44336),
+          onError: Colors.white,
+          surface: Color(0xFF5A7302),
+          onSurface: Colors.black,
+        ),
         useMaterial3: true,
+        fontFamily: 'Roboto',
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFD9C55F),
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 16,
+            color: Color(0xFFD9C55F),
+          ),
+          labelLarge: TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFD9C55F),
+          ),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Plantagotchi'),
     );
   }
 }
@@ -81,10 +114,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).colorScheme.surface,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(widget.title,
+            style: Theme.of(context).textTheme.headlineLarge),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
