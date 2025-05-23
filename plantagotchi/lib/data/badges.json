@@ -1,0 +1,75 @@
+[ 
+    {
+        "id": "1",
+        "name": "Grüne:r Einsteiger:in",
+        "milestone": "Erste Pflanze angelegt",
+        "description": "Deine Reise beginnt – du hast deine erste Pflanze angelegt!",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsOwned",
+        "conditionValue": 1
+    },
+    {
+        "id": "2",
+        "name": "Sortenentdecker:in",
+        "milestone": "5 Pflanzen angelegt",
+        "description": "Du hast bereits 5 Pflanzen angelegt und entdeckst langsam die Vielfalt der Pflanzenarten.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsOwned",
+        "conditionValue": 5
+    },
+    {
+        "id": "3",
+        "name": "Pflanzenfreund:in",
+        "milestone": "10 Pflanzen angelegt",
+        "description": "Du baust eine tiefergehende Beziehung zu deinen Pflanzen auf.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsOwned",
+        "conditionValue": 10
+    },
+    {
+        "id": "4",
+        "name": "Durstlöscher:in",
+        "milestone": "Erste Pflanze gegossen",
+        "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsWatered",
+        "conditionValue": 1
+    },
+    {
+        "id": "5",
+        "name": "Nährstoffgeber:in",
+        "milestone": "Erste Pflanze gedüngt",
+        "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsfertilized",
+        "conditionValue": 1
+    },
+    {
+        "id": "6",
+        "name": "Wurzelwerker:in",
+        "milestone": "Erste Pflanze umgetopft",
+        "description": "Du hast deine Pflanze umgetopft und ihr neuen Raum zum Wachsen gegeben.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsRepotted",
+        "conditionValue": 1
+    },
+    {
+        "id": "7",
+        "name": "Vielfaltsbetreuer:in",
+        "milestone": "5 verschiedene Pflanzen gepflegt",
+        "description": "Du hast dich um all deine 5 Pflanzen gekümmert und sie mit Liebe versorgt.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "plantsTotalCare",
+        "conditionValue": 5
+    },
+    {
+        "id": "8",
+        "name": "Pflanzenfotograf:in",
+        "milestone": "Erste Pflanze fotografiert",
+        "description": "Du hast das erste Foto von einer Pflanze gemacht und sie für die Ewigkeit festgehalten.",
+        "image": "assets/images/badges/first_steps.png",
+        "conditionType": "pflantsPhotographed",
+        "conditionValue": 1
+    }
+
+]

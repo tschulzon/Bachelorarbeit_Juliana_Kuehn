@@ -31,7 +31,7 @@
     "pruningMonths": null,
     "flowers": true,
     "floweringSeason": "Frühjahr bis Sommer, je nach Art",
-    "Repotting": "Alle 2–3 Jahre",
+    "repotting": "Alle 2–3 Jahre",
     "growthRate": "Langsam",
     "careLevel": "Einfach",
     "location": "Innenräume mit direktem Sonnenlicht; im Sommer auch im Freien an geschütztem Ort",
