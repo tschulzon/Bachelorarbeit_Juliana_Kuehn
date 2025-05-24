@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
   // Key for SharedPreferences, data will be stored in key-value pairs
-  static const String _userKey = 'user_data';
+  static const String _userKey = 'user';
   static const String _userPlantsKey = 'user_plants';
   static const String _badgesKey = 'badges';
   static const String _careEntryKey = 'care_entry';
@@ -18,12 +18,14 @@ class StorageService {
     final prefs = await SharedPreferences.getInstance();
     String jsonString = jsonEncode(username.toJson());
     await prefs.setString(_userKey, jsonString);
+    print("User saved: $jsonString");
   }
 
   // Load User data
   Future<User?> loadUser() async {
     final prefs = await SharedPreferences.getInstance();
     String? jsonString = prefs.getString(_userKey);
+    print("Geladener User aus SharedPreferences: $jsonString");
     if (jsonString != null) {
       Map<String, dynamic> jsonMap = jsonDecode(jsonString);
       return User.fromJson(jsonMap);

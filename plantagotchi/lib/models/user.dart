@@ -7,9 +7,9 @@ class User {
   int? level;
   int? xp;
   int? coins;
+  int? streak;
   List<String>? badges;
   List<UserPlants>? plants;
-  // List<Friends>? friends;
 
   User({
     required this.id,
@@ -18,9 +18,9 @@ class User {
     this.level,
     this.xp,
     this.coins,
+    this.streak,
     this.badges,
     this.plants,
-    // this.friends,
   });
 
   Map<String, dynamic> toJson() {
@@ -31,13 +31,14 @@ class User {
       'level': level,
       'xp': xp,
       'coins': coins,
+      'streak': streak,
       'badges': badges,
       'plants': plants?.map((plant) => plant.toJson()).toList(),
-      // 'friends': friends?.map((friend) => friend.toJson()).toList(),
     };
   }
 
   factory User.fromJson(Map<String, dynamic> json) {
+    print("streak raw value: ${json['streak']}"); // Debug output
     return User(
       id: json['id'],
       username: json['username'],
@@ -45,15 +46,13 @@ class User {
       level: json['level'],
       xp: json['xp'],
       coins: json['coins'],
+      streak: json['streak'],
       badges: List<String>.from(json['badges'] ?? []),
       plants: json['plants'] != null
           ? (json['plants'] as List<dynamic>)
               .map((plant) => UserPlants.fromJson(plant))
               .toList()
           : null,
-      // friends: (json['friends'] as List<dynamic>?)
-      //     ?.map((friend) => Friends.fromJson(friend))
-      //     .toList(),
     );
   }
 }
