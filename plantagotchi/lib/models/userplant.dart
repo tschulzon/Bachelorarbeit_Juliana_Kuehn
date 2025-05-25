@@ -9,7 +9,7 @@ class UserPlants {
   String? plantImage;
   String? avatarSkin;
   DateTime? dateAdded;
-  List<CareEntry>? careHistory;
+  List<dynamic>? careHistory;
 
   UserPlants({
     this.id,
@@ -31,7 +31,7 @@ class UserPlants {
       'plantImage': plantImage,
       'avatarSkin': avatarSkin,
       'dateAdded': dateAdded?.toIso8601String(),
-      'careHistory': careHistory?.map((entry) => entry.toJson()).toList(),
+      'careHistory': careHistory ?? [],
     };
   }
 
@@ -46,10 +46,10 @@ class UserPlants {
       nickname: json['nickname'],
       plantImage: json['plantImage'],
       avatarSkin: json['avatarSkin'],
-      dateAdded: DateTime.parse(json['dateAdded']),
-      careHistory: (json['careHistory'] as List<dynamic>?)
-          ?.map((entry) => CareEntry.fromJson(entry))
-          .toList(),
+      dateAdded: json['dateAdded'] != null
+          ? DateTime.tryParse(json['dateAdded'])
+          : null,
+      careHistory: json['careHistory'] ?? [],
     );
   }
 }

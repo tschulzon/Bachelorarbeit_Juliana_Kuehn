@@ -24,6 +24,8 @@ class StorageService {
   // Load User data
   Future<User?> loadUser() async {
     final prefs = await SharedPreferences.getInstance();
+    // await prefs
+    //     .clear(); // For cleaning everything, remove this line in production
     String? jsonString = prefs.getString(_userKey);
     print("Geladener User aus SharedPreferences: $jsonString");
     if (jsonString != null) {

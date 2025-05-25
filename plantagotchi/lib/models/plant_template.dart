@@ -7,24 +7,24 @@ class PlantTemplate {
   String family;
   String description;
   Map<String, String> wateringFrequency; // e.g., "summer", "winter"
-  Map<Int, Int> wateringReminderInterval; // e.g., 1 day, 2 days
-  Map<String, String> fertilizationFrequency;
-  Map<Int, Int> fertilizationReminderInterval;
+  Map<String, int>? wateringReminderInterval; // e.g., 1 day, 2 days
+  Map<String, String>? fertilizationFrequency;
+  Map<String, int>? fertilizationReminderInterval;
   String lightRequirement;
   Map<String, String> temperatureRange;
   String soil;
-  String needsPruning;
-  String pruningMonths;
-  Bool flowers;
+  bool needsPruning;
+  String? pruningMonths;
+  bool flowers;
   String floweringSeason;
   String repotting;
   String growthRate;
   String careLevel;
   String location;
-  Bool isToxic;
-  Bool petFriendly;
-  String imageUrl;
-  String avatarUrl;
+  bool isToxic;
+  bool petFriendly;
+  String? imageUrl;
+  String? avatarUrl;
   List<String> avatarSkins;
 
   PlantTemplate({
@@ -97,16 +97,16 @@ class PlantTemplate {
       description: json['description'],
       wateringFrequency: Map<String, String>.from(json['wateringFrequency']),
       wateringReminderInterval:
-          Map<Int, Int>.from(json['wateringReminderInterval']),
+          json['wateringReminderInterval'] as Map<String, int>?,
       fertilizationFrequency:
-          Map<String, String>.from(json['fertilizationFrequency']),
+          json['fertilizationFrequency'] as Map<String, String>?,
       fertilizationReminderInterval:
-          Map<Int, Int>.from(json['fertilizationReminderInterval']),
+          json['fertilizationReminderInterval'] as Map<String, int>?,
       lightRequirement: json['lightRequirement'],
       temperatureRange: Map<String, String>.from(json['temperatureRange']),
       soil: json['soil'],
       needsPruning: json['needsPruning'],
-      pruningMonths: json['pruningMonths'],
+      pruningMonths: json['pruningMonths'] ?? "-",
       flowers: json['flowers'],
       floweringSeason: json['floweringSeason'],
       repotting: json['repotting'],
@@ -115,8 +115,8 @@ class PlantTemplate {
       location: json['location'],
       isToxic: json['isToxic'],
       petFriendly: json['petFriendly'],
-      imageUrl: json['imageUrl'],
-      avatarUrl: json['avatarUrl'],
+      imageUrl: json['imageUrl'] ?? "-",
+      avatarUrl: json['avatarUrl'] ?? "-",
       avatarSkins: List<String>.from(json['avatarSkins']),
     );
   }

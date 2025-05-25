@@ -7,5 +7,60 @@
         "coins": 0,
         "streak": 2,
         "badges": [],
-        "plants": []
+        "plants": [
+                {
+                        "id": "plant-1",
+                        "userId": "1",
+                        "nickname": "Spike",
+                        "plantImage": "assets/images/plants/kaktus-real.png",
+                        "avatarSkin": "assets/images/avatars/kaktus-white-removebg-preview.png",
+                        "dateAdded": "2024-05-24T10:00:00.000Z",
+                        "careHistory": [],
+                        "plantTemplate": {
+                                "id": "abd51cde-eee1-49ce-9604-4e7dce677d59",
+                                "commonName": "Kaktus",
+                                "scientificName": "Cactaceae",
+                                "family": "Sukkulente",
+                                "description": "Kakteen sind pflegeleichte Pflanzen, die wenig Wasser benötigen und sonnige Standorte bevorzugen. ...",
+                                "wateringFrequency": {
+                                "summer": "Alle 17 Tage",
+                                "winter": "1x im Monat"
+                                },
+                                "waterReminderInterval": {
+                                "summer": 17,
+                                "winter": 30
+                                },
+                                "fertilizingFrequency": {
+                                "summer": "Alle 14 Tage",
+                                "winter": "Keine Düngung erforderlich"
+                                },
+                                "fertilizingReminderInterval": {
+                                "summer": 14,
+                                "winter": null
+                                },
+                                "lightRequirement": "Sonnig bis sehr hell",
+                                "temperatureRange": {
+                                "summer": "20-30 °C",
+                                "winter": ">10 °C"
+                                },
+                                "soil": "Kakteenerde",
+                                "needsPruning": false,
+                                "pruningMonths": null,
+                                "flowers": true,
+                                "floweringSeason": "Frühjahr bis Sommer, je nach Art",
+                                "repotting": "Alle 2–3 Jahre",
+                                "growthRate": "Langsam",
+                                "careLevel": "Einfach",
+                                "location": "Innenräume mit direktem Sonnenlicht",
+                                "isToxic": false,
+                                "petFriendly": false,
+                                "image": "assets/images/plants/kaktus-real.png",
+                                "avatarSkinDefault": "assets/images/avatars/kaktus-white-removebg-preview.png",
+                                "avatarSkins": [
+                                "assets/images/plants/kaktus-real.png",
+                                "assets/images/plants/kaktus-real.png"
+                                ]
+                        }
+                }
+        ]
 }

@@ -3,7 +3,7 @@
     "id": "abd51cde-eee1-49ce-9604-4e7dce677d59",
     "commonName": "Kaktus",
     "scientificName": "Cactaceae",
-    "type": "Sukkulente",
+    "family": "Sukkulente",
     "description": "Kakteen sind pflegeleichte Pflanzen, die wenig Wasser benötigen und sonnige Standorte bevorzugen. Sie speichern Wasser in ihren Geweben und sind ideal für trockene Umgebungen.",
     "wateringFrequency": {
         "summer": "Alle 17 Tage",
@@ -48,7 +48,7 @@
     "id": "70b95dd5-a2df-4984-bd50-0764f10a56de",
     "commonName": "Monstera",
     "scientificName": "Monstera deliciosa",
-    "type": "Kletterpflanze",
+    "family": "Kletterpflanze",
     "description": "Die Monstera deliciosa ist eine pflegeleichte Zimmerpflanze mit charakteristischen, geschlitzten Blättern. Sie bevorzugt helle bis halbschattige Standorte ohne direkte Sonneneinstrahlung und trägt zur Verbesserung des Raumklimas bei.",
     "wateringFrequency": {
         "summer": "Alle 10 Tage",
@@ -93,7 +93,7 @@
     "id": "35100b63-2356-41b2-adcf-b3b593d5d3fc",
     "commonName": "Chrysanthemen",
     "scientificName": "Chrysanthemum",
-    "type": "Korbblütler",
+    "family": "Korbblütler",
     "description": "Chrysanthemen sind blühfreudige Zierpflanzen, die besonders im Herbst mit ihren farbenfrohen Blüten auffallen. Sie bevorzugen sonnige Standorte und regelmäßiges Gießen, ohne Staunässe.",
     "wateringFrequency": {
         "summer": "Jeden Tag",
@@ -138,7 +138,7 @@
     "id": "5785a41c-9f06-44c3-a44b-2b15b673580c",
     "commonName": "Orchidee",
     "scientificName": "Orchidaceae",
-    "type": "Orchideengewächse",
+    "family": "Orchideengewächse",
     "description": "Die Orchidee ist eine beliebte Zimmerpflanze mit eleganten Blüten. Sie bevorzugt helle, indirekte Lichtverhältnisse und eine hohe Luftfeuchtigkeit.",
     "wateringFrequency": {
         "summer": "Alle 7 Tage",
@@ -183,7 +183,7 @@
     "id": "783fd027-20ff-4387-b553-5a00363eee06",
     "commonName": "Bogenhanf",
     "scientificName": "Sansevieria",
-    "type": "Sukkulente",
+    "family": "Sukkulente",
     "description": "Der Bogenhanf ist eine äußerst pflegeleichte Zimmerpflanze mit aufrecht wachsenden, schwertförmigen Blättern. Er kommt mit wenig Wasser aus und gedeiht auch an halbschattigen Standorten.",
     "wateringFrequency": {
         "summer": "Alle 14 Tage",
@@ -228,7 +228,7 @@
     "id": "7774f4e6-9424-4a23-82f5-20731800636a",
     "commonName": "Elefantenfuß",
     "scientificName": "Beaucarnea recurvata",
-    "type": "Drachenbaumgewächse ",
+    "family": "Drachenbaumgewächse ",
     "description": "Der Elefantenfuß ist eine pflegeleichte Zimmerpflanze mit verdicktem Stamm, der als Wasserspeicher dient. Er bevorzugt sonnige Standorte und benötigt nur selten Wasser.",
     "wateringFrequency": {
         "summer": "Alle 14 Tage",
