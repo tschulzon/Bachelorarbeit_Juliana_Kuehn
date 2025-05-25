@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
+import 'package:plantagotchi/viewmodels/navigation_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/startpage.dart';
+import 'package:plantagotchi/widgets/app_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 
@@ -32,6 +34,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserViewModel(user!)),
+        ChangeNotifierProvider(create: (_) => NavigationViewmodel()),
         ChangeNotifierProvider(create: (_) => StartpageViewModel()),
       ],
       child: MyApp(initialUser: user),
@@ -56,7 +59,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           primary: Color(0xFFD9C55F),
           onPrimary: Color(0xFF5A7302),
-          secondary: Color(0xFF8BC34A),
+          secondary: Color(0xFFD2D90B),
           onSecondary: Colors.black,
           error: Color(0xFFF44336),
           onError: Colors.white,
@@ -84,9 +87,22 @@ class MyApp extends StatelessWidget {
             fontSize: 12,
             color: Color(0xFFD9C55F),
           ),
+          bodySmall: TextStyle(
+            fontSize: 10,
+            color: Color(0xFFD9C55F),
+          ),
+          titleMedium: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFD9C55F),
+          ),
+          titleLarge: TextStyle(
+            fontSize: 16,
+            color: Color(0xFF5A7302),
+          ),
         ),
       ),
-      home: const Startpage(),
+      home: AppLayout(),
     );
   }
 }

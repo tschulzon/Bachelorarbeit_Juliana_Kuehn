@@ -61,6 +61,60 @@
                                 "assets/images/plants/kaktus-real.png"
                                 ]
                         }
+                },
+                {
+                        "id": "plant-2",
+                        "userId": "1",
+                        "nickname": "Monstiii",
+                        "plantImage": "assets/images/plants/kaktus-real.png",
+                        "avatarSkin": "assets/images/avatars/monstera-white-removebg-preview.png",
+                        "dateAdded": "2024-05-25T10:00:00.000Z",
+                        "careHistory": [],
+                        "plantTemplate": {
+                                "id": "70b95dd5-a2df-4984-bd50-0764f10a56de",
+                                "commonName": "Monstera",
+                                "scientificName": "Monstera deliciosa",
+                                "family": "Kletterpflanze",
+                                "description": "Die Monstera deliciosa ist eine pflegeleichte Zimmerpflanze mit charakteristischen, geschlitzten Blättern. Sie bevorzugt helle bis halbschattige Standorte ohne direkte Sonneneinstrahlung und trägt zur Verbesserung des Raumklimas bei.",
+                                "wateringFrequency": {
+                                "summer": "Alle 10 Tage",
+                                "winter": "Alle 21 Tage"
+                                },
+                                "waterReminderInterval": {
+                                "summer": 10,
+                                "winter": 21
+                                },
+                                "fertilizingFrequency": {
+                                "summer": "Alle 14 Tage",
+                                "winter": "Keine Düngung erforderlich"
+                                },
+                                "fertilizingReminderInterval": {
+                                "summer": 14,
+                                "winter": null
+                                },
+                                "lightRequirement": "Sonnig bis sehr hell",
+                                "temperatureRange": {
+                                "summer": "20-30 °C",
+                                "winter": ">10 °C"
+                                },
+                                "soil": "Kakteenerde",
+                                "needsPruning": false,
+                                "pruningMonths": null,
+                                "flowers": true,
+                                "floweringSeason": "Frühjahr bis Sommer, je nach Art",
+                                "repotting": "Alle 2–3 Jahre",
+                                "growthRate": "Langsam",
+                                "careLevel": "Einfach",
+                                "location": "Innenräume mit direktem Sonnenlicht",
+                                "isToxic": false,
+                                "petFriendly": false,
+                                "image": "assets/images/plants/kaktus-real.png",
+                                "avatarSkinDefault": "assets/images/avatars/monstera-white-removebg-preview.png",
+                                "avatarSkins": [
+                                "assets/images/plants/kaktus-real.png",
+                                "assets/images/plants/kaktus-real.png"
+                                ]
+                        }
                 }
         ]
 }

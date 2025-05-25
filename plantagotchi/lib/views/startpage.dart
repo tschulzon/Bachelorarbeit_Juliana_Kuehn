@@ -3,7 +3,9 @@ import 'package:plantagotchi/utils/material_symbols.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
+import 'package:plantagotchi/widgets/plant_swipe.dart';
 import 'package:provider/provider.dart';
+import 'package:linear_progress_bar/linear_progress_bar.dart';
 
 class Startpage extends StatelessWidget {
   const Startpage({super.key});
@@ -73,25 +75,75 @@ class Startpage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Zählerstand',
+      body: Column(
+        children: [
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 15.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Center(
+                  child: Text(
+                    '${user.xp} Erfahrungspunkte', // Top text
+                    style: fontstyle.titleMedium,
+                  ),
+                ),
+                // const SizedBox(height: 5),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    // Left: Icon + Text
+                    Column(
+                      children: [
+                        Icon(Icons.workspace_premium,
+                            color: colors.primary, size: 32),
+                        const SizedBox(height: 4),
+                        Text('Level ${user.level}',
+                            style: fontstyle.labelSmall),
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 16,
+                    ),
+                    // Right: ProgressBar + Text
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          LinearProgressBar(
+                            maxSteps: 6,
+                            progressType: LinearProgressBar.progressTypeLinear,
+                            currentStep: 2,
+                            progressColor: colors.secondary,
+                            backgroundColor: colors.secondary.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          const SizedBox(height: 4),
+                          Center(
+                              child: Text('noch 220 XP bis zum nächsten Level!',
+                                  style: fontstyle.bodySmall)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                PreferredSize(
+                  preferredSize: const Size.fromHeight(1.0),
+                  child: Center(
+                    child: Container(
+                      width: 300,
+                      color: colors.primary,
+                      height: 1.0,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text(
-              '${viewModel.counter}',
-              style: Theme.of(context).textTheme.headlineLarge,
-            ),
-            const SizedBox(height: 20),
-            ActionButton(
-              label: 'Erhöhe streak',
-              onPressed: userViewModel.incrementStreak,
-              greenToYellow: false,
-            ),
-          ],
-        ),
+          ),
+          Expanded(child: PlantSwipe(plants: user.plants ?? [])),
+        ],
       ),
     );
   }

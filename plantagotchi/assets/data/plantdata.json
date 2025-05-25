@@ -37,11 +37,11 @@
     "location": "Innenräume mit direktem Sonnenlicht; im Sommer auch im Freien an geschütztem Ort",
     "isToxic": false,
     "petFriendly": false,
-    "image": "assets/images/plants/kaktus.png",
-    "avatarSkinDefault": "assets/avatars/kaktus/default.png",
+    "image": "assets/images/avatars/kaktus-white-removebg-preview.png",
+    "avatarSkinDefault": "assets/images/avatars/kaktus-white-removebg-preview.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/kaktus-white-removebg-preview.png",
+      "assets/images/avatars/kaktus-white-removebg-preview.png"
     ]
   },
   {
