@@ -35,7 +35,8 @@ Future<void> main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => UserViewModel(user!)),
         ChangeNotifierProvider(create: (_) => NavigationViewmodel()),
-        ChangeNotifierProvider(create: (_) => StartpageViewModel()),
+        ChangeNotifierProvider(
+            create: (_) => StartpageViewModel(userPlants: [])),
       ],
       child: MyApp(initialUser: user),
     ),
@@ -76,6 +77,7 @@ class MyApp extends StatelessWidget {
           ),
           bodyMedium: TextStyle(
             fontSize: 16,
+            fontWeight: FontWeight.bold,
             color: Color(0xFFD9C55F),
           ),
           labelLarge: TextStyle(

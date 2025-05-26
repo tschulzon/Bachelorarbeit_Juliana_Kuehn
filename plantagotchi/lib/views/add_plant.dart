@@ -3,6 +3,13 @@ import 'package:flutter/material.dart';
 class AddPlant extends StatelessWidget {
   const AddPlant({super.key});
 
+//   CareEntry(
+//   id: const Uuid().v4(),
+//   userPlantId: newUserPlant.id,
+//   type: 'watering',
+//   date: selectedWateringDate,
+// );
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

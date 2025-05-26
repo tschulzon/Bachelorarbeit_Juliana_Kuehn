@@ -9,7 +9,7 @@
         "summer": "Alle 17 Tage",
         "winter": "1x im Monat"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 17,
         "winter": 30
     },
@@ -17,9 +17,9 @@
         "summer": "Alle 14 Tage",
         "winter": "Keine Düngung erforderlich"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 14,
-        "winter": null
+        "winter": 0
     },
     "lightRequirement": "Sonnig bis sehr hell",
     "temperatureRange": {
@@ -54,7 +54,7 @@
         "summer": "Alle 10 Tage",
         "winter": "Alle 21 Tage"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 10,
         "winter": 21
     },
@@ -62,9 +62,9 @@
         "summer": "Alle 14 Tage",
         "winter": "Keine Düngung"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 14,
-        "winter": null
+        "winter": 0
     },
     "lightRequirement": "Hell bis halbschattig; keine direkte Sonneneinstrahlung",
     "temperatureRange": {
@@ -99,7 +99,7 @@
         "summer": "Jeden Tag",
         "winter": "alle 8 Tage"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 1,
         "winter": 8
     },
@@ -107,7 +107,7 @@
         "summer": "alle 14 Tage",
         "winter": "Keine Düngung erforderlich"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 14,
         "winter": 0
     },
@@ -144,7 +144,7 @@
         "summer": "Alle 7 Tage",
         "winter": "Alle 14 Tage"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 7,
         "winter": 14
     },
@@ -152,7 +152,7 @@
         "summer": "Alle 7 tage mit Orchideendünger",
         "winter": "Alle 3 Wochen"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 7,
         "winter": 21
     },
@@ -189,7 +189,7 @@
         "summer": "Alle 14 Tage",
         "winter": "1x im Monat"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 14,
         "winter": 30
     },
@@ -197,9 +197,9 @@
         "summer": "Monatlich",
         "winter": "Keine Düngung erforderlich"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 60,
-        "winter": null
+        "winter": 0
     },
     "lightRequirement": "Helles bis halbschattiges Licht; verträgt auch direkte Sonne",
     "temperatureRange": {
@@ -234,7 +234,7 @@
         "summer": "Alle 14 Tage",
         "winter": "1x im Monat"
     },
-    "waterReminderInterval": {
+    "wateringReminderInterval": {
         "summer": 14,
         "winter": 30
     },
@@ -242,9 +242,9 @@
         "summer": "Alle 4 Wochen",
         "winter": "Keine Düngung erforderlich"
     },
-    "fertilizingReminderInterval": {
+    "fertilizationReminderInterval": {
         "summer": 28,
-        "winter": null
+        "winter": 0
     },
     "lightRequirement": "Sonnig bis hell",
     "temperatureRange": {

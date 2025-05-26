@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/userplant.dart';
+import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
+import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
+import 'package:plantagotchi/widgets/caretask_checkbox.dart';
+import 'package:provider/provider.dart';
 
 class PlantSwipe extends StatefulWidget {
   final List<UserPlants> plants;
@@ -18,8 +22,13 @@ class _PlantSwipeState extends State<PlantSwipe> {
 
   @override
   Widget build(BuildContext context) {
+    final startPageViewModel = Provider.of<StartpageViewModel>(context);
     final fontstyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
+
+    for (var p in widget.plants) {
+      debugPrint('Plant: ${p.nickname}, ID: ${p.id}');
+    }
 
     return SizedBox(
         height: 600,
@@ -28,6 +37,10 @@ class _PlantSwipeState extends State<PlantSwipe> {
           itemCount: widget.plants.length,
           itemBuilder: (context, index) {
             final plant = widget.plants[index];
+            final dueTasks = startPageViewModel.getDueTasks(plant);
+            debugPrint(
+                'Current Plant: ${plant.nickname}, Due Tasks: $dueTasks'); // Debugging line
+
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -65,7 +78,10 @@ class _PlantSwipeState extends State<PlantSwipe> {
                   ),
                 ),
                 const SizedBox(height: 5),
-                Column(
+                // Speech bubble and triangle below
+                Stack(
+                  alignment: Alignment.topCenter,
+                  clipBehavior: Clip.none, // Allow overflow for the triangle
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
@@ -74,18 +90,26 @@ class _PlantSwipeState extends State<PlantSwipe> {
                         color: colors.primary,
                         borderRadius: BorderRadius.circular(16.0),
                       ),
-                      child: Text('Ich brauche Wasser!',
-                          style: fontstyle.titleLarge),
+                      child: Text(
+                        dueTasks!.isNotEmpty
+                            ? dueTasks.first['plantSentence']!
+                            : 'Mir geht es gut! 🥰',
+                        style: fontstyle.titleLarge,
+                      ),
                     ),
-                    //Triangle below the bubble
-                    Transform.translate(
-                      offset: const Offset(-80, -48),
-                      child: Transform.rotate(
-                        angle: 3.14 / 4, // Rotate to point downwards
-                        child: Container(
-                          width: 16,
-                          height: 16,
-                          color: colors.primary,
+                    Positioned(
+                      top: null,
+                      bottom: 35, // Adjust as needed to overlap the bubble
+                      left: -0,
+                      right: 0,
+                      child: Center(
+                        child: Transform.rotate(
+                          angle: 3.14 / 4,
+                          child: Container(
+                            width: 16,
+                            height: 16,
+                            color: colors.primary,
+                          ),
                         ),
                       ),
                     ),
@@ -117,7 +141,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
                             child: Center(
                               child: Text(
                                   'Pflegeaufgaben für ${plant.nickname}',
-                                  style: fontstyle.labelSmall),
+                                  style: fontstyle.bodyMedium),
                             ),
                           ),
                           IconButton(
@@ -127,28 +151,50 @@ class _PlantSwipeState extends State<PlantSwipe> {
                           ),
                         ],
                       ),
+                      CaretaskCheckbox(
+                          plant: plant, viewModel: startPageViewModel)
                       // Compact rows for tasks
-                      ...[
-                        'Gießen',
-                        'Düngen',
-                        'Blätter abwischen',
-                      ].map((task) => Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 2.0),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                    child: Text(task,
-                                        style: fontstyle.labelSmall)),
-                                Checkbox(
-                                  value: false,
-                                  onChanged: (_) {},
-                                  visualDensity: VisualDensity.compact,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                ),
-                              ],
-                            ),
-                          )),
+                      // ...(dueTasks.isEmpty
+                      //     ? [
+                      //         Padding(
+                      //           padding:
+                      //               const EdgeInsets.symmetric(vertical: 8.0),
+                      //           child: Text(
+                      //             '${plant.nickname} ist wunschlos glücklich! 🌞',
+                      //             style: fontstyle.bodyMedium,
+                      //           ),
+                      //         )
+                      //       ]
+                      //     : dueTasks
+                      //         .map((task) => Padding(
+                      //               padding: const EdgeInsets.symmetric(
+                      //                   vertical: 2.0),
+                      //               child: Row(
+                      //                 children: [
+                      //                   Expanded(
+                      //                     child: Text(
+                      //                       task['task']!,
+                      //                       style: fontstyle.labelSmall,
+                      //                     ),
+                      //                   ),
+                      //                   Checkbox(
+                      //                     value: task['isChecked'],
+                      //                     onChanged: (_) {
+                      //                       startPageViewModel.addCareTypeEntry(
+                      //                           plant, task['careType']!);
+
+                      //                       setState(() {
+                      //                         task['isChecked'] = true;
+                      //                       });
+                      //                     },
+                      //                     visualDensity: VisualDensity.compact,
+                      //                     materialTapTargetSize:
+                      //                         MaterialTapTargetSize.shrinkWrap,
+                      //                   ),
+                      //                 ],
+                      //               ),
+                      //             ))
+                      //         .toList())
                     ],
                   ),
                 )

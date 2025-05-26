@@ -96,12 +96,15 @@ class PlantTemplate {
       family: json['family'],
       description: json['description'],
       wateringFrequency: Map<String, String>.from(json['wateringFrequency']),
-      wateringReminderInterval:
-          json['wateringReminderInterval'] as Map<String, int>?,
+      wateringReminderInterval: json['wateringReminderInterval'] != null
+          ? Map<String, int>.from(json['wateringReminderInterval'])
+          : null,
       fertilizationFrequency:
           json['fertilizationFrequency'] as Map<String, String>?,
       fertilizationReminderInterval:
-          json['fertilizationReminderInterval'] as Map<String, int>?,
+          json['fertilizationReminderInterval'] != null
+              ? Map<String, int>.from(json['fertilizationReminderInterval'])
+              : null,
       lightRequirement: json['lightRequirement'],
       temperatureRange: Map<String, String>.from(json['temperatureRange']),
       soil: json['soil'],

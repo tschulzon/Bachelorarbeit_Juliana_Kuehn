@@ -9,7 +9,7 @@ class UserPlants {
   String? plantImage;
   String? avatarSkin;
   DateTime? dateAdded;
-  List<dynamic>? careHistory;
+  List<CareEntry>? careHistory;
 
   UserPlants({
     this.id,
@@ -49,7 +49,19 @@ class UserPlants {
       dateAdded: json['dateAdded'] != null
           ? DateTime.tryParse(json['dateAdded'])
           : null,
-      careHistory: json['careHistory'] ?? [],
+      careHistory: (json['careHistory'] as List?)
+          ?.map((entry) => CareEntry.fromJson(entry))
+          .toList(),
     );
+  }
+
+  // Help method for getting last care entry for every care type
+  DateTime? getLastCareDate(String careType) {
+    final entriesOfType = careHistory!
+        .where((entry) => entry.type == careType)
+        .toList()
+      ..sort((a, b) => b.date!.compareTo(a.date!)); // Newest Entry first
+
+    return entriesOfType.isNotEmpty ? entriesOfType.first.date : null;
   }
 }

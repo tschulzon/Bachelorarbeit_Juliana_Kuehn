@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/utils/material_symbols.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
@@ -17,6 +18,15 @@ class Startpage extends StatelessWidget {
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
+
+    // For Avatars based on "Mood" or Tasks a Map could be used e.g.
+    // final avatarMap = {
+    //   'happy': 'assets/avatars/happy.png',
+    //   'sad': 'assets/avatars/sad.png',
+    //   'neutral': 'assets/avatars/neutral.png',
+    //   'thirsty': 'assets/avatars/thirsty.png',
+    //   'hungry': 'assets/avatars/hungry.png',
+    // };
 
     print("UserViewModel.user: ${user.username}, Streak: ${user.streak}");
 
@@ -112,16 +122,17 @@ class Startpage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           LinearProgressBar(
-                            maxSteps: 6,
+                            maxSteps: userViewModel.neededXPforLevelUp,
                             progressType: LinearProgressBar.progressTypeLinear,
-                            currentStep: 2,
+                            currentStep: user.xp ?? 0,
                             progressColor: colors.secondary,
                             backgroundColor: colors.secondary.withOpacity(0.3),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           const SizedBox(height: 4),
                           Center(
-                              child: Text('noch 220 XP bis zum nächsten Level!',
+                              child: Text(
+                                  'noch ${userViewModel.restXP} XP bis zum nächsten Level!',
                                   style: fontstyle.bodySmall)),
                         ],
                       ),
