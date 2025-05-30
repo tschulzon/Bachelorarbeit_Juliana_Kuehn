@@ -85,6 +85,10 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Color(0xFFD9C55F),
           ),
+          labelMedium: TextStyle(
+            fontSize: 14,
+            color: Color(0xFFD9C55F),
+          ),
           labelSmall: TextStyle(
             fontSize: 12,
             color: Color(0xFFD9C55F),
@@ -100,6 +104,21 @@ class MyApp extends StatelessWidget {
           ),
           titleLarge: TextStyle(
             fontSize: 16,
+            color: Color(0xFF5A7302),
+          ),
+          displayLarge: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFF5A7302),
+          ),
+          displayMedium: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF5A7302),
+          ),
+          displaySmall: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
             color: Color(0xFF5A7302),
           ),
         ),

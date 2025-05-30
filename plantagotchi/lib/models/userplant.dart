@@ -9,6 +9,7 @@ class UserPlants {
   String? plantImage;
   String? avatarSkin;
   DateTime? dateAdded;
+  String? location;
   List<CareEntry>? careHistory;
 
   UserPlants({
@@ -19,6 +20,7 @@ class UserPlants {
     this.plantImage,
     this.avatarSkin,
     this.dateAdded,
+    this.location,
     this.careHistory,
   });
 
@@ -31,6 +33,7 @@ class UserPlants {
       'plantImage': plantImage,
       'avatarSkin': avatarSkin,
       'dateAdded': dateAdded?.toIso8601String(),
+      'location': location,
       'careHistory': careHistory ?? [],
     };
   }
@@ -49,6 +52,7 @@ class UserPlants {
       dateAdded: json['dateAdded'] != null
           ? DateTime.tryParse(json['dateAdded'])
           : null,
+      location: json['location'],
       careHistory: (json['careHistory'] as List?)
           ?.map((entry) => CareEntry.fromJson(entry))
           .toList(),

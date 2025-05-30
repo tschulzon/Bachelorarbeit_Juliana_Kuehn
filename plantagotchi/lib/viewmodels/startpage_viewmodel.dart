@@ -5,8 +5,22 @@ import 'package:plantagotchi/models/userplant.dart';
 class StartpageViewModel extends ChangeNotifier {
   List<UserPlants> userPlants = [];
   final Map<String, List<Map<String, dynamic>>> _plantTasks = {};
+  bool _showXpAnimation = false;
+  bool get showXpAnimation => _showXpAnimation;
 
   StartpageViewModel({required this.userPlants});
+
+  void triggerXPAnimation() {
+    // This method can be used to trigger the XP animation
+    // For example, when a task is completed or a care entry is added
+    _showXpAnimation = true;
+    notifyListeners();
+
+    Future.delayed(const Duration(seconds: 2), () {
+      _showXpAnimation = false; // Reset after animation duration
+      notifyListeners();
+    });
+  }
 
   //*** Show needed Tasks based on last care entrys ***/
 

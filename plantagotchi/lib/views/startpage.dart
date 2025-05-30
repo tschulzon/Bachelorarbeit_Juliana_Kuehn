@@ -99,7 +99,7 @@ class Startpage extends StatelessWidget {
                     style: fontstyle.titleMedium,
                   ),
                 ),
-                // const SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
@@ -121,6 +121,35 @@ class Startpage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 60),
+                            child: AnimatedSlide(
+                              duration: const Duration(milliseconds: 700),
+                              offset: viewModel.showXpAnimation
+                                  ? const Offset(0, 0)
+                                  : const Offset(0, -1),
+                              curve: Curves.easeOut,
+                              child: AnimatedOpacity(
+                                duration: const Duration(milliseconds: 700),
+                                opacity: viewModel.showXpAnimation ? 1.0 : 0.0,
+                                curve: Curves.easeInOut,
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 12, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    color: colors.primary,
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Text(
+                                    '+${userViewModel.addedXP} XP',
+                                    style: fontstyle.labelMedium!
+                                        .copyWith(color: colors.onPrimary),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 5),
                           LinearProgressBar(
                             maxSteps: userViewModel.neededXPforLevelUp,
                             progressType: LinearProgressBar.progressTypeLinear,
@@ -139,7 +168,7 @@ class Startpage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 PreferredSize(
                   preferredSize: const Size.fromHeight(1.0),
                   child: Center(

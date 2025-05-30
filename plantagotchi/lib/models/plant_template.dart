@@ -25,6 +25,8 @@ class PlantTemplate {
   bool petFriendly;
   String? imageUrl;
   String? avatarUrl;
+  String? avatarUrlThirsty;
+  String? avatarUrlHungry;
   List<String> avatarSkins;
 
   PlantTemplate({
@@ -52,6 +54,8 @@ class PlantTemplate {
     required this.petFriendly,
     required this.imageUrl,
     required this.avatarUrl,
+    required this.avatarUrlThirsty,
+    required this.avatarUrlHungry,
     required this.avatarSkins,
   });
 
@@ -83,6 +87,8 @@ class PlantTemplate {
       'petFriendly': petFriendly,
       'imageUrl': imageUrl,
       'avatarUrl': avatarUrl,
+      'avatarUrlThirsty': avatarUrlThirsty,
+      'avatarUrlHungry': avatarUrlHungry,
       'avatarSkins': avatarSkins,
     };
   }
@@ -120,6 +126,8 @@ class PlantTemplate {
       petFriendly: json['petFriendly'],
       imageUrl: json['imageUrl'] ?? "-",
       avatarUrl: json['avatarUrl'] ?? "-",
+      avatarUrlThirsty: json['avatarUrlThirsty'] ?? "-",
+      avatarUrlHungry: json['avatarUrlHungry'] ?? "-",
       avatarSkins: List<String>.from(json['avatarSkins']),
     );
   }

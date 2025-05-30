@@ -26,12 +26,12 @@ class ActionButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: backgroundColor,
         foregroundColor: textColor,
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+        padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 0),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24.0),
+          borderRadius: BorderRadius.circular(20.0),
         ),
       ),
-      child: Text(label, style: TextStyle(fontSize: 16.0, color: textColor)),
+      child: Text(label, style: TextStyle(fontSize: 12.0, color: textColor)),
     );
   }
 }
