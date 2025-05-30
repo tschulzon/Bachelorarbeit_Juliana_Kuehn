@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
     print('JSON USER: ${jsonEncode(initialUser?.toJson())}'); // Debugging line
 
     return MaterialApp(
-      title: 'MVMM Beispiel',
+      title: 'Plantagotchi',
       theme: ThemeData(
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
@@ -72,7 +72,7 @@ class MyApp extends StatelessWidget {
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w400,
             color: Color(0xFFD9C55F),
           ),
           bodyMedium: TextStyle(
@@ -106,13 +106,19 @@ class MyApp extends StatelessWidget {
             fontSize: 16,
             color: Color(0xFF5A7302),
           ),
+          titleSmall: TextStyle(
+            fontSize: 14,
+            fontStyle: FontStyle.italic,
+            fontWeight: FontWeight.w300,
+            color: Color(0xFF5A7302),
+          ),
           displayLarge: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
             color: Color(0xFF5A7302),
           ),
           displayMedium: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: FontWeight.w600,
             color: Color(0xFF5A7302),
           ),

@@ -32,6 +32,22 @@
                                         "date": "2025-05-08T10:00:00.000Z",
                                         "notes": "Added some fertilizer to Spike's soil to help him grow.",
                                         "photo": null
+                                },
+                                {
+                                        "id": "care-3",
+                                        "userPlantId": "plant-1",
+                                        "type": "note",
+                                        "date": "2025-05-28T10:00:00.000Z",
+                                        "notes": "Spike has grown a lot since I got him! He's thriving in the kitchen.",
+                                        "photo": null
+                                },
+                                {
+                                        "id": "care-4",
+                                        "userPlantId": "plant-1",
+                                        "type": "photo",
+                                        "date": "2025-06-01T10:00:00.000Z",
+                                        "notes": "Gave Spike a little trim to keep him healthy and looking good.",
+                                        "photo": "assets/images/plants/kaktus-real.png"
                                 }
                         ],
                         "plantTemplate": {

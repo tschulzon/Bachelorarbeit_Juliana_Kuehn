@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:panara_dialogs/panara_dialogs.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
 import 'package:plantagotchi/widgets/custom_dialog.dart';
