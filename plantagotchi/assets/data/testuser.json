@@ -12,7 +12,7 @@
                         "id": "plant-1",
                         "userId": "1",
                         "nickname": "Spike",
-                        "plantImage": "assets/images/plants/kaktus-real.png",
+                        "plantImage": "assets/images/plants/Kaktus-real.jpg",
                         "avatarSkin": "assets/images/avatars/plant-transp.gif",
                         "dateAdded": "2025-05-08T10:00:00.000Z",
                         "location": "Küche",
@@ -47,7 +47,7 @@
                                         "type": "photo",
                                         "date": "2025-06-01T10:00:00.000Z",
                                         "notes": "Gave Spike a little trim to keep him healthy and looking good.",
-                                        "photo": "assets/images/plants/kaktus-real.png"
+                                        "photo": "assets/images/plants/Kaktus-real.jpg"
                                 }
                         ],
                         "plantTemplate": {
@@ -88,13 +88,13 @@
                                 "location": "Innenräume mit direktem Sonnenlicht",
                                 "isToxic": false,
                                 "petFriendly": false,
-                                "image": "assets/images/plants/kaktus-real.png",
+                                "image": "assets/images/plants/Kaktus-real.jpg",
                                 "avatarUrl": "assets/images/avatars/Kaktus-default.png",
                                 "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
                                 "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
                                 "avatarSkins": [
-                                "assets/images/plants/kaktus-real.png",
-                                "assets/images/plants/kaktus-real.png"
+                                "assets/images/plants/Kaktus-real.jpg",
+                                "assets/images/plants/Kaktus-real.jpg"
                                 ]
                         }
                 },
@@ -102,7 +102,7 @@
                         "id": "plant-2",
                         "userId": "1",
                         "nickname": "Monstiii",
-                        "plantImage": "assets/images/plants/kaktus-real.png",
+                        "plantImage": "assets/images/plants/Kaktus-real.jpg",
                         "avatarSkin": "assets/images/avatars/monstera-white-removebg-preview.png",
                         "dateAdded": "2025-05-24T10:00:00.000Z",
                         "location": "Wohnzimmer",
@@ -163,13 +163,13 @@
                                 "location": "Innenräume mit direktem Sonnenlicht",
                                 "isToxic": false,
                                 "petFriendly": false,
-                                "image": "assets/images/plants/kaktus-real.png",
+                                "image": "assets/images/plants/Kaktus-real.jpg",
                                 "avatarUrl": "assets/images/avatars/Monstera-default.png",
                                 "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
                                 "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
                                 "avatarSkins": [
-                                "assets/images/plants/kaktus-real.png",
-                                "assets/images/plants/kaktus-real.png"
+                                "assets/images/plants/Kaktus-real.jpg",
+                                "assets/images/plants/Kaktus-real.jpg"
                                 ]
                         }
                 }
