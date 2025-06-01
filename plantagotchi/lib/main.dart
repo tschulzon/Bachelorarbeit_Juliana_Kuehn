@@ -2,29 +2,30 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
 import 'package:plantagotchi/viewmodels/navigation_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
-import 'package:plantagotchi/views/startpage.dart';
 import 'package:plantagotchi/widgets/app_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('de_DE', null);
 
   final storage = StorageService();
   User? user = await storage.loadUser();
 
-  debugPrint("Loaded User: ${user?.username}"); // Debugging line
+  // debugPrint("Loaded User: ${user?.username}"); // Debugging line
 
   if (user == null) {
     debugPrint("No user found in storage, loading from JSON file...");
     String jsonString = await rootBundle
         .loadString('assets/data/testuser.json'); // Load JSON from assets
 
-    debugPrint("JSON String: $jsonString"); // Debugging line
+    // debugPrint("JSON String: $jsonString"); // Debugging line
 
     user = User.fromJson(jsonDecode(jsonString)); // Decode JSON to User object
     await storage.saveUser(user);
@@ -50,8 +51,8 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print('Initial User: ${initialUser?.username}'); // Debugging line
-    print('JSON USER: ${jsonEncode(initialUser?.toJson())}'); // Debugging line
+    // print('Initial User: ${initialUser?.username}'); // Debugging line
+    // print('JSON USER: ${jsonEncode(initialUser?.toJson())}'); // Debugging line
 
     return MaterialApp(
       title: 'Plantagotchi',
