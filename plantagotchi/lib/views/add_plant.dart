@@ -16,6 +16,7 @@ class AddPlant extends StatefulWidget {
 
 class _AddPlantState extends State<AddPlant> {
   final SearchController _controller = SearchController();
+  String _searchQuery = "";
 
   @override
   void initState() {
@@ -96,6 +97,10 @@ class _AddPlantState extends State<AddPlant> {
                         (states) => fontstyle.labelSmall!
                             .copyWith(color: colors.primary),
                       ),
+                      textStyle: WidgetStateTextStyle.resolveWith(
+                        (states) => fontstyle.labelSmall!
+                            .copyWith(color: colors.primary),
+                      ),
                       controller: _controller,
                       constraints: const BoxConstraints(
                         minHeight: 40,
@@ -104,11 +109,10 @@ class _AddPlantState extends State<AddPlant> {
                       padding: const WidgetStatePropertyAll<EdgeInsets>(
                         EdgeInsets.symmetric(horizontal: 16.0),
                       ),
-                      onTap: () {
-                        _controller.openView();
-                      },
-                      onChanged: (_) {
-                        _controller.openView();
+                      onChanged: (value) {
+                        setState(() {
+                          _searchQuery = value;
+                        });
                       },
                       leading: Icon(Icons.search, color: colors.primary),
                     ),
@@ -130,9 +134,16 @@ class _AddPlantState extends State<AddPlant> {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
-            Text("Beliebte Pflanzen",
-                style: fontstyle.labelMedium, textAlign: TextAlign.left),
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Text(
+                  _searchQuery.isEmpty
+                      ? "Beliebte Pflanzen"
+                      : "Ergebnisse für '$_searchQuery' ",
+                  style: fontstyle.labelMedium,
+                  textAlign: TextAlign.left),
+            ),
             Expanded(
               child: FutureBuilder<List<dynamic>>(
                   future: loadPlantData(),
@@ -141,10 +152,26 @@ class _AddPlantState extends State<AddPlant> {
                       return const CircularProgressIndicator();
                     }
                     final plants = snapshot.data!;
+                    final filteredPlants = _searchQuery.isEmpty
+                        ? plants
+                        : plants.where((plant) {
+                            final commonName = (plant['commonName'] ?? '')
+                                .toString()
+                                .toLowerCase();
+                            final scientificName =
+                                (plant['scientificName'] ?? '')
+                                    .toString()
+                                    .toLowerCase();
+                            return commonName
+                                    .contains(_searchQuery.toLowerCase()) ||
+                                scientificName
+                                    .contains(_searchQuery.toLowerCase());
+                          }).toList();
+
                     return ListView.builder(
-                        itemCount: plants.length,
+                        itemCount: filteredPlants.length,
                         itemBuilder: (context, index) {
-                          final plant = plants[index];
+                          final plant = filteredPlants[index];
                           return Card(
                             elevation: 4.0,
                             color: colors.primary,
