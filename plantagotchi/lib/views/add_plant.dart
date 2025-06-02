@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
+import 'package:plantagotchi/views/plant_detail_page.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:provider/provider.dart';
 
@@ -180,45 +181,58 @@ class _AddPlantState extends State<AddPlant> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Image.asset(
-                                  plant['imageUrl'] ??
-                                      'assets/images/avatars/plant-transp.gif',
-                                  width: 75,
-                                  height: 100,
-                                  fit: BoxFit.cover,
-                                ),
-                                const SizedBox(width: 16.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const SizedBox(height: 10),
-                                    Text(
-                                      plant['commonName'] ?? 'Unbekannt',
-                                      style: fontstyle.displayMedium,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PlantDetailPage(
+                                      plant: plant,
                                     ),
-                                    const SizedBox(height: 2.0),
-                                    Text(
-                                      plant['scientificName'] ?? 'Unbekannt',
-                                      style: fontstyle.titleSmall,
-                                    ),
-                                    const SizedBox(height: 10.0),
-                                  ],
-                                ),
-                                const SizedBox(width: 16.0),
-                                const Spacer(),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 16.0),
-                                  child: CircleAvatar(
-                                    radius: 14,
-                                    backgroundColor: colors.onPrimary,
-                                    child: Icon(Icons.add,
-                                        color: colors.primary, size: 24),
                                   ),
-                                ),
-                              ],
+                                );
+                              },
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    plant['imageUrl'] ??
+                                        'assets/images/avatars/plant-transp.gif',
+                                    width: 75,
+                                    height: 100,
+                                    fit: BoxFit.cover,
+                                  ),
+                                  const SizedBox(width: 16.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      const SizedBox(height: 10),
+                                      Text(
+                                        plant['commonName'] ?? 'Unbekannt',
+                                        style: fontstyle.displayMedium,
+                                      ),
+                                      const SizedBox(height: 2.0),
+                                      Text(
+                                        plant['scientificName'] ?? 'Unbekannt',
+                                        style: fontstyle.titleSmall,
+                                      ),
+                                      const SizedBox(height: 10.0),
+                                    ],
+                                  ),
+                                  const SizedBox(width: 16.0),
+                                  const Spacer(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 16.0),
+                                    child: CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: colors.onPrimary,
+                                      child: Icon(Icons.add,
+                                          color: colors.primary, size: 24),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                         });
