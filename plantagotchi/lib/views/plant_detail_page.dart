@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/models/plant_template.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/horizontal_button_row.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
 class PlantDetailPage extends StatelessWidget {
   final Map<String, dynamic> plant;
@@ -19,7 +17,6 @@ class PlantDetailPage extends StatelessWidget {
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
-    final scrollController = ScrollController();
 
     final ItemScrollController itemScrollController = ItemScrollController();
 
@@ -672,20 +669,6 @@ class PlantDetailPage extends StatelessWidget {
       ),
     ];
 
-    void scrollToSection(GlobalKey key) {
-      final context = key.currentContext;
-      if (context != null) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          Scrollable.ensureVisible(
-            context,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInOut,
-            alignment: 0.1,
-          );
-        });
-      }
-    }
-
     final labels = [
       "Beschreibung",
       "Pflege",
@@ -699,18 +682,6 @@ class PlantDetailPage extends StatelessWidget {
       "Standort",
       "Giftig",
     ];
-
-    final descriptionKey = GlobalKey();
-    final careplanKey = GlobalKey();
-    final waterKey = GlobalKey();
-    final lightKey = GlobalKey();
-    final temperatureKey = GlobalKey();
-    final fertilizerKey = GlobalKey();
-    final pruningKey = GlobalKey();
-    final repottingKey = GlobalKey();
-    final blossomKey = GlobalKey();
-    final locationKey = GlobalKey();
-    final toxicKey = GlobalKey();
 
     print("CURRENT PLANT: ${plant}");
 
