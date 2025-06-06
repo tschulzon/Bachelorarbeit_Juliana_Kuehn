@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/models/userplant.dart';
-import 'package:plantagotchi/utils/material_symbols.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
-import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/plant_swipe.dart';
 import 'package:provider/provider.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';

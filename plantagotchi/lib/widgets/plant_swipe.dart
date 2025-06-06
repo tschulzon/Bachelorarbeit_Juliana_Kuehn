@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/models/plant_template.dart';
 import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
-import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/bottom_modal.dart';
 import 'package:plantagotchi/widgets/caretask_checkbox.dart';

@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/plant_detail_page.dart';
-import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:provider/provider.dart';
 
 class AddPlant extends StatefulWidget {

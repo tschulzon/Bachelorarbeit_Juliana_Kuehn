@@ -10,6 +10,7 @@ import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/app_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -130,6 +131,16 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
+      // For having a Datepicker in German
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('de', 'DE'),
+        Locale('en', 'US'),
+      ],
       home: AppLayout(),
     );
   }

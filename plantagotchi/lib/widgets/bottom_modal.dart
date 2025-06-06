@@ -43,7 +43,7 @@ class BottomModal extends StatelessWidget {
                   onTap: () => debugPrint('Notiz erfassen tapped'),
                   splashColor:
                       Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
-                  child: Container(
+                  child: SizedBox(
                     height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +68,7 @@ class BottomModal extends StatelessWidget {
                   onTap: () => debugPrint('Foto erfassen tapped'),
                   splashColor:
                       Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
-                  child: Container(
+                  child: SizedBox(
                     height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -93,7 +93,7 @@ class BottomModal extends StatelessWidget {
                   onTap: () => debugPrint('Zugeschnitten tapped'),
                   splashColor:
                       Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
-                  child: Container(
+                  child: SizedBox(
                     height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -118,7 +118,7 @@ class BottomModal extends StatelessWidget {
                   onTap: () => debugPrint('Umgetopft tapped'),
                   splashColor:
                       Theme.of(context).colorScheme.onPrimary.withOpacity(0.2),
-                  child: Container(
+                  child: SizedBox(
                     height: 50,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,

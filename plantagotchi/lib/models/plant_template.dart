@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class PlantTemplate {
   String id;
   String commonName;
