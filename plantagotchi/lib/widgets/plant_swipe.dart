@@ -96,9 +96,9 @@ class _PlantSwipeState extends State<PlantSwipe> {
                   Center(
                     child: Image.asset(
                       avatarPath!,
-                      height: 150,
-                      width: 150,
-                      fit: BoxFit.contain,
+                      height: 180,
+                      width: 180,
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ],

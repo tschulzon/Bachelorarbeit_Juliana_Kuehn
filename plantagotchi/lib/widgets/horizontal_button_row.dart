@@ -27,7 +27,6 @@ class _HorizontalButtonRowState extends State<HorizontalButtonRow> {
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
-    final fontstyle = Theme.of(context).textTheme;
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,

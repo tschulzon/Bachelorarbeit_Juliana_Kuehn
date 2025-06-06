@@ -15,7 +15,7 @@
     },
     "fertilizingFrequency": {
         "summer": "Alle 14 Tage",
-        "winter": "Keine Düngung erforderlich"
+        "winter": "Keine Düngung"
     },
     "fertilizationReminderInterval": {
         "summer": 14,
@@ -42,8 +42,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/kaktus-white-removebg-preview.png",
-      "assets/images/avatars/kaktus-white-removebg-preview.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   },
   {
@@ -89,8 +89,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Monstera-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Monstera-hungry.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   },
   {
@@ -109,7 +109,7 @@
     },
     "fertilizingFrequency": {
         "summer": "alle 14 Tage",
-        "winter": "Keine Düngung erforderlich"
+        "winter": "Keine Düngung"
     },
     "fertilizationReminderInterval": {
         "summer": 14,
@@ -136,8 +136,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Chrysanthemen-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Chrysanthemen-hungry.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   },
   {
@@ -183,8 +183,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Orchidee-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Orchidee-hungry.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   },
   {
@@ -203,7 +203,7 @@
     },
     "fertilizingFrequency": {
         "summer": "Monatlich",
-        "winter": "Keine Düngung erforderlich"
+        "winter": "Keine Düngung"
     },
     "fertilizationReminderInterval": {
         "summer": 60,
@@ -230,8 +230,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Bogenhanf-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Bogenhanf-hungry.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   },
   {
@@ -250,7 +250,7 @@
     },
     "fertilizingFrequency": {
         "summer": "Alle 4 Wochen",
-        "winter": "Keine Düngung erforderlich"
+        "winter": "Keine Düngung"
     },
     "fertilizationReminderInterval": {
         "summer": 28,
@@ -277,8 +277,8 @@
     "avatarUrlThirsty": "assets/images/avatars/Elefantenfuss-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Elefantenfuss-hungry.png",
     "avatarSkins": [
-      "assets/avatars/kaktus/skin1.png",
-      "assets/avatars/kaktus/skin2.png"
+      "assets/images/avatars/Kaktus-Skin-1.png",
+      "assets/images/avatars/Kaktus-Skin-2.png"
     ]
   }
 ]
