@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
+import 'package:plantagotchi/views/add_plant_dialog.dart';
 import 'package:plantagotchi/views/plant_detail_page.dart';
 import 'package:provider/provider.dart';
 
@@ -223,11 +224,24 @@ class _AddPlantState extends State<AddPlant> {
                                   const Spacer(),
                                   Padding(
                                     padding: const EdgeInsets.only(right: 16.0),
-                                    child: CircleAvatar(
-                                      radius: 14,
-                                      backgroundColor: colors.onPrimary,
-                                      child: Icon(Icons.add,
-                                          color: colors.primary, size: 24),
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(14),
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                AddPlantDialog(
+                                              plant: plant,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                      child: CircleAvatar(
+                                        radius: 14,
+                                        backgroundColor: colors.onPrimary,
+                                        child: Icon(Icons.add,
+                                            color: colors.primary, size: 24),
+                                      ),
                                     ),
                                   ),
                                 ],

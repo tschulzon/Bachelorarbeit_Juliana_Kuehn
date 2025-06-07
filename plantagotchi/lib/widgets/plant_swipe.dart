@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
+import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/bottom_modal.dart';
 import 'package:plantagotchi/widgets/caretask_checkbox.dart';
@@ -49,6 +50,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
   @override
   Widget build(BuildContext context) {
     final startPageViewModel = Provider.of<StartpageViewModel>(context);
+    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     final fontstyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
 
@@ -167,11 +169,6 @@ class _PlantSwipeState extends State<PlantSwipe> {
                           child: Text('Pflegeaufgaben für ${plant.nickname}',
                               style: fontstyle.bodyMedium),
                         ),
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.edit_square),
-                        color: colors.primary,
-                        onPressed: () => debugPrint('Edit button pressed'),
                       ),
                     ],
                   ),

@@ -124,7 +124,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
             ),
           );
         }),
-        // Frage stellen, falls noch Fragen übrig sind
+        // Show Question and input field
         if (currentQuestion < questions.length)
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,

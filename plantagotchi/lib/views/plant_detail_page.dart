@@ -1,24 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/add_plant_dialog.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/horizontal_button_row.dart';
 import 'package:plantagotchi/widgets/list_info_cards.dart';
+import 'package:plantagotchi/widgets/userplant_history.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class PlantDetailPage extends StatelessWidget {
-  final Map<String, dynamic> plant;
+  Map<String, dynamic> plant;
+  UserPlants? userPlant;
 
-  const PlantDetailPage({super.key, required this.plant});
+  // Only one of 'plant' or 'userPlant' should be required at a time.
+  // Use an assert to ensure at least one is provided.
+  // Also, make both fields final for immutability.
+  PlantDetailPage({
+    super.key,
+    this.plant = const {},
+    this.userPlant,
+  }) : assert(plant.isNotEmpty || userPlant != null,
+            'Either plant or userPlant must be provided.');
 
   @override
   Widget build(BuildContext context) {
     final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
-    final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
 
     final ItemScrollController itemScrollController = ItemScrollController();
@@ -38,7 +48,9 @@ class PlantDetailPage extends StatelessWidget {
     ];
 
     final sections = buildInfoCards(
-        plant: plant,
+        plant: plant.isNotEmpty
+            ? plant
+            : (userPlant?.plantTemplate?.toJson() ?? {}),
         fontstyle: fontstyle,
         colors: colors,
         viewModel: viewModel);
@@ -46,6 +58,7 @@ class PlantDetailPage extends StatelessWidget {
     print("CURRENT PLANT: $plant");
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: Column(
           children: [
@@ -55,8 +68,9 @@ class PlantDetailPage extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.30,
                   width: double.infinity,
                   child: Image.asset(
-                    plant['imageUrl'] ??
-                        'assets/images/avatars/plant-transp.gif',
+                    plant.isNotEmpty
+                        ? (plant['imageUrl'] ?? '')
+                        : (userPlant?.plantTemplate!.imageUrl ?? ''),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -81,13 +95,111 @@ class PlantDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: Text(
-                          plant['commonName'] ?? '',
-                          style: fontstyle.headlineLarge,
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Text(
+                                plant.isNotEmpty
+                                    ? (plant['commonName'] ?? '')
+                                    : (userPlant?.nickname ?? ''),
+                                style: fontstyle.headlineLarge,
+                                softWrap: true,
+                                maxLines: 2, // oder mehr, je nach Bedarf
+                              ),
+                            ),
+                            if (userPlant != null)
+                              IconButton(
+                                icon: const Icon(Icons.edit_square),
+                                color: colors.primary,
+                                onPressed: () async {
+                                  final newName = await showDialog<String>(
+                                    context: context,
+                                    builder: (context) {
+                                      final controller = TextEditingController(
+                                          text: userPlant?.nickname ?? '');
+                                      return AlertDialog(
+                                        title: Text(
+                                          'Spitzname ändern',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              color: colors.primary,
+                                              fontWeight: FontWeight.w500),
+                                        ),
+                                        content: TextField(
+                                          controller: controller,
+                                          maxLength: 15,
+                                          style: TextStyle(
+                                            color: colors.primary,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w400,
+                                          ),
+                                        ),
+                                        actions: [
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ActionButton(
+                                                  label: "Abbrechen",
+                                                  onPressed: () =>
+                                                      Navigator.of(context)
+                                                          .pop(),
+                                                  greenToYellow: false),
+                                              const SizedBox(width: 10),
+                                              ActionButton(
+                                                onPressed: () =>
+                                                    Navigator.of(context)
+                                                        .pop(controller.text),
+                                                label: "Speichern",
+                                                greenToYellow: false,
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+
+                                  if (newName != null &&
+                                      newName.isNotEmpty &&
+                                      userPlant != null) {
+                                    userViewModel.updateUserPlantNickname(
+                                        userPlant!.id!, newName);
+                                  }
+                                },
+                              ),
+                          ],
                         ),
                       ),
+                      if (userPlant != null) ...[
+                        const SizedBox(width: 15),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: colors.primary,
+                            shape: BoxShape.rectangle,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.auto_stories),
+                            color: colors.onPrimary,
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                  builder: (context) => UserplantHistory(
+                                    userplant: userPlant,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                      const SizedBox(width: 15),
                       Container(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 10, vertical: 4),
@@ -96,7 +208,9 @@ class PlantDetailPage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
-                          plant['careLevel'],
+                          plant.isNotEmpty
+                              ? (plant['careLevel'] ?? '')
+                              : (userPlant?.plantTemplate!.careLevel ?? ''),
                           style: fontstyle.labelSmall?.copyWith(
                             color: colors.onPrimary,
                             fontWeight: FontWeight.bold,
@@ -111,7 +225,9 @@ class PlantDetailPage extends StatelessWidget {
                     height: 24,
                   ),
                   Text(
-                    plant['scientificName'] ?? '',
+                    plant.isNotEmpty
+                        ? (plant['scientificName'] ?? '')
+                        : (userPlant?.plantTemplate!.scientificName ?? ''),
                     style: TextStyle(
                       fontSize: 16,
                       color: colors.primary,
@@ -145,37 +261,40 @@ class PlantDetailPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: colors.primary, width: 1),
-          ),
-        ),
-        child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 50.0, vertical: 5.0),
-            child: ElevatedButton.icon(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: colors.primary,
-                foregroundColor: colors.onPrimary,
-                minimumSize:
-                    const Size(double.infinity, 40), // volle Breite, optional
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24)),
+      bottomNavigationBar: plant.isNotEmpty
+          ? Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  top: BorderSide(color: colors.primary, width: 1),
+                ),
               ),
-              icon: const Icon(Icons.add_circle),
-              label: const Text('Hinzufügen', style: TextStyle(fontSize: 14)),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => AddPlantDialog(
-                      plant: plant,
+              child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 50.0, vertical: 5.0),
+                  child: ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: colors.primary,
+                      foregroundColor: colors.onPrimary,
+                      minimumSize: const Size(
+                          double.infinity, 40), // volle Breite, optional
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(24)),
                     ),
-                  ),
-                );
-              },
-            )),
-      ),
+                    icon: const Icon(Icons.add_circle),
+                    label: const Text('Hinzufügen',
+                        style: TextStyle(fontSize: 14)),
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => AddPlantDialog(
+                            plant: plant,
+                          ),
+                        ),
+                      );
+                    },
+                  )),
+            )
+          : null,
     );
   }
 }

@@ -70,37 +70,39 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
         ),
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            Center(
-              child: Image.asset(
-                widget.plant['avatarUrl'] ??
-                    'assets/images/avatars/plant-transp.gif',
-                width: 270,
-                height: 270,
-                fit: BoxFit.cover,
-              ),
-            ),
-            Expanded(
-                child: SingleChildScrollView(
-                    child: Column(
-              children: [
-                PlantChatDialog(
-                  onFinished: (answers) {
-                    setState(() {
-                      _plantChatAnswers = answers;
-                    });
-                    print("ANTWORTEN: $answers");
-                  },
-                  onLastQuestionShown: () {
-                    setState(() {
-                      _showConfirmButton = true;
-                    });
-                  },
+        child: SingleChildScrollView(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: Column(
+            children: [
+              Center(
+                child: Image.asset(
+                  widget.plant['avatarUrl'] ??
+                      'assets/images/avatars/plant-transp.gif',
+                  width: 270,
+                  height: 270,
+                  fit: BoxFit.cover,
                 ),
-              ],
-            )))
-          ],
+              ),
+              Column(
+                children: [
+                  PlantChatDialog(
+                    onFinished: (answers) {
+                      setState(() {
+                        _plantChatAnswers = answers;
+                      });
+                      print("ANTWORTEN: $answers");
+                    },
+                    onLastQuestionShown: () {
+                      setState(() {
+                        _showConfirmButton = true;
+                      });
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: _plantChatAnswers != null

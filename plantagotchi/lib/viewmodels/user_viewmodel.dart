@@ -108,4 +108,15 @@ class UserViewModel extends ChangeNotifier {
     final storage = StorageService();
     await storage.saveUser(user);
   }
+
+  void updateUserPlantNickname(String plantId, String newNickname) {
+    final plant = user.plants?.firstWhere(
+      (plant) => plant.id == plantId,
+      orElse: () => null as dynamic, // workaround for null safety
+    );
+    if (plant != null) {
+      plant.nickname = newNickname;
+      notifyListeners();
+    }
+  }
 }

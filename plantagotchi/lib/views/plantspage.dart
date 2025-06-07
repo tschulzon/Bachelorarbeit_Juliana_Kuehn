@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/locationplants_page.dart';
+import 'package:plantagotchi/views/plant_detail_page.dart';
 import 'package:plantagotchi/widgets/toggle_switch.dart';
 import 'package:provider/provider.dart';
 import 'package:timelines_plus/timelines_plus.dart';
@@ -285,85 +286,97 @@ class _PlantspageState extends State<Plantspage> {
                             surfaceTintColor: colors.onPrimary,
                             margin: const EdgeInsets.symmetric(
                                 horizontal: 18.0, vertical: 8.0),
-                            child: Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Row(
-                                children: [
-                                  Image.asset(
-                                    plant.plantTemplate?.avatarUrl! ??
-                                        'assets/images/avatars/plant-transp.gif',
-                                    width: 100,
-                                    height: 100,
-                                    fit: BoxFit.fitHeight,
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => PlantDetailPage(
+                                      userPlant: plant,
+                                    ),
                                   ),
-                                  const SizedBox(width: 16.0),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        plant.nickname ??
-                                            plant.plantTemplate?.commonName ??
-                                            'Unbekannt',
-                                        style: fontstyle.displayMedium,
-                                      ),
-                                      const SizedBox(height: 4.0),
-                                      Text(
-                                        plant.plantTemplate?.commonName ??
-                                            'Unbekannt',
-                                        style: fontstyle.titleSmall,
-                                      ),
-                                      const SizedBox(height: 10.0),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.location_on,
-                                            color: colors.onPrimary,
-                                            size: 18,
-                                          ),
-                                          const SizedBox(width: 4.0),
-                                          Text(
-                                            '${plant.location}',
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.w500,
-                                              color: Color(0xFF5A7302),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  children: [
+                                    Image.asset(
+                                      plant.plantTemplate?.avatarUrl! ??
+                                          'assets/images/avatars/plant-transp.gif',
+                                      width: 130,
+                                      height: 130,
+                                      fit: BoxFit.cover,
+                                    ),
+                                    const SizedBox(width: 16.0),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          plant.nickname ??
+                                              plant.plantTemplate?.commonName ??
+                                              'Unbekannt',
+                                          style: fontstyle.displayMedium,
+                                        ),
+                                        const SizedBox(height: 4.0),
+                                        Text(
+                                          plant.plantTemplate?.commonName ??
+                                              'Unbekannt',
+                                          style: fontstyle.titleSmall,
+                                        ),
+                                        const SizedBox(height: 10.0),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.location_on,
+                                              color: colors.onPrimary,
+                                              size: 18,
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                      const SizedBox(height: 5.0),
-                                      Row(
-                                        children: [
-                                          Icon(
-                                            Icons.water_drop,
-                                            color: colors.onPrimary,
-                                            size: 18,
-                                          ),
-                                          const SizedBox(width: 4.0),
-                                          if (viewModel.isSummer())
+                                            const SizedBox(width: 4.0),
                                             Text(
-                                              '${plant.plantTemplate?.wateringFrequency['summer']}',
-                                              style: const TextStyle(
-                                                fontSize: 12,
-                                                fontWeight: FontWeight.w500,
-                                                color: Color(0xFF5A7302),
-                                              ),
-                                            )
-                                          else
-                                            Text(
-                                              '${plant.plantTemplate?.wateringFrequency['winter']}',
+                                              '${plant.location}',
                                               style: const TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
                                                 color: Color(0xFF5A7302),
                                               ),
                                             ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                          ],
+                                        ),
+                                        const SizedBox(height: 5.0),
+                                        Row(
+                                          children: [
+                                            Icon(
+                                              Icons.water_drop,
+                                              color: colors.onPrimary,
+                                              size: 18,
+                                            ),
+                                            const SizedBox(width: 4.0),
+                                            if (viewModel.isSummer())
+                                              Text(
+                                                '${plant.plantTemplate?.wateringFrequency['summer']}',
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xFF5A7302),
+                                                ),
+                                              )
+                                            else
+                                              Text(
+                                                '${plant.plantTemplate?.wateringFrequency['winter']}',
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Color(0xFF5A7302),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           );
@@ -434,9 +447,9 @@ class _PlantspageState extends State<Plantspage> {
                                                 .plantTemplate
                                                 ?.avatarUrl ??
                                             'assets/images/avatars/plant-transp.gif',
-                                        width: 70,
-                                        height: 70,
-                                        fit: BoxFit.fitHeight,
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   ),
@@ -533,9 +546,13 @@ class _PlantspageState extends State<Plantspage> {
                         ),
                         child: filteredDates.isEmpty
                             ? Center(
-                                child: Text(
-                                  'Keine Pflegeeinträge für diesen Tag',
-                                  style: fontstyle.bodyMedium,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    'Keine Pflegeeinträge in diesem Monat.',
+                                    style: fontstyle.displayMedium,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               )
                             : Timeline.tileBuilder(
@@ -585,9 +602,9 @@ class _PlantspageState extends State<Plantspage> {
                                                     plant.plantTemplate
                                                             ?.avatarUrl ??
                                                         'assets/images/avatars/plant-transp.gif',
-                                                    width: 40,
-                                                    height: 40,
-                                                    fit: BoxFit.fitHeight,
+                                                    width: 80,
+                                                    height: 80,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                   const SizedBox(width: 12),
                                                   Expanded(
