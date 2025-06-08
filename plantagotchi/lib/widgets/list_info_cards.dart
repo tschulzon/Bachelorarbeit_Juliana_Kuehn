@@ -25,7 +25,7 @@ List<Widget> buildInfoCards({
           surfaceTintColor: colors.onPrimary,
           margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
           child: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
                 // const SizedBox(width: 16.0),
@@ -34,7 +34,7 @@ List<Widget> buildInfoCards({
                 //   color: colors.onPrimary,
                 //   size: 30,
                 // ),
-                const SizedBox(width: 20),
+                // const SizedBox(width: 20),
                 Expanded(
                   child: Text(
                     '${plant['description'] ?? "Keine Beschreibung vorhanden"}',
@@ -50,7 +50,7 @@ List<Widget> buildInfoCards({
                         'assets/images/avatars/plant-transp.gif',
                     width: 100,
                     height: 100,
-                    fit: BoxFit.cover),
+                    fit: BoxFit.fitHeight),
               ],
             ),
           ),

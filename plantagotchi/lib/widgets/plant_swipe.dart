@@ -96,15 +96,15 @@ class _PlantSwipeState extends State<PlantSwipe> {
                   Center(
                     child: Image.asset(
                       avatarPath!,
-                      height: 180,
-                      width: 180,
-                      fit: BoxFit.cover,
+                      // height: 180,
+                      // width: 180,
+                      fit: BoxFit.fitHeight,
                     ),
                   ),
                 ],
               ),
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 15),
             // Speech bubble and triangle below
             Stack(
               alignment: Alignment.topCenter,

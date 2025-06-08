@@ -75,15 +75,19 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
               EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
           child: Column(
             children: [
-              Center(
-                child: Image.asset(
-                  widget.plant['avatarUrl'] ??
-                      'assets/images/avatars/plant-transp.gif',
-                  width: 270,
-                  height: 270,
-                  fit: BoxFit.cover,
+              Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Center(
+                  child: Image.asset(
+                    widget.plant['avatarUrl'] ??
+                        'assets/images/avatars/plant-transp.gif',
+                    width: 250,
+                    height: 250,
+                    fit: BoxFit.fitHeight,
+                  ),
                 ),
               ),
+              // const SizedBox(height: 10),
               Column(
                 children: [
                   PlantChatDialog(

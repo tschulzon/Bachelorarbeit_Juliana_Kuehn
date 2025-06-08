@@ -298,15 +298,15 @@ class _PlantspageState extends State<Plantspage> {
                                 );
                               },
                               child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                                padding: const EdgeInsets.all(16.0),
                                 child: Row(
                                   children: [
                                     Image.asset(
                                       plant.plantTemplate?.avatarUrl! ??
                                           'assets/images/avatars/plant-transp.gif',
-                                      width: 130,
-                                      height: 130,
-                                      fit: BoxFit.cover,
+                                      width: 110,
+                                      height: 110,
+                                      fit: BoxFit.fitHeight,
                                     ),
                                     const SizedBox(width: 16.0),
                                     Column(
@@ -447,9 +447,9 @@ class _PlantspageState extends State<Plantspage> {
                                                 .plantTemplate
                                                 ?.avatarUrl ??
                                             'assets/images/avatars/plant-transp.gif',
-                                        width: 80,
-                                        height: 80,
-                                        fit: BoxFit.cover,
+                                        width: 100,
+                                        height: 100,
+                                        fit: BoxFit.fitHeight,
                                       ),
                                     ),
                                   ),
@@ -602,9 +602,9 @@ class _PlantspageState extends State<Plantspage> {
                                                     plant.plantTemplate
                                                             ?.avatarUrl ??
                                                         'assets/images/avatars/plant-transp.gif',
-                                                    width: 80,
-                                                    height: 80,
-                                                    fit: BoxFit.cover,
+                                                    width: 70,
+                                                    height: 70,
+                                                    fit: BoxFit.fitHeight,
                                                   ),
                                                   const SizedBox(width: 12),
                                                   Expanded(
