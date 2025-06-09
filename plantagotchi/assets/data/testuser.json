@@ -6,7 +6,44 @@
         "xp": 150,
         "coins": 10,
         "streak": 2,
-        "badges": [],
+        "badges": [
+                {
+                        "id": "1",
+                        "name": "Grüne:r Einsteiger:in",
+                        "milestone": "Erste Pflanze angelegt",
+                        "description": "Deine Reise beginnt – du hast deine erste Pflanze angelegt!",
+                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "conditionType": "plantsOwned",
+                        "conditionValue": 1
+                },
+                {
+                        "id": "2",
+                        "name": "Durstlöscher:in",
+                        "milestone": "Erste Pflanze gegossen",
+                        "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
+                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "conditionType": "plantsWatered",
+                        "conditionValue": 1
+                },
+                {
+                        "id": "3",
+                        "name": "Nährstoffgeber:in",
+                        "milestone": "Erste Pflanze gedüngt",
+                        "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
+                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "conditionType": "plantsfertilized",
+                        "conditionValue": 1
+                },
+                {
+                        "id": "4",
+                        "name": "Pflanzenfotograf:in",
+                        "milestone": "Erste Pflanze fotografiert",
+                        "description": "Du hast das erste Foto von einer Pflanze gemacht und sie für die Ewigkeit festgehalten.",
+                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "conditionType": "pflantsPhotographed",
+                        "conditionValue": 1
+                }
+        ],
         "plants": [
                 {
                         "id": "plant-1",
@@ -165,13 +202,39 @@
                                 "petFriendly": false,
                                 "imageUrl": "assets/images/plants/Monstera-real.jpg",
                                 "avatarUrl": "assets/images/avatars/Monstera-default.png",
-                                "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
-                                "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
+                                "avatarUrlThirsty": "assets/images/avatars/Monstera-thirsty.png",
+                                "avatarUrlHungry": "assets/images/avatars/Monstera-thirsty.png",
                                 "avatarSkins": [
                                 "assets/images/plants/Kaktus-real.jpg",
                                 "assets/images/plants/Kaktus-real.jpg"
                                 ]
                         }
+                }
+        ],
+        "friends": [
+                {
+                        "id": "friend-1",
+                        "name": "Theresia",
+                        "profileAvatar": "assets/images/profile-avatar-woman-blond.png",
+                        "plantCount": 7,
+                        "level": 3,
+                        "xp": 1250
+                },
+                {
+                        "id": "friend-2",
+                        "name": "Eduard",
+                        "profileAvatar": "assets/images/profile-avatar-man.png",
+                        "plantCount": 10,
+                        "level": 5,
+                        "xp": 3200
+                },
+                {
+                        "id": "friend-3",
+                        "name": "Lisa",
+                        "profileAvatar": "assets/images/profile-avatar-woman-short-black.png",
+                        "plantCount": 2,
+                        "level": 1,
+                        "xp": 340
                 }
         ]
 }

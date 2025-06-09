@@ -50,10 +50,10 @@ class _HorizontalButtonRowState extends State<HorizontalButtonRow> {
                   width: 1,
                 ),
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 18, // Breite
-                  vertical: 3, // Höhe (kleiner Wert = schmäler)
+                  horizontal: 18,
+                  vertical: 3,
                 ),
-                minimumSize: const Size(0, 15), // Mindesthöhe (optional)
+                minimumSize: const Size(0, 15),
               ),
               onPressed: () {
                 setState(() {

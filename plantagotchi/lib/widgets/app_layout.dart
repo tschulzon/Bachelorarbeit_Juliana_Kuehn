@@ -11,7 +11,6 @@ class AppLayout extends StatelessWidget {
   AppLayout({super.key});
 
   final List<Widget> _pages = [
-    // Add your pages here, e.g.:
     const Startpage(),
     const Plantspage(),
     const AddPlant(),
@@ -30,8 +29,8 @@ class AppLayout extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(
-              color: colors.primary, // Choose your border color
-              width: 1.0, // Border thickness
+              color: colors.primary,
+              width: 1.0,
             ),
           ),
         ),
@@ -60,7 +59,6 @@ class AppLayout extends StatelessWidget {
               icon: Icon(Icons.account_circle),
               label: 'Profile',
             ),
-            // Add more items as needed
           ],
         ),
       ),

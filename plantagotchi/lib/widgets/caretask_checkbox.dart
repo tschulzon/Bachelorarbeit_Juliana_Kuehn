@@ -17,42 +17,46 @@ class CaretaskCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontstyle = Theme.of(context).textTheme;
-    final tasks = viewModel.getTasksForPlant(plant);
-    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
+    // final tasks = viewModel.getTasksForPlant(plant);
+    final userViewModel = Provider.of<UserViewModel>(context, listen: true);
 
-    return Column(
-      children: tasks.map((task) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2.0),
-          child: Row(
-            children: [
-              Expanded(child: Text(task['task'], style: fontstyle.labelSmall)),
-              Checkbox(
-                value: task['isChecked'],
-                onChanged: (checked) {
-                  if (checked == true) {
-                    viewModel.addCareTypeEntry(plant, task['careType']);
-                    viewModel.markTaskChecked(plant, task['careType']);
-                    userViewModel.addXP(task['careType'], context);
-                    viewModel.triggerXPAnimation();
-                  } else {
-                    viewModel.unmarkTask(plant, task['careType']);
-                    userViewModel.removeXP(task['careType']);
-                  }
-                },
-                side: BorderSide(
-                  color: Theme.of(context)
-                      .colorScheme
-                      .primary, // Border color for empty checkbox
-                  width: 2,
+    return Consumer<StartpageViewModel>(builder: (context, viewModel, _) {
+      final tasks = viewModel.getTasksForPlant(plant);
+      return Column(
+        children: tasks.map((task) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2.0),
+            child: Row(
+              children: [
+                Expanded(
+                    child: Text(task['task'], style: fontstyle.labelSmall)),
+                Checkbox(
+                  value: task['isChecked'],
+                  onChanged: (checked) {
+                    if (checked == true) {
+                      viewModel.addCareTypeEntry(plant, task['careType'], null);
+                      viewModel.markTaskChecked(plant, task['careType']);
+                      userViewModel.addXP(task['careType'], context);
+                      viewModel.triggerXPAnimation();
+                    } else {
+                      viewModel.unmarkTask(plant, task['careType']);
+                      userViewModel.removeXP(task['careType']);
+                    }
+                  },
+                  side: BorderSide(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .primary, // Border color for empty checkbox
+                    width: 2,
+                  ),
+                  visualDensity: VisualDensity.compact,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
-                visualDensity: VisualDensity.compact,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-              ),
-            ],
-          ),
-        );
-      }).toList(),
-    );
+              ],
+            ),
+          );
+        }).toList(),
+      );
+    });
   }
 }

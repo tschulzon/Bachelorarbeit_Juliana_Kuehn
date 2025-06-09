@@ -40,13 +40,6 @@ class _PlantSwipeState extends State<PlantSwipe> {
     debugPrint("Button pressed");
   }
 
-  void openBottomModalSheet(BuildContext context) {
-    showModalBottomSheet<void>(
-      context: context,
-      builder: (context) => const BottomModal(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final startPageViewModel = Provider.of<StartpageViewModel>(context);
@@ -58,6 +51,25 @@ class _PlantSwipeState extends State<PlantSwipe> {
       debugPrint('Plant: ${p.nickname}, ID: ${p.id}');
     }
 
+    Future<void> openBottomModalSheet(
+        BuildContext context, UserPlants plant) async {
+      final result = await showModalBottomSheet<Map<String, dynamic>>(
+        context: context,
+        builder: (context) => BottomModal(plant: plant),
+      );
+
+      // Add the care type entry and update XP if result is not null from the modal
+      if (result != null) {
+        startPageViewModel.addCareTypeEntry(
+          plant,
+          result['careType'],
+          result['date'],
+        );
+        userViewModel.addXP(result['careType'], context);
+        startPageViewModel.triggerXPAnimation();
+      }
+    }
+
     return PageView.builder(
       controller: _controller,
       itemCount: widget.plants.length,
@@ -66,122 +78,124 @@ class _PlantSwipeState extends State<PlantSwipe> {
         final dueTasks = startPageViewModel.getDueTasks(plant);
         final avatarPath = getAvatarForPlant(plant, startPageViewModel);
 
-        debugPrint(
-            'Current Plant: ${plant.nickname}, Due Tasks: $dueTasks'); // Debugging line
+        debugPrint('Current Plant: ${plant.nickname}, Due Tasks: $dueTasks');
 
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Row with Text and Icon Button
-            // Plant Image with speech Bubbles and arrows
-            SizedBox(
-              height: 170,
-              width: double.infinity,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  // Left arrow
-                  Positioned(
-                    left: 0,
-                    child: Icon(Icons.chevron_left,
-                        size: 32, color: colors.primary),
-                  ),
-                  // Right arrow
-                  Positioned(
-                    right: 0,
-                    child: Icon(Icons.chevron_right,
-                        size: 32, color: colors.primary),
-                  ),
-                  // Plant Image
-                  Center(
-                    child: Image.asset(
-                      avatarPath!,
-                      // height: 180,
-                      // width: 180,
-                      fit: BoxFit.fitHeight,
+        return SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // Row with Text and Icon Button
+              // Plant Image with speech Bubbles and arrows
+              SizedBox(
+                height: 170,
+                width: double.infinity,
+                child: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    // Left arrow
+                    Positioned(
+                      left: 0,
+                      child: Icon(Icons.chevron_left,
+                          size: 32, color: colors.primary),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 15),
-            // Speech bubble and triangle below
-            Stack(
-              alignment: Alignment.topCenter,
-              clipBehavior: Clip.none, // Allow overflow for the triangle
-              children: [
-                Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                  decoration: BoxDecoration(
-                    color: colors.primary,
-                    borderRadius: BorderRadius.circular(16.0),
-                  ),
-                  child: Text(
-                    dueTasks!.isNotEmpty
-                        ? dueTasks.first['plantSentence']!
-                        : 'Mir geht es gut! 🥰',
-                    style: fontstyle.titleLarge,
-                  ),
-                ),
-                Positioned(
-                  top: null,
-                  bottom: 35, // Adjust as needed to overlap the bubble
-                  left: -0,
-                  right: 0,
-                  child: Center(
-                    child: Transform.rotate(
-                      angle: 3.14 / 4,
-                      child: Container(
-                        width: 16,
-                        height: 16,
-                        color: colors.primary,
+                    // Right arrow
+                    Positioned(
+                      right: 0,
+                      child: Icon(Icons.chevron_right,
+                          size: 32, color: colors.primary),
+                    ),
+                    // Plant Image
+                    Center(
+                      child: Image.asset(
+                        avatarPath!,
+                        // height: 180,
+                        // width: 180,
+                        fit: BoxFit.fitHeight,
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-            const SizedBox(height: 10),
-            // Box with Texts and Checkboxes
-            Container(
-              padding: const EdgeInsets.all(10.0),
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: colors.surface.withOpacity(0.8),
-                borderRadius: BorderRadius.circular(12.0),
-                border: Border.all(color: colors.primary),
-                boxShadow: [
-                  BoxShadow(
-                    color: colors.onSurface.withOpacity(0.1),
-                    blurRadius: 8.0,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
+              const SizedBox(height: 15),
+              // Speech bubble and triangle below
+              Stack(
+                alignment: Alignment.topCenter,
+                clipBehavior: Clip.none, // Allow overflow for the triangle
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Center(
-                          child: Text('Pflegeaufgaben für ${plant.nickname}',
-                              style: fontstyle.bodyMedium),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 10),
+                    decoration: BoxDecoration(
+                      color: colors.primary,
+                      borderRadius: BorderRadius.circular(16.0),
+                    ),
+                    child: Text(
+                      dueTasks!.isNotEmpty
+                          ? dueTasks.first['plantSentence']!
+                          : 'Mir geht es gut! 🥰',
+                      style: fontstyle.titleLarge,
+                    ),
+                  ),
+                  Positioned(
+                    top: null,
+                    bottom: 35,
+                    left: -0,
+                    right: 0,
+                    child: Center(
+                      child: Transform.rotate(
+                        angle: 3.14 / 4,
+                        child: Container(
+                          width: 16,
+                          height: 16,
+                          color: colors.primary,
                         ),
                       ),
-                    ],
+                    ),
                   ),
-                  CaretaskCheckbox(plant: plant, viewModel: startPageViewModel),
-                  const SizedBox(height: 5),
-                  ActionButton(
-                      label: "Aktivität hinzufügen",
-                      onPressed: () => openBottomModalSheet(context),
-                      greenToYellow: false),
                 ],
               ),
-            )
-          ],
+              const SizedBox(height: 10),
+              // Box with Texts and Checkboxes
+              Container(
+                padding: const EdgeInsets.all(10.0),
+                margin: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: colors.surface.withOpacity(0.8),
+                  borderRadius: BorderRadius.circular(12.0),
+                  border: Border.all(color: colors.primary),
+                  boxShadow: [
+                    BoxShadow(
+                      color: colors.onSurface.withOpacity(0.1),
+                      blurRadius: 8.0,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Center(
+                            child: Text('Pflegeaufgaben für ${plant.nickname}',
+                                style: fontstyle.bodyMedium),
+                          ),
+                        ),
+                      ],
+                    ),
+                    CaretaskCheckbox(
+                        plant: plant, viewModel: startPageViewModel),
+                    const SizedBox(height: 5),
+                    ActionButton(
+                        label: "Aktivität hinzufügen",
+                        onPressed: () => openBottomModalSheet(context, plant),
+                        greenToYellow: false),
+                  ],
+                ),
+              )
+            ],
+          ),
         );
       },
     );

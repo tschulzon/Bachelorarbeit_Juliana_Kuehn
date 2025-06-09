@@ -26,9 +26,11 @@ class UserViewModel extends ChangeNotifier {
   Map<String, int> activityXP = {
     'watering': 100,
     'fertilizing': 250,
-    'completingTasks': 20,
+    'pruning': 20,
     'repotting': 30,
     'newPlant': 50,
+    'note': 10,
+    'photo': 10,
   };
 
   // Map to hold coins for different levels

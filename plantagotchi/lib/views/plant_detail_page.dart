@@ -4,6 +4,7 @@ import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/add_plant_dialog.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
+import 'package:plantagotchi/widgets/bottom_modal.dart';
 import 'package:plantagotchi/widgets/horizontal_button_row.dart';
 import 'package:plantagotchi/widgets/list_info_cards.dart';
 import 'package:plantagotchi/widgets/userplant_history.dart';
@@ -14,15 +15,11 @@ class PlantDetailPage extends StatelessWidget {
   Map<String, dynamic> plant;
   UserPlants? userPlant;
 
-  // Only one of 'plant' or 'userPlant' should be required at a time.
-  // Use an assert to ensure at least one is provided.
-  // Also, make both fields final for immutability.
   PlantDetailPage({
     super.key,
     this.plant = const {},
     this.userPlant,
-  }) : assert(plant.isNotEmpty || userPlant != null,
-            'Either plant or userPlant must be provided.');
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +51,13 @@ class PlantDetailPage extends StatelessWidget {
         fontstyle: fontstyle,
         colors: colors,
         viewModel: viewModel);
+
+    void openBottomModalSheet(BuildContext context, UserPlants plant) {
+      showModalBottomSheet<void>(
+        context: context,
+        builder: (context) => BottomModal(plant: plant),
+      );
+    }
 
     print("CURRENT PLANT: $plant");
 
@@ -107,7 +111,7 @@ class PlantDetailPage extends StatelessWidget {
                                     : (userPlant?.nickname ?? ''),
                                 style: fontstyle.headlineLarge,
                                 softWrap: true,
-                                maxLines: 2, // oder mehr, je nach Bedarf
+                                maxLines: 2,
                               ),
                             ),
                             if (userPlant != null)
@@ -135,6 +139,9 @@ class PlantDetailPage extends StatelessWidget {
                                             color: colors.primary,
                                             fontSize: 14,
                                             fontWeight: FontWeight.w400,
+                                          ),
+                                          decoration: const InputDecoration(
+                                            border: InputBorder.none,
                                           ),
                                         ),
                                         actions: [
@@ -261,6 +268,14 @@ class PlantDetailPage extends StatelessWidget {
           ],
         ),
       ),
+      floatingActionButton: userPlant != null
+          ? FloatingActionButton(
+              backgroundColor: colors.primary,
+              foregroundColor: colors.onPrimary,
+              onPressed: () => openBottomModalSheet(context, userPlant!),
+              child: const Icon(Icons.add_circle),
+            )
+          : null,
       bottomNavigationBar: plant.isNotEmpty
           ? Container(
               decoration: BoxDecoration(
@@ -275,8 +290,7 @@ class PlantDetailPage extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colors.primary,
                       foregroundColor: colors.onPrimary,
-                      minimumSize: const Size(
-                          double.infinity, 40), // volle Breite, optional
+                      minimumSize: const Size(double.infinity, 40),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
                     ),

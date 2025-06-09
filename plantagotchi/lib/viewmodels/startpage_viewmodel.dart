@@ -104,20 +104,14 @@ class StartpageViewModel extends ChangeNotifier {
   // It is for the CaretaskCheckbox widget to show the tasks
   // and for the StartPage to show the tasks in the plant card
   List<Map<String, dynamic>> getTasksForPlant(UserPlants plant) {
-    if (_plantTasks.containsKey(plant.id)) {
-      return _plantTasks[plant.id]!;
-    }
-
-    // If tasks are not initialized, get due tasks and create the task list
     final due = getDueTasks(plant) ?? [];
-    _plantTasks[plant.id!] = due
+    return due
         .map((type) => {
               'careType': type['careType'],
               'task': type['task'],
               'isChecked': false,
             })
         .toList();
-    return _plantTasks[plant.id]!;
   }
 
   // Mark a task as checked
@@ -136,10 +130,7 @@ class StartpageViewModel extends ChangeNotifier {
   }
 
   // Add a care type entry to the user's plant
-  void addCareTypeEntry(
-    UserPlants userPlant,
-    String careType,
-  ) {
+  void addCareTypeEntry(UserPlants userPlant, String careType, DateTime? date) {
     DateTime now = DateTime.now();
     int countUserPlants = userPlants.length;
 
@@ -149,7 +140,7 @@ class StartpageViewModel extends ChangeNotifier {
       id: careId,
       userPlantId: userPlant.id,
       type: careType,
-      date: now,
+      date: date ?? now,
     );
 
     userPlant.careHistory ??= [];

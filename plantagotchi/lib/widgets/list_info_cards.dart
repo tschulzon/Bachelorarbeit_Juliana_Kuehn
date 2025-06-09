@@ -7,7 +7,6 @@ List<Widget> buildInfoCards({
   required dynamic viewModel,
 }) {
   return [
-    // Beschreibung Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,13 +78,11 @@ List<Widget> buildInfoCards({
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Linke Seite: Alle Infos als Column, nimmt flexiblen Platz ein
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 10.0),
-                      // 1. Zeile
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

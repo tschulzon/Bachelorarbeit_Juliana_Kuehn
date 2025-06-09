@@ -1,3 +1,5 @@
+import 'package:plantagotchi/models/friend.dart';
+
 import 'userplant.dart';
 
 class User {
@@ -10,6 +12,7 @@ class User {
   int? streak;
   List<String>? badges;
   List<UserPlants>? plants;
+  List<Friend>? friends;
 
   User({
     required this.id,
@@ -21,6 +24,7 @@ class User {
     this.streak,
     this.badges,
     this.plants,
+    this.friends,
   });
 
   Map<String, dynamic> toJson() {
@@ -34,6 +38,7 @@ class User {
       'streak': streak,
       'badges': badges,
       'plants': plants?.map((plant) => plant.toJson()).toList(),
+      'friends': friends?.map((friend) => friend.toJson()).toList(),
     };
   }
 
@@ -51,6 +56,11 @@ class User {
       plants: json['plants'] != null
           ? (json['plants'] as List<dynamic>)
               .map((plant) => UserPlants.fromJson(plant))
+              .toList()
+          : null,
+      friends: json['friends'] != null
+          ? (json['friends'] as List<dynamic>)
+              .map((friend) => Friend.fromJson(friend))
               .toList()
           : null,
     );

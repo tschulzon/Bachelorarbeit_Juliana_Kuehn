@@ -123,8 +123,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: colors.primary,
                       foregroundColor: colors.onPrimary,
-                      minimumSize: const Size(
-                          double.infinity, 40), // volle Breite, optional
+                      minimumSize: const Size(double.infinity, 40),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(24)),
                     ),
@@ -162,6 +161,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                           ],
                         ),
                       );
+                      userViewModel.addXP('newPlant', context);
                       Navigator.of(context, rootNavigator: true)
                           .popUntil((route) => route.isFirst);
                     },

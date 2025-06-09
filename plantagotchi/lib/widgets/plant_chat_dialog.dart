@@ -25,8 +25,8 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
   bool _chatFinished = false;
 
   void finishChat() {
-    if (_chatFinished) return; // <--- NEU
-    _chatFinished = true; // <--- NEU
+    if (_chatFinished) return;
+    _chatFinished = true;
     print("FINISH CHAT WURDE AUFGERUFEN");
     widget.onFinished(userAnswers);
   }
@@ -60,6 +60,8 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     }
   }
 
+  // Send the answer from the user
+  // This will be called when the user presses the send button or submits the text field
   void sendAnswer() {
     if (controller.text.trim().isEmpty) return;
     setState(() {
@@ -101,7 +103,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        // Chatverlauf
+        // Chatdialog
         ...chat.map((entry) {
           final isPlant = entry.keys.first == "plant";
           return Align(
@@ -179,6 +181,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
                             fontWeight: FontWeight.w400,
                           ),
                           decoration: InputDecoration(
+                              border: InputBorder.none,
                               hintText: "Deine Antwort...",
                               hintStyle: TextStyle(
                                   color: colors.primary,

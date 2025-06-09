@@ -25,7 +25,6 @@ class _PlantspageState extends State<Plantspage> {
   @override
   void initState() {
     super.initState();
-    // Initialize weekStart to the start of the current week (Monday)
     DateTime now = DateTime.now();
     weekStart = now.subtract(Duration(days: now.weekday - 1));
     selectedDate = DateTime.now();
@@ -102,8 +101,7 @@ class _PlantspageState extends State<Plantspage> {
                 style: fontstyle.titleMedium,
               ),
               const SizedBox(width: 8),
-              Icon(Icons.arrow_drop_down,
-                  color: colors.primary), // Hinweis-Icon
+              Icon(Icons.arrow_drop_down, color: colors.primary),
             ],
           ),
         ),
@@ -247,11 +245,10 @@ class _PlantspageState extends State<Plantspage> {
             child: Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: colors.primary, // Your desired border color
-                  width: 2, // Border thickness
+                  color: colors.primary,
+                  width: 2,
                 ),
-                borderRadius:
-                    BorderRadius.circular(50), // Match the toggle's radius
+                borderRadius: BorderRadius.circular(50),
               ),
               child: CustomToggleSwitch(
                 countSwitches: 3,
@@ -261,7 +258,7 @@ class _PlantspageState extends State<Plantspage> {
                     selectedTab = index;
                   });
                 },
-                initialLabelIndex: selectedTab, // Default to the first label
+                initialLabelIndex: selectedTab,
               ),
             ),
           ),
@@ -581,8 +578,8 @@ class _PlantspageState extends State<Plantspage> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                              dateFormat.format(DateTime.parse(
-                                                  date)), // dateFormat = DateFormat('dd. MM. yy', 'de_DE'),
+                                              dateFormat
+                                                  .format(DateTime.parse(date)),
                                               style: TextStyle(
                                                 fontSize: 16,
                                                 fontWeight: FontWeight.bold,

@@ -5,25 +5,21 @@ import 'package:plantagotchi/widgets/plant_swipe.dart';
 import 'package:provider/provider.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
-class Startpage extends StatelessWidget {
+class Startpage extends StatefulWidget {
   const Startpage({super.key});
 
   @override
+  State<Startpage> createState() => _StartpageState();
+}
+
+class _StartpageState extends State<Startpage> {
+  @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
+    final viewModel = Provider.of<StartpageViewModel>(context, listen: true);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
-    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
-
-    // For Avatars based on "Mood" or Tasks a Map could be used e.g.
-    // final avatarMap = {
-    //   'happy': 'assets/avatars/happy.png',
-    //   'sad': 'assets/avatars/sad.png',
-    //   'neutral': 'assets/avatars/neutral.png',
-    //   'thirsty': 'assets/avatars/thirsty.png',
-    //   'hungry': 'assets/avatars/hungry.png',
-    // };
+    final userViewModel = Provider.of<UserViewModel>(context, listen: true);
 
     print("UserViewModel.user: ${user.username}, Streak: ${user.streak}");
 

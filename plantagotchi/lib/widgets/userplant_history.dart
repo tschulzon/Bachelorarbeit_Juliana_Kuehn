@@ -104,8 +104,7 @@ class _UserplantHistoryState extends State<UserplantHistory> {
                 style: fontstyle.titleMedium,
               ),
               const SizedBox(width: 8),
-              Icon(Icons.arrow_drop_down,
-                  color: colors.primary), // Hinweis-Icon
+              Icon(Icons.arrow_drop_down, color: colors.primary),
             ],
           ),
         ),
@@ -246,9 +245,7 @@ class _UserplantHistoryState extends State<UserplantHistory> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                      dateFormat.format(DateTime.parse(
-                                          date)), // dateFormat = DateFormat('dd. MM. yy', 'de_DE'),
+                                  Text(dateFormat.format(DateTime.parse(date)),
                                       style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
@@ -266,9 +263,9 @@ class _UserplantHistoryState extends State<UserplantHistory> {
                                           Image.asset(
                                             plant.plantTemplate?.avatarUrl ??
                                                 'assets/images/avatars/plant-transp.gif',
-                                            width: 80,
-                                            height: 80,
-                                            fit: BoxFit.cover,
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.fitHeight,
                                           ),
                                           const SizedBox(width: 12),
                                           Expanded(
