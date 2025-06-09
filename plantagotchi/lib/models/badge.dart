@@ -5,7 +5,7 @@ class Badge {
   final String description;
   final String imageUrl;
   final String conditionType;
-  final String conditionValue;
+  final int conditionValue;
 
   Badge({
     required this.id,
@@ -27,5 +27,17 @@ class Badge {
       conditionType: json['conditionType'],
       conditionValue: json['conditionValue'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'milestone': milestone,
+      'description': description,
+      'imageUrl': imageUrl,
+      'conditionType': conditionType,
+      'conditionValue': conditionValue,
+    };
   }
 }

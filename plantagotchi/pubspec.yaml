@@ -70,6 +70,7 @@ flutter:
     - assets/images/
     - assets/images/avatars/
     - assets/images/plants/
+    - assets/images/badges/
     - assets/data/plantdata.json
     - assets/data/badges.json
     - assets/data/testuser.json

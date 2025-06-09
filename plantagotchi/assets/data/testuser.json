@@ -9,10 +9,10 @@
         "badges": [
                 {
                         "id": "1",
-                        "name": "Grüne:r Einsteiger:in",
+                        "name": "Erste Schritte",
                         "milestone": "Erste Pflanze angelegt",
-                        "description": "Deine Reise beginnt – du hast deine erste Pflanze angelegt!",
-                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "description": "Du hast deine erste Pflanze erfolgreich angelegt und beginnst deine Reise als Pflanzenliebhaber:in.",
+                        "imageUrl": "assets/images/badges/badge-beispiel.png",
                         "conditionType": "plantsOwned",
                         "conditionValue": 1
                 },
@@ -21,7 +21,7 @@
                         "name": "Durstlöscher:in",
                         "milestone": "Erste Pflanze gegossen",
                         "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
-                        "imageUrl": "assets/images/badges/first_steps.png",
+                        "imageUrl": "assets/images/badges/badge-beispiel-2.png",
                         "conditionType": "plantsWatered",
                         "conditionValue": 1
                 },
@@ -30,17 +30,8 @@
                         "name": "Nährstoffgeber:in",
                         "milestone": "Erste Pflanze gedüngt",
                         "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
-                        "imageUrl": "assets/images/badges/first_steps.png",
-                        "conditionType": "plantsfertilized",
-                        "conditionValue": 1
-                },
-                {
-                        "id": "4",
-                        "name": "Pflanzenfotograf:in",
-                        "milestone": "Erste Pflanze fotografiert",
-                        "description": "Du hast das erste Foto von einer Pflanze gemacht und sie für die Ewigkeit festgehalten.",
-                        "imageUrl": "assets/images/badges/first_steps.png",
-                        "conditionType": "pflantsPhotographed",
+                        "imageUrl": "assets/images/badges/badge-beispiel-3.png",
+                        "conditionType": "plantsFertilized",
                         "conditionValue": 1
                 }
         ],

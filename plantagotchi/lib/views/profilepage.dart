@@ -13,6 +13,9 @@ class Profilepage extends StatelessWidget {
     final fontstyle = Theme.of(context).textTheme;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
 
+    final userPlants = userViewModel.user.plants;
+    final userBadges = userViewModel.user.badges;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
@@ -177,6 +180,61 @@ class Profilepage extends StatelessWidget {
                             ),
                           )),
                     ],
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Meine Pflanzen",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                      color: colors.primary,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // List of Plants
+                  SizedBox(
+                    height: 100,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: userPlants!.length,
+                      itemBuilder: (context, index) {
+                        final plant = userPlants[index];
+                        return Image.asset(
+                            plant.plantTemplate!.avatarUrl ??
+                                'assets/images/default_plant.png',
+                            height: 100);
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    textAlign: TextAlign.center,
+                    "Abzeichen",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w300,
+                      color: colors.primary,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  // List of Badges
+                  SizedBox(
+                    height: 70,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: userBadges!.length,
+                      itemBuilder: (context, index) {
+                        final badge = userBadges[index];
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                          child: Image.asset(badge.imageUrl,
+                              height: 50, width: 50),
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
