@@ -1,32 +1,25 @@
-class Badge {
+class PlantBadge {
   final String id;
   final String name;
   final String milestone;
   final String description;
   final String imageUrl;
-  final String conditionType;
-  final int conditionValue;
 
-  Badge({
+  PlantBadge({
     required this.id,
     required this.name,
     required this.milestone,
     required this.description,
     required this.imageUrl,
-    required this.conditionType,
-    required this.conditionValue,
   });
 
-  factory Badge.fromJson(Map<String, dynamic> json) {
-    return Badge(
-      id: json['id'],
-      name: json['name'],
-      milestone: json['milestone'],
-      description: json['description'],
-      imageUrl: json['imageUrl'],
-      conditionType: json['conditionType'],
-      conditionValue: json['conditionValue'],
-    );
+  factory PlantBadge.fromJson(Map<String, dynamic> json) {
+    return PlantBadge(
+        id: json['id'],
+        name: json['name'],
+        milestone: json['milestone'],
+        description: json['description'],
+        imageUrl: json['imageUrl']);
   }
 
   Map<String, dynamic> toJson() {
@@ -35,9 +28,7 @@ class Badge {
       'name': name,
       'milestone': milestone,
       'description': description,
-      'imageUrl': imageUrl,
-      'conditionType': conditionType,
-      'conditionValue': conditionValue,
+      'imageUrl': imageUrl
     };
   }
 }

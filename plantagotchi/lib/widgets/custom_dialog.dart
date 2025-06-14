@@ -18,21 +18,33 @@ class CustomDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(imagePath, height: 100),
-          Text(title, style: Theme.of(context).textTheme.displayLarge),
-          Divider(
-            color: Theme.of(context).colorScheme.onPrimary,
-            thickness: 2,
-            height: 24,
-          ),
-          const SizedBox(height: 8),
-          Text(content,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.displaySmall),
-        ],
+      content: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                )),
+            Divider(
+              color: Theme.of(context).colorScheme.onPrimary,
+              thickness: 1,
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Image.asset(imagePath, height: 120, fit: BoxFit.fitHeight),
+            ),
+            Text(content,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.displaySmall),
+          ],
+        ),
       ),
       backgroundColor: Theme.of(context).colorScheme.primary,
       actions: [

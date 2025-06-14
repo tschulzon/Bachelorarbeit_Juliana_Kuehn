@@ -17,8 +17,8 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
   final List<String> questions = [
     "Hi! Wie möchtest du mich nennen?",
     "In welchem Raum werde ich wohnen?",
-    "Wann hast du mich zuletzt gegossen?",
-    "Und wann hast du mich zuletzt gedüngt?",
+    "Hast du mich bereits gegossen? Falls ja, wann?",
+    "Und auch bereits gedüngt?",
     "Danke für's Aufnehmen! Ich freue mich!"
   ];
   final Map<String, dynamic> userAnswers = {};
@@ -149,22 +149,57 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
               ),
               if (currentQuestion == 2 || currentQuestion == 3)
                 Container(
-                  margin: const EdgeInsets.only(left: 220.0),
+                  margin: const EdgeInsets.only(right: 10.0),
                   padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton.icon(
-                    icon: const Icon(Icons.calendar_today),
-                    label: const Text("Datum", style: TextStyle(fontSize: 14)),
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)),
-                      backgroundColor: colors.primary,
-                      foregroundColor: colors.onPrimary,
-                      minimumSize: const Size(0, 0),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  child: Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        ElevatedButton.icon(
+                          label: const Text("Nein",
+                              style: TextStyle(fontSize: 14)),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            backgroundColor: colors.primary,
+                            foregroundColor: colors.onPrimary,
+                            minimumSize: const Size(0, 0),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              chat.add({"plant": questions[currentQuestion]});
+                              chat.add({"user": "Nein"});
+                              if (currentQuestion == 2) {
+                                userAnswers["lastWatered"] = null;
+                              } else if (currentQuestion == 3) {
+                                userAnswers["lastFertilized"] = null;
+                              }
+                              currentQuestion++;
+                            });
+                          },
+                        ),
+                        const SizedBox(width: 10),
+                        ElevatedButton.icon(
+                          label:
+                              const Text("Ja", style: TextStyle(fontSize: 14)),
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(25)),
+                            backgroundColor: colors.primary,
+                            foregroundColor: colors.onPrimary,
+                            minimumSize: const Size(0, 0),
+                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                          ),
+                          onPressed: pickDate,
+                        ),
+                      ],
                     ),
-                    onPressed: pickDate,
                   ),
                 )
               else if (currentQuestion < questions.length - 1)

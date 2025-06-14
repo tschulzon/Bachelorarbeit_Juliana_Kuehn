@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/plant_template.dart';
 import 'package:plantagotchi/models/userplant.dart';
+import 'package:plantagotchi/viewmodels/navigation_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/startpage.dart';
@@ -28,6 +29,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
+    final nav = Provider.of<NavigationViewmodel>(context);
 
     DateTime parseGermanDate(String? input) {
       if (input == null || input.isEmpty) return DateTime.now();
@@ -130,7 +132,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                     icon: const Icon(Icons.add_circle),
                     label: const Text('Bestätigen',
                         style: TextStyle(fontSize: 14)),
-                    onPressed: () {
+                    onPressed: () async {
                       user.plants?.add(
                         UserPlants(
                           id: "plant-${user.plants!.length + 1}",
@@ -144,26 +146,34 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                           location:
                               _plantChatAnswers!['location'] ?? 'Keine Angabe',
                           careHistory: [
-                            CareEntry(
-                              id: 'care-${user.plants!.length + 1}',
-                              userPlantId: 'plant-${user.plants!.length + 1}',
-                              type: 'watering',
-                              date: parseGermanDate(
-                                  _plantChatAnswers!['lastWatered']),
-                            ),
-                            CareEntry(
-                              id: 'care-${user.plants!.length + 1}',
-                              userPlantId: 'plant-${user.plants!.length + 1}',
-                              type: 'fertilizing',
-                              date: parseGermanDate(
-                                  _plantChatAnswers!['lastFertilized']),
-                            ),
+                            if (_plantChatAnswers!['lastWatered'] != null)
+                              CareEntry(
+                                id: 'care-${user.plants!.length + 1}',
+                                userPlantId: 'plant-${user.plants!.length + 1}',
+                                type: 'watering',
+                                date: parseGermanDate(
+                                    _plantChatAnswers!['lastWatered']),
+                              ),
+                            if (_plantChatAnswers!['lastFertilized'] != null)
+                              CareEntry(
+                                id: 'care-${user.plants!.length + 1}',
+                                userPlantId: 'plant-${user.plants!.length + 1}',
+                                type: 'fertilizing',
+                                date: parseGermanDate(
+                                    _plantChatAnswers!['lastFertilized']),
+                              ),
                           ],
                         ),
                       );
                       userViewModel.addXP('newPlant', context);
+
+                      await userViewModel.checkIfUserGetBadgeForActivity(
+                          'newPlant', context);
+
                       Navigator.of(context, rootNavigator: true)
                           .popUntil((route) => route.isFirst);
+
+                      nav.changeTab(0);
                     },
                   )),
             )

@@ -263,6 +263,7 @@ class _PlantspageState extends State<Plantspage> {
             ),
           ),
           const SizedBox(height: 20),
+          // Plant List
           Expanded(
             child: Builder(builder: (context) {
               if (selectedTab == 0) {
@@ -379,16 +380,23 @@ class _PlantspageState extends State<Plantspage> {
                           );
                         },
                       );
+                // Location List
               } else if (selectedTab == 1) {
                 // Group plants by location
                 final Map<String, List<dynamic>> locationMap = {};
+                final Map<String, String> locationNames = {};
 
                 for (var plant in user.plants!) {
                   final location = plant.location ?? 'Unbekannt';
-                  if (!locationMap.containsKey(location)) {
-                    locationMap[location] = [];
-                  }
-                  locationMap[location]!.add(plant);
+                  final key = location.toLowerCase();
+
+                  // List for the original location name for displaying
+                  locationNames.putIfAbsent(key, () => location);
+
+                  // List for the key if it doesn't exist for grouping
+                  locationMap.putIfAbsent(key, () => []);
+
+                  locationMap[key]!.add(plant);
                 }
 
                 if (locationMap.isEmpty) {
@@ -404,6 +412,7 @@ class _PlantspageState extends State<Plantspage> {
                       horizontal: 18.0, vertical: 8.0),
                   children: locationMap.entries.map((entry) {
                     final location = entry.key;
+                    final locationName = locationNames[location] ?? 'Unbekannt';
                     final plantsInLocation = entry.value;
                     return Card(
                       elevation: 4.0,
@@ -416,7 +425,7 @@ class _PlantspageState extends State<Plantspage> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) => LocationplantsPage(
-                                location: location,
+                                location: locationName,
                                 plantsInLocation: plantsInLocation,
                                 fontstyle: fontstyle,
                                 colors: colors,
@@ -454,7 +463,7 @@ class _PlantspageState extends State<Plantspage> {
                               ),
                               const SizedBox(height: 10),
                               Text(
-                                location,
+                                locationName,
                                 style: fontstyle.displayMedium,
                               ),
                               Text(

@@ -1,5 +1,6 @@
 import 'package:plantagotchi/models/badge.dart';
 import 'package:plantagotchi/models/friend.dart';
+import 'package:plantagotchi/models/userbadge.dart';
 
 import 'userplant.dart';
 
@@ -11,7 +12,7 @@ class User {
   int? xp;
   int? coins;
   int? streak;
-  List<Badge>? badges;
+  List<UserBadge>? badges;
   List<UserPlants>? plants;
   List<Friend>? friends;
 
@@ -55,7 +56,7 @@ class User {
       streak: json['streak'],
       badges: json['badges'] != null
           ? (json['badges'] as List<dynamic>)
-              .map((badge) => Badge.fromJson(badge))
+              .map((badge) => UserBadge.fromJson(badge))
               .toList()
           : null,
       plants: json['plants'] != null

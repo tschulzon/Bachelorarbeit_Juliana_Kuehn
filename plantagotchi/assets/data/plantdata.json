@@ -42,8 +42,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   },
   {
@@ -89,8 +99,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Monstera-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Monstera-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   },
   {
@@ -136,8 +156,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Chrysanthemen-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Chrysanthemen-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   },
   {
@@ -183,8 +213,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Orchidee-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Orchidee-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   },
   {
@@ -230,8 +270,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Bogenhanf-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Bogenhanf-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   },
   {
@@ -277,8 +327,18 @@
     "avatarUrlThirsty": "assets/images/avatars/Elefantenfuss-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/Elefantenfuss-hungry.png",
     "avatarSkins": [
-      "assets/images/avatars/Kaktus-Skin-1.png",
-      "assets/images/avatars/Kaktus-Skin-2.png"
+        {
+            "id": "skin-1",
+            "name": "Winter",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+        },
+        {
+            "id": "skin-2",
+            "name": "Sommer",
+            "price": 200,
+            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+        }
     ]
   }
 ]

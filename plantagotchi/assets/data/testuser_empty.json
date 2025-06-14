@@ -1,0 +1,37 @@
+{
+        "id": "1",
+        "username": "Testuser",
+        "profilePicture": "assets/images/profile-avatar-woman-long-black.png",
+        "level": 1,
+        "xp": 0,
+        "coins": 250,
+        "streak": 1,
+        "badges": [],
+        "plants": [],
+        "friends": [
+                {
+                        "id": "friend-1",
+                        "name": "Theresia",
+                        "profileAvatar": "assets/images/profile-avatar-woman-blond.png",
+                        "plantCount": 7,
+                        "level": 3,
+                        "xp": 1250
+                },
+                {
+                        "id": "friend-2",
+                        "name": "Eduard",
+                        "profileAvatar": "assets/images/profile-avatar-man.png",
+                        "plantCount": 10,
+                        "level": 5,
+                        "xp": 3200
+                },
+                {
+                        "id": "friend-3",
+                        "name": "Lisa",
+                        "profileAvatar": "assets/images/profile-avatar-woman-short-black.png",
+                        "plantCount": 2,
+                        "level": 1,
+                        "xp": 340
+                }
+        ]
+}

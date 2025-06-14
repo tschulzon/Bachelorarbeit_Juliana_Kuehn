@@ -35,6 +35,8 @@ class CaretaskCheckbox extends StatelessWidget {
                   onChanged: (checked) {
                     if (checked == true) {
                       viewModel.addCareTypeEntry(plant, task['careType'], null);
+                      userViewModel.checkIfUserGetBadgeForActivity(
+                          task['careType'], context);
                       viewModel.markTaskChecked(plant, task['careType']);
                       userViewModel.addXP(task['careType'], context);
                       viewModel.triggerXPAnimation();

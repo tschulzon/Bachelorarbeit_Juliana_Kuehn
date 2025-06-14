@@ -9,30 +9,45 @@
         "badges": [
                 {
                         "id": "1",
-                        "name": "Erste Schritte",
-                        "milestone": "Erste Pflanze angelegt",
-                        "description": "Du hast deine erste Pflanze erfolgreich angelegt und beginnst deine Reise als Pflanzenliebhaber:in.",
-                        "imageUrl": "assets/images/badges/badge-beispiel.png",
-                        "conditionType": "plantsOwned",
-                        "conditionValue": 1
+                        "badge": {
+                                        "id": "badge-newplant-1",
+                                        "name": "Grüne:r Einsteiger:in",
+                                        "milestone": "Erste Pflanze angelegt",
+                                        "description": "Deine Reise beginnt – du hast deine erste Pflanze angelegt!",
+                                        "imageUrl": "assets/images/badges/badge-beispiel.png",
+                                        "conditionType": "plantsOwned",
+                                        "conditionValue": 1
+                                },
+                        "earnedAt": "2025-05-08T10:00:00.000Z"
+                        
                 },
                 {
                         "id": "2",
-                        "name": "Durstlöscher:in",
-                        "milestone": "Erste Pflanze gegossen",
-                        "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
-                        "imageUrl": "assets/images/badges/badge-beispiel-2.png",
-                        "conditionType": "plantsWatered",
-                        "conditionValue": 1
+                        "badge": {
+                                        "id": "badge-watering-1",
+                                        "name": "Durstlöscher:in",
+                                        "milestone": "Erste Pflanze gegossen",
+                                        "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
+                                        "imageUrl": "assets/images/badges/badge-beispiel-2.png",
+                                        "conditionType": "plantsWatered",
+                                        "conditionValue": 1
+                                },
+                        "earnedAt": "2025-05-10T10:00:00.000Z"
+                        
                 },
                 {
                         "id": "3",
-                        "name": "Nährstoffgeber:in",
-                        "milestone": "Erste Pflanze gedüngt",
-                        "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
-                        "imageUrl": "assets/images/badges/badge-beispiel-3.png",
-                        "conditionType": "plantsFertilized",
-                        "conditionValue": 1
+                        "badge": {
+                                        "id": "badge-fertilizing-1",
+                                        "name": "Nährstoffgeber:in",
+                                        "milestone": "Erste Pflanze gedüngt",
+                                        "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
+                                        "imageUrl": "assets/images/badges/badge-beispiel-3.png",
+                                        "conditionType": "plantsFertilized",
+                                        "conditionValue": 1
+                                },
+                        "earnedAt": "2025-05-20T10:00:00.000Z"
+                        
                 }
         ],
         "plants": [

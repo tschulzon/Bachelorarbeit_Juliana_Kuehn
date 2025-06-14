@@ -230,8 +230,11 @@ class Profilepage extends StatelessWidget {
                         final badge = userBadges[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Image.asset(badge.imageUrl,
-                              height: 50, width: 50),
+                          child: Image.asset(
+                              badge.badge?.imageUrl ??
+                                  'assets/images/default_badge.png',
+                              height: 50,
+                              width: 50),
                         );
                       },
                     ),

@@ -1,3 +1,5 @@
+import 'package:plantagotchi/models/skin_item.dart';
+
 class PlantTemplate {
   String id;
   String commonName;
@@ -25,7 +27,7 @@ class PlantTemplate {
   String? avatarUrl;
   String? avatarUrlThirsty;
   String? avatarUrlHungry;
-  List<String> avatarSkins;
+  List<SkinItem> avatarSkins;
 
   PlantTemplate({
     required this.id,
@@ -126,7 +128,10 @@ class PlantTemplate {
       avatarUrl: json['avatarUrl'] ?? "-",
       avatarUrlThirsty: json['avatarUrlThirsty'] ?? "-",
       avatarUrlHungry: json['avatarUrlHungry'] ?? "-",
-      avatarSkins: List<String>.from(json['avatarSkins']),
+      avatarSkins: (json['avatarSkins'] as List<dynamic>?)
+              ?.map((item) => SkinItem.fromJson(item as Map<String, dynamic>))
+              .toList() ??
+          [],
     );
   }
 }

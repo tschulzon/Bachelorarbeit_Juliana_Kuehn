@@ -23,8 +23,11 @@ Future<void> main() async {
 
   if (user == null) {
     debugPrint("No user found in storage, loading from JSON file...");
+    // String jsonString = await rootBundle
+    //     .loadString('assets/data/testuser.json'); // Load JSON from assets
+
     String jsonString = await rootBundle
-        .loadString('assets/data/testuser.json'); // Load JSON from assets
+        .loadString('assets/data/testuser_empty.json'); // Load JSON from assets
 
     // debugPrint("JSON String: $jsonString"); // Debugging line
 

@@ -74,6 +74,7 @@ flutter:
     - assets/data/plantdata.json
     - assets/data/badges.json
     - assets/data/testuser.json
+    - assets/data/testuser_empty.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:

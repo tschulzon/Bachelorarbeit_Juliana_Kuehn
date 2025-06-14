@@ -1,5 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:plantagotchi/models/badge.dart';
+import 'package:plantagotchi/models/badge_conditions.dart';
+import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/user.dart';
+import 'package:plantagotchi/models/userbadge.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
 import 'package:plantagotchi/widgets/custom_dialog.dart';
 
@@ -20,6 +27,8 @@ class UserViewModel extends ChangeNotifier {
     currentLevel = user.level;
     currentStreak = user.streak;
     currentCoins = user.coins;
+    careHistory = loadCareHistory();
+    loadBadgesData();
   }
 
   // Map to hold XP values for different activities
@@ -40,6 +49,41 @@ class UserViewModel extends ChangeNotifier {
     4: 40,
     5: 50,
   };
+
+  Map<String, PlantBadge> allBadges = {};
+
+  Future<void> loadBadgesData() async {
+    final String jsonString =
+        await rootBundle.loadString('assets/data/badges.json');
+    final List<dynamic> badgesList = json.decode(jsonString);
+    for (var badgeJson in badgesList) {
+      final badge = PlantBadge.fromJson(badgeJson);
+      allBadges[badge.id] = badge; // Store badges in a map for easy access
+    }
+
+    // Nach dem Laden: Alle Badges in der Konsole ausgeben
+    print('Alle geladenen Badges:');
+    for (var badge in allBadges.values) {
+      print(
+          'Badge: ${badge.name} (ID: ${badge.id}), Meilenstein: ${badge.milestone}, Beschreibung: ${badge.description}');
+    }
+  }
+
+  late Map<String, List<CareEntry>> careHistory;
+
+  Map<String, List<CareEntry>> loadCareHistory() {
+    careHistory = {};
+    for (var plant in user.plants ?? []) {
+      for (var entry in plant.careHistory ?? []) {
+        if (!careHistory.containsKey(entry.type)) {
+          careHistory[entry.type] = [];
+        }
+        careHistory[entry.type]!.add(entry);
+      }
+    }
+
+    return careHistory;
+  }
 
   void addXP(String activity, BuildContext context) {
     addedXP = activityXP[activity] ??
@@ -120,5 +164,76 @@ class UserViewModel extends ChangeNotifier {
       plant.nickname = newNickname;
       notifyListeners();
     }
+  }
+
+  void updateUserPlantLastWatered(String plantId, DateTime date) {
+    final plant = user.plants?.firstWhere(
+      (plant) => plant.id == plantId,
+      orElse: () => null as dynamic, // workaround for null safety
+    );
+    if (plant != null) {
+      plant.lastWatered = date;
+      notifyListeners();
+    }
+  }
+
+  Future<void> checkIfUserGetBadgeForActivity(
+      String activity, BuildContext context) async {
+    for (final cond in badgeConditions) {
+      if ((cond.activity == activity || cond.activity == 'any') &&
+          cond.condition(this)) {
+        await _checkAndAddBadge(cond.badgeId, context);
+      }
+    }
+  }
+
+  Future<void> _checkAndAddBadge(String badgeId, BuildContext context) async {
+    // Check if the user already has the badge
+    final hasBadge =
+        user.badges?.any((badge) => badge.badge?.id == badgeId) ?? false;
+
+    //TODO: BADGES ID VERGLEICH STIMMT NICHT; ES WIRD IMMER HINZUGEFÜGT
+    if (!hasBadge && allBadges.containsKey(badgeId)) {
+      String title = allBadges[badgeId]!.name;
+      String message =
+          allBadges[badgeId]!.description; // Description of the badge
+      String image = allBadges[badgeId]!.imageUrl; // Path to the level up image
+
+      // If not, add the badge to the user's badges
+      final newBadge = UserBadge(
+          id: ((user.badges!.length + 1).toString()),
+          badge: allBadges[badgeId]!,
+          earnedAt: DateTime.now());
+      user.badges?.add(newBadge);
+
+      await showDialog(
+        context: context,
+        builder: (context) => CustomDialog(
+          imagePath: image,
+          title: title,
+          content: message,
+          onConfirm: () => Navigator.of(context).pop(),
+        ),
+      );
+
+      // Alle Badges in der Konsole ausgeben:
+      if (user.badges != null) {
+        for (var badge in user.badges!) {
+          print(
+              'Badge: ${badge.badge?.name} (ID: ${badge.id}), Earned at: ${badge.earnedAt}');
+        }
+      }
+      notifyListeners(); // Notify listeners to update the UI
+    }
+  }
+
+  bool hasEveryPlantCareEntrys() {
+    for (var plant in user.plants ?? []) {
+      if (plant.careHistory == null || plant.careHistory!.isEmpty) {
+        return false; // If any plant has no care history, return false
+      }
+    }
+
+    return true; // All plants have care entries
   }
 }

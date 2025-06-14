@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
+import 'package:plantagotchi/views/skin_view.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/bottom_modal.dart';
 import 'package:plantagotchi/widgets/caretask_checkbox.dart';
@@ -66,6 +67,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
           result['date'],
         );
         userViewModel.addXP(result['careType'], context);
+        userViewModel.checkIfUserGetBadgeForActivity(
+            result['careType'], context);
         startPageViewModel.triggerXPAnimation();
       }
     }
@@ -92,6 +95,31 @@ class _PlantSwipeState extends State<PlantSwipe> {
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
+                    Positioned(
+                      left: 280,
+                      bottom: 120,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: colors.primary,
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.dry_cleaning,
+                              size: 32, color: colors.onPrimary),
+                          onPressed: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => SkinView(
+                                  plant: plant.plantTemplate,
+                                  userPlant: plant,
+                                ),
+                              ),
+                            );
+                            // startPageViewModel.showPlantDetails(plant);
+                          },
+                        ),
+                      ),
+                    ),
                     // Left arrow
                     Positioned(
                       left: 0,
@@ -178,9 +206,11 @@ class _PlantSwipeState extends State<PlantSwipe> {
                       children: [
                         Expanded(
                           child: Center(
-                            child: Text('Pflegeaufgaben für ${plant.nickname}',
-                                style: fontstyle.bodyMedium),
-                          ),
+                              child: Text(
+                            'Pflegeaufgaben für ${plant.nickname}',
+                            style: fontstyle.bodyMedium,
+                            textAlign: TextAlign.center,
+                          )),
                         ),
                       ],
                     ),

@@ -175,7 +175,21 @@ class _StartpageState extends State<Startpage> {
               ],
             ),
           ),
-          Expanded(child: PlantSwipe(plants: user.plants ?? [])),
+          if (user.plants == null || user.plants!.isEmpty)
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text(
+                    'Du hast noch keine Pflanzen! Füge welche hinzu, um sie zu pflegen.',
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            )
+          else
+            Expanded(child: PlantSwipe(plants: user.plants ?? [])),
         ],
       ),
     );

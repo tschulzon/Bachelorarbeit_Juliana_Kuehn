@@ -1,5 +1,6 @@
 import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/plant_template.dart';
+import 'package:plantagotchi/models/skin_item.dart';
 
 class UserPlants {
   String? id;
@@ -11,6 +12,10 @@ class UserPlants {
   DateTime? dateAdded;
   String? location;
   List<CareEntry>? careHistory;
+  DateTime? lastWatered;
+  DateTime? lastFertilized;
+  List<SkinItem>? ownedSkins;
+  String? currentSkin;
 
   UserPlants({
     this.id,
@@ -22,7 +27,26 @@ class UserPlants {
     this.dateAdded,
     this.location,
     this.careHistory,
-  });
+    this.lastWatered,
+    this.lastFertilized,
+    this.ownedSkins,
+    String? currentSkin,
+  }) {
+    // Ensure ownedSkins is initialized to an empty list if null
+    if (ownedSkins == null || ownedSkins!.isEmpty) {
+      ownedSkins = [
+        SkinItem(
+          id: 'skin-0',
+          name: 'Standard',
+          price: 0,
+          skinUrl: plantTemplate?.avatarUrl ?? '',
+        ),
+      ];
+    }
+    // If currentSkin is null, set it to the first skin in ownedSkins or an empty string
+    this.currentSkin = currentSkin ??
+        (ownedSkins?.isNotEmpty == true ? ownedSkins![0].id : '');
+  }
 
   Map<String, dynamic> toJson() {
     return {
@@ -35,6 +59,10 @@ class UserPlants {
       'dateAdded': dateAdded?.toIso8601String(),
       'location': location,
       'careHistory': careHistory ?? [],
+      'lastWatered': lastWatered?.toIso8601String(),
+      'lastFertilized': lastFertilized?.toIso8601String(),
+      'ownedSkins': ownedSkins?.map((skin) => skin.toJson()).toList(),
+      'currentSkin': currentSkin,
     };
   }
 
@@ -56,6 +84,16 @@ class UserPlants {
       careHistory: (json['careHistory'] as List?)
           ?.map((entry) => CareEntry.fromJson(entry))
           .toList(),
+      lastWatered: json['lastWatered'] != null
+          ? DateTime.tryParse(json['lastWatered'])
+          : null,
+      lastFertilized: json['lastFertilized'] != null
+          ? DateTime.tryParse(json['lastFertilized'])
+          : null,
+      ownedSkins: (json['ownedSkins'] as List?)
+          ?.map((skin) => SkinItem.fromJson(skin))
+          .toList(),
+      currentSkin: json['currentSkin'],
     );
   }
 
@@ -66,6 +104,14 @@ class UserPlants {
         .toList()
       ..sort((a, b) => b.date!.compareTo(a.date!)); // Newest Entry first
 
-    return entriesOfType.isNotEmpty ? entriesOfType.first.date : null;
+    if (entriesOfType.isNotEmpty) {
+      return entriesOfType.first.date;
+    }
+
+    if (entriesOfType.isEmpty && careType == 'watering') {
+      return lastWatered;
+    } else if (entriesOfType.isEmpty && careType == 'fertilizing') {
+      return lastFertilized;
+    }
   }
 }

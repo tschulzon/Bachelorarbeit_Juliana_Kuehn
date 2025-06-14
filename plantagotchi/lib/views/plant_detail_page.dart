@@ -52,11 +52,25 @@ class PlantDetailPage extends StatelessWidget {
         colors: colors,
         viewModel: viewModel);
 
-    void openBottomModalSheet(BuildContext context, UserPlants plant) {
-      showModalBottomSheet<void>(
+    Future<void> openBottomModalSheet(
+        BuildContext context, UserPlants plant) async {
+      final result = await showModalBottomSheet<Map<String, dynamic>>(
         context: context,
         builder: (context) => BottomModal(plant: plant),
       );
+
+      // Add the care type entry and update XP if result is not null from the modal
+      if (result != null) {
+        viewModel.addCareTypeEntry(
+          plant,
+          result['careType'],
+          result['date'],
+        );
+        userViewModel.addXP(result['careType'], context);
+        userViewModel.checkIfUserGetBadgeForActivity(
+            result['careType'], context);
+        viewModel.triggerXPAnimation();
+      }
     }
 
     print("CURRENT PLANT: $plant");
