@@ -130,7 +130,8 @@ class StartpageViewModel extends ChangeNotifier {
   }
 
   // Add a care type entry to the user's plant
-  void addCareTypeEntry(UserPlants userPlant, String careType, DateTime? date) {
+  void addCareTypeEntry(UserPlants userPlant, String careType, DateTime? date,
+      String? note, String? photo) {
     DateTime now = DateTime.now();
     int countUserPlants = userPlants.length;
 
@@ -141,6 +142,8 @@ class StartpageViewModel extends ChangeNotifier {
       userPlantId: userPlant.id,
       type: careType,
       date: date ?? now,
+      notes: note,
+      photo: photo,
     );
 
     userPlant.careHistory ??= [];

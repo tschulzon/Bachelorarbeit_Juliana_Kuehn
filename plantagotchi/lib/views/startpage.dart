@@ -89,7 +89,10 @@ class _StartpageState extends State<Startpage> {
                 Center(
                   child: Text(
                     '${user.xp} Erfahrungspunkte', // Top text
-                    style: fontstyle.titleMedium,
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w300,
+                        color: colors.primary),
                   ),
                 ),
                 const SizedBox(height: 5),

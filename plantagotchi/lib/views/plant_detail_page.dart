@@ -65,6 +65,8 @@ class PlantDetailPage extends StatelessWidget {
           plant,
           result['careType'],
           result['date'],
+          result['note'],
+          result['photo'],
         );
         userViewModel.addXP(result['careType'], context);
         userViewModel.checkIfUserGetBadgeForActivity(
@@ -98,8 +100,10 @@ class PlantDetailPage extends StatelessWidget {
                   child: GestureDetector(
                     onTap: () => Navigator.of(context).pop(),
                     child: CircleAvatar(
+                      radius: 20,
                       backgroundColor: colors.primary,
-                      child: Icon(Icons.arrow_back, color: colors.onPrimary),
+                      child: Icon(Icons.chevron_left,
+                          size: 30, color: colors.onPrimary),
                     ),
                   ),
                 ),

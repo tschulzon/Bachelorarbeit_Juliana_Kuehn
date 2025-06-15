@@ -19,7 +19,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     "In welchem Raum werde ich wohnen?",
     "Hast du mich bereits gegossen? Falls ja, wann?",
     "Und auch bereits gedüngt?",
-    "Danke für's Aufnehmen! Ich freue mich!"
+    "Danke für's Aufnehmen! Ich freue mich! 💚"
   ];
   final Map<String, dynamic> userAnswers = {};
   bool _chatFinished = false;

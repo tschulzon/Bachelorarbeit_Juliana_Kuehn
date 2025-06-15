@@ -44,6 +44,7 @@ dependencies:
   linear_progress_bar: ^1.2.0
   timelines_plus: ^1.0.6
   scrollable_positioned_list: ^0.3.8
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,30 @@ flutter:
   assets:
     - assets/images/
     - assets/images/avatars/
+    - assets/images/avatars/bogenhanf/
+    - assets/images/avatars/bogenhanf/default/
+    - assets/images/avatars/bogenhanf/skin-summer/
+    - assets/images/avatars/bogenhanf/skin-winter/
+    - assets/images/avatars/chrysanthemen/
+    - assets/images/avatars/chrysanthemen/default/
+    - assets/images/avatars/chrysanthemen/skin-summer/
+    - assets/images/avatars/chrysanthemen/skin-winter/
+    - assets/images/avatars/elefantenfuss/
+    - assets/images/avatars/elefantenfuss/default/
+    - assets/images/avatars/elefantenfuss/skin-summer/
+    - assets/images/avatars/elefantenfuss/skin-winter/
+    - assets/images/avatars/kaktus/
+    - assets/images/avatars/kaktus/default/
+    - assets/images/avatars/kaktus/skin-summer/
+    - assets/images/avatars/kaktus/skin-winter/
+    - assets/images/avatars/monstera/
+    - assets/images/avatars/monstera/default/
+    - assets/images/avatars/monstera/skin-summer/
+    - assets/images/avatars/monstera/skin-winter/
+    - assets/images/avatars/orchidee/
+    - assets/images/avatars/orchidee/default/
+    - assets/images/avatars/orchidee/skin-summer/
+    - assets/images/avatars/orchidee/skin-winter/
     - assets/images/plants/
     - assets/images/badges/
     - assets/data/plantdata.json
@@ -92,17 +117,52 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+  fonts:
+    - family: Raleway
+      fonts:
+        - asset: assets/fonts/Raleway-Regular.ttf
+        - asset: assets/fonts/Raleway-Bold.ttf
+          weight: 400
+        - asset: assets/fonts/Raleway-Italic.ttf
+          style: italic
+        - asset: assets/fonts/Raleway-BoldItalic.ttf
+          weight: 700
+        - asset: assets/fonts/Raleway-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Raleway-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/Raleway-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Raleway-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/Raleway-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Raleway-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/Raleway-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Raleway-ExtraBoldItalic.ttf
+          weight: 800
+          style: italic
+        - asset: assets/fonts/Raleway-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Raleway-BlackItalic.ttf
+          weight: 900
+          style: italic
+        - asset: assets/fonts/Raleway-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Raleway-ThinItalic.ttf
+          weight: 100
+          style: italic
+        - asset: assets/fonts/Raleway-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Raleway-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+          
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

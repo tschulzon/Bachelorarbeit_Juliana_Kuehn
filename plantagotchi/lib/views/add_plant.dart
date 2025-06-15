@@ -123,7 +123,10 @@ class _AddPlantState extends State<AddPlant> {
                 ElevatedButton.icon(
                   onPressed: testDebugPrint,
                   icon: Icon(Icons.camera_alt, color: colors.onPrimary),
-                  label: const Text("Scannen", style: TextStyle(fontSize: 12)),
+                  label: const Text(
+                    "Scannen",
+                    style: TextStyle(fontSize: 12),
+                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: colors.primary,
                     foregroundColor: colors.onPrimary,

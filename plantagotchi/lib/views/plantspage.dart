@@ -337,7 +337,7 @@ class _PlantspageState extends State<Plantspage> {
                                               style: const TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.w500,
-                                                color: Color(0xFF5A7302),
+                                                color: Color(0xFF3a5a40),
                                               ),
                                             ),
                                           ],
@@ -357,7 +357,7 @@ class _PlantspageState extends State<Plantspage> {
                                                 style: const TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
-                                                  color: Color(0xFF5A7302),
+                                                  color: Color(0xFF3a5a40),
                                                 ),
                                               )
                                             else
@@ -366,7 +366,7 @@ class _PlantspageState extends State<Plantspage> {
                                                 style: const TextStyle(
                                                   fontSize: 12,
                                                   fontWeight: FontWeight.w500,
-                                                  color: Color(0xFF5A7302),
+                                                  color: Color(0xFF3a5a40),
                                                 ),
                                               ),
                                           ],

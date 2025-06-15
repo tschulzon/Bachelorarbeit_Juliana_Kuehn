@@ -11,6 +11,7 @@ import 'package:plantagotchi/widgets/app_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -63,74 +64,74 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
-          primary: Color(0xFFD9C55F),
-          onPrimary: Color(0xFF5A7302),
-          secondary: Color(0xFFD2D90B),
+          primary: Color(0xFFA3B18A),
+          onPrimary: Color(0xFF3a5a40),
+          secondary: Color(0xFF88D886),
           onSecondary: Colors.black,
           error: Color(0xFFF44336),
           onError: Colors.white,
-          surface: Color(0xFF5A7302),
+          surface: Color(0xFF3A5A40),
           onSurface: Colors.black,
         ),
         useMaterial3: true,
-        fontFamily: 'Roboto',
+        fontFamily: "Raleway",
         textTheme: const TextTheme(
           headlineLarge: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w400,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           bodyMedium: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           labelLarge: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           labelMedium: TextStyle(
             fontSize: 14,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           labelSmall: TextStyle(
             fontSize: 12,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           bodySmall: TextStyle(
             fontSize: 10,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           titleMedium: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFFD9C55F),
+            color: Color(0xFFA3B18A),
           ),
           titleLarge: TextStyle(
             fontSize: 16,
-            color: Color(0xFF5A7302),
+            color: Color(0xFF3a5a40),
           ),
           titleSmall: TextStyle(
-            fontSize: 14,
+            fontSize: 13,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w300,
-            color: Color(0xFF5A7302),
+            color: Color(0xFF527A51),
           ),
           displayLarge: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF5A7302),
+            color: Color(0xFF3a5a40),
           ),
           displayMedium: TextStyle(
-            fontSize: 18,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF5A7302),
+            color: Color(0xFF3a5a40),
           ),
           displaySmall: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w500,
-            color: Color(0xFF5A7302),
+            color: Color(0xFF3a5a40),
           ),
         ),
       ),

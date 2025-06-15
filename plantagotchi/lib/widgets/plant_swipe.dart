@@ -29,11 +29,23 @@ class _PlantSwipeState extends State<PlantSwipe> {
     final hungryPlant = viewModel.isCareDue(plant, 'fertilizing');
 
     if (thirstyPlant) {
-      return plant.plantTemplate?.avatarUrlThirsty!;
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinThirsty
+          : plant.plantTemplate?.avatarUrlThirsty;
     } else if (hungryPlant) {
-      return plant.plantTemplate?.avatarUrlHungry!;
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinHungry
+          : plant.plantTemplate?.avatarUrlHungry;
     } else {
-      return plant.plantTemplate?.avatarUrl;
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinUrl
+          : plant.plantTemplate?.avatarUrl;
     }
   }
 
@@ -65,6 +77,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
           plant,
           result['careType'],
           result['date'],
+          result['note'],
+          result['photo'],
         );
         userViewModel.addXP(result['careType'], context);
         userViewModel.checkIfUserGetBadgeForActivity(
@@ -99,13 +113,15 @@ class _PlantSwipeState extends State<PlantSwipe> {
                       left: 280,
                       bottom: 120,
                       child: Container(
+                        height: 35,
+                        width: 35,
                         decoration: BoxDecoration(
                           color: colors.primary,
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: IconButton(
                           icon: Icon(Icons.dry_cleaning,
-                              size: 32, color: colors.onPrimary),
+                              size: 21, color: colors.onPrimary),
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -208,12 +224,17 @@ class _PlantSwipeState extends State<PlantSwipe> {
                           child: Center(
                               child: Text(
                             'Pflegeaufgaben für ${plant.nickname}',
-                            style: fontstyle.bodyMedium,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                              color: colors.primary,
+                            ),
                             textAlign: TextAlign.center,
                           )),
                         ),
                       ],
                     ),
+                    const SizedBox(height: 10),
                     CaretaskCheckbox(
                         plant: plant, viewModel: startPageViewModel),
                     const SizedBox(height: 5),

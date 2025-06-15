@@ -165,13 +165,25 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                           ],
                         ),
                       );
-                      userViewModel.addXP('newPlant', context);
+                      await userViewModel.addXP('newPlant', context);
 
                       await userViewModel.checkIfUserGetBadgeForActivity(
                           'newPlant', context);
 
                       Navigator.of(context, rootNavigator: true)
                           .popUntil((route) => route.isFirst);
+
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text(
+                          '${_plantChatAnswers!['nickname'] ?? widget.plant['commonName']} erfolgreich hinzugefügt!',
+                          style: TextStyle(
+                            color: colors.onPrimary,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                          ),
+                        ),
+                        backgroundColor: colors.secondary,
+                      ));
 
                       nav.changeTab(0);
                     },

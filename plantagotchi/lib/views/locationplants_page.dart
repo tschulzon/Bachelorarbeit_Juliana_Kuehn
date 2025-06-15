@@ -22,6 +22,16 @@ class LocationplantsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(location, style: fontstyle.displayMedium),
+        leading: Padding(
+          padding: const EdgeInsets.all(14.0),
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: CircleAvatar(
+              backgroundColor: colors.primary,
+              child: Icon(Icons.chevron_left, color: colors.onPrimary),
+            ),
+          ),
+        ),
       ),
       body: Column(
         children: [
@@ -95,7 +105,7 @@ class LocationplantsPage extends StatelessWidget {
                                         style: const TextStyle(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
-                                          color: Color(0xFF5A7302),
+                                          color: Color(0xFF3a5a40),
                                         ),
                                       ),
                                     ],
@@ -115,7 +125,7 @@ class LocationplantsPage extends StatelessWidget {
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF5A7302),
+                                            color: Color(0xFF3a5a40),
                                           ),
                                         )
                                       else
@@ -124,7 +134,7 @@ class LocationplantsPage extends StatelessWidget {
                                           style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500,
-                                            color: Color(0xFF5A7302),
+                                            color: Color(0xFF3a5a40),
                                           ),
                                         ),
                                     ],

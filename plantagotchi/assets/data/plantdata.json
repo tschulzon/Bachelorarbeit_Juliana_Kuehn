@@ -38,21 +38,25 @@
     "isToxic": false,
     "petFriendly": false,
     "imageUrl": "assets/images/plants/Kaktus-real.jpg",
-    "avatarUrl": "assets/images/avatars/Kaktus-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Kaktus-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Kaktus-hungry.png",
+    "avatarUrl": "assets/images/avatars/kaktus/default/Kaktus-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/kaktus/default/Kaktus-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/kaktus/default/Kaktus-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   },
@@ -95,21 +99,25 @@
     "isToxic": true,
     "petFriendly": false,
     "imageUrl": "assets/images/plants/Monstera-real.jpg",
-    "avatarUrl": "assets/images/avatars/Monstera-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Monstera-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Monstera-hungry.png",
+    "avatarUrl": "assets/images/avatars/monstera/default/Monstera-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/monstera/default/Monstera-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/monstera/default/Monstera-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   },
@@ -152,21 +160,25 @@
     "isToxic": false,
     "petFriendly": false,
     "imageUrl": "assets/images/plants/Chrysanthemen-real.jpg",
-    "avatarUrl": "assets/images/avatars/Chrysanthemen-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Chrysanthemen-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Chrysanthemen-hungry.png",
+    "avatarUrl": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   },
@@ -209,21 +221,25 @@
     "isToxic": false,
     "petFriendly": true,
     "imageUrl": "assets/images/plants/Orchidee-real.jpg",
-    "avatarUrl": "assets/images/avatars/Orchidee-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Orchidee-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Orchidee-hungry.png",
+    "avatarUrl": "assets/images/avatars/orchidee/default/Orchidee-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/orchidee/default/Orchidee-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/orchidee/default/Orchidee-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   },
@@ -266,21 +282,25 @@
     "isToxic": true,
     "petFriendly": false,
     "imageUrl": "assets/images/plants/Bogenhanf-real.jpg",
-    "avatarUrl": "assets/images/avatars/Bogenhanf-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Bogenhanf-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Bogenhanf-hungry.png",
+    "avatarUrl": "assets/images/avatars/bogenhanf/default/Bogenhanf-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/bogenhanf/default/Bogenhanf-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/bogenhanf/default/Bogenhanf-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   },
@@ -323,21 +343,25 @@
     "isToxic": false,
     "petFriendly": false,
     "imageUrl": "assets/images/plants/Elefantenfuss-real.jpg",
-    "avatarUrl": "assets/images/avatars/Elefantenfuss-default.png",
-    "avatarUrlThirsty": "assets/images/avatars/Elefantenfuss-thirsty.png",
-    "avatarUrlHungry": "assets/images/avatars/Elefantenfuss-hungry.png",
+    "avatarUrl": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-default.png",
+    "avatarUrlThirsty": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-thirsty.png",
+    "avatarUrlHungry": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-hungry.png",
     "avatarSkins": [
         {
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-1.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/Kaktus-Skin-2.png"
+            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
   }

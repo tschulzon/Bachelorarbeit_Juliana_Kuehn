@@ -40,6 +40,8 @@ class UserPlants {
           name: 'Standard',
           price: 0,
           skinUrl: plantTemplate?.avatarUrl ?? '',
+          skinThirsty: plantTemplate?.avatarUrlThirsty ?? '',
+          skinHungry: plantTemplate?.avatarUrlHungry ?? '',
         ),
       ];
     }

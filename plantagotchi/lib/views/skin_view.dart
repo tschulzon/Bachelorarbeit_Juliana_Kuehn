@@ -17,11 +17,21 @@ class SkinView extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
+    final userViewModel = Provider.of<UserViewModel>(context, listen: false);
 
     void addSkinToOwnedSkins(SkinItem skin) {
       if (userPlant != null) {
         userPlant!.ownedSkins!.add(skin);
       }
+    }
+
+    void setCurrentSkin(SkinItem skin) {
+      if (userPlant != null) {
+        userPlant!.currentSkin = skin.id;
+      }
+      userViewModel.updateCurrentPlantSkin(userPlant!, skin.id, context);
+
+      print("Current skin set to: ${userPlant!.currentSkin}");
     }
 
     final PageController _controller = PageController();
@@ -152,26 +162,32 @@ class SkinView extends StatelessWidget {
                                       user.coins = user.coins! - skin.price,
                                       Navigator.of(context).pop(),
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Skin "${skin.name}" erfolgreich gekauft!',
-                                            style: fontstyle.bodyMedium,
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          'Skin "${skin.name}" erfolgreich gekauft!',
+                                          style: TextStyle(
+                                            color: colors.onPrimary,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
                                           ),
                                         ),
-                                      ),
+                                        backgroundColor: colors.secondary,
+                                      )),
                                     }
                                   else
                                     {
                                       ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            'Nicht genügend Münzen für Skin "${skin.name}"!',
-                                            style: fontstyle.bodyMedium,
+                                          .showSnackBar(SnackBar(
+                                        content: Text(
+                                          'Nicht genügend Münzen für Skin "${skin.name}"!',
+                                          style: TextStyle(
+                                            color: colors.onPrimary,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 16,
                                           ),
                                         ),
-                                      ),
+                                        backgroundColor: colors.secondary,
+                                      )),
                                     },
                                 },
                             greenToYellow: false),
@@ -203,12 +219,31 @@ class SkinView extends StatelessWidget {
                       itemCount: userPlant!.ownedSkins?.length ?? 0,
                       itemBuilder: (context, index) {
                         final skin = userPlant!.ownedSkins![index];
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Image.asset(
-                            skin.skinUrl,
-                            height: 50,
-                            width: 50,
+                        return InkWell(
+                          borderRadius: BorderRadius.circular(12.0),
+                          onTap: () {
+                            setCurrentSkin(skin);
+                          },
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 12.0),
+                            // TODO: Klickbar machen um CurrentSkin zu setzen!
+                            child: (userPlant?.currentSkin == skin.id)
+                                ? Badge(
+                                    backgroundColor: colors.primary,
+                                    label: Icon(Icons.check,
+                                        size: 10, color: colors.onPrimary),
+                                    child: Image.asset(
+                                      skin.skinUrl,
+                                      height: 65,
+                                      width: 65,
+                                    ),
+                                  )
+                                : Image.asset(
+                                    skin.skinUrl,
+                                    height: 50,
+                                    width: 50,
+                                  ),
                           ),
                         );
                       },

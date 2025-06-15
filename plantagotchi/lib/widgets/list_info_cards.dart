@@ -40,7 +40,7 @@ List<Widget> buildInfoCards({
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF5A7302),
+                      color: Color(0xFF3a5a40),
                     ),
                   ),
                 ),
@@ -98,7 +98,7 @@ List<Widget> buildInfoCards({
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF5A7302),
+                                color: Color(0xFF3a5a40),
                               ),
                             ),
                           ),
@@ -119,7 +119,7 @@ List<Widget> buildInfoCards({
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF5A7302),
+                                color: Color(0xFF3a5a40),
                               ),
                             ),
                           ),
@@ -141,7 +141,7 @@ List<Widget> buildInfoCards({
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF5A7302),
+                                color: Color(0xFF3a5a40),
                               ),
                             ),
                           ),
@@ -161,7 +161,7 @@ List<Widget> buildInfoCards({
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: Color(0xFF5A7302),
+                                color: Color(0xFF3a5a40),
                               ),
                             ),
                           ),
@@ -223,7 +223,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                       Text(
@@ -231,7 +231,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       )
                     ],
@@ -277,7 +277,7 @@ List<Widget> buildInfoCards({
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF5A7302),
+                      color: Color(0xFF3a5a40),
                     ),
                   ),
                 ),
@@ -324,7 +324,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                       Text(
@@ -332,7 +332,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       )
                     ],
@@ -381,7 +381,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                       Text(
@@ -389,7 +389,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       )
                     ],
@@ -435,7 +435,7 @@ List<Widget> buildInfoCards({
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF5A7302),
+                      color: Color(0xFF3a5a40),
                     ),
                   ),
                 )
@@ -482,7 +482,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                       Text(
@@ -490,7 +490,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       )
                     ],
@@ -536,7 +536,7 @@ List<Widget> buildInfoCards({
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF5A7302),
+                      color: Color(0xFF3a5a40),
                     ),
                   ),
                 )
@@ -580,7 +580,7 @@ List<Widget> buildInfoCards({
                     style: const TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
-                      color: Color(0xFF5A7302),
+                      color: Color(0xFF3a5a40),
                     ),
                   ),
                 )
@@ -627,7 +627,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                       Text(
@@ -637,7 +637,7 @@ List<Widget> buildInfoCards({
                         style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
-                          color: Color(0xFF5A7302),
+                          color: Color(0xFF3a5a40),
                         ),
                       ),
                     ],

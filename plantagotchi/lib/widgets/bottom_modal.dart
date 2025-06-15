@@ -30,7 +30,28 @@ class _BottomModalState extends State<BottomModal> {
         initialDate: now,
         firstDate: DateTime(now.year - 2),
         lastDate: now,
+        initialEntryMode: DatePickerEntryMode.calendarOnly,
         locale: const Locale('de', 'DE'),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: ColorScheme.dark(
+                primary: colors.primary,
+                onPrimary: colors.onPrimary,
+                onSurface: colors.primary,
+                secondary: colors.onPrimary,
+                onSecondary: colors.onPrimary,
+                primaryContainer: colors.onPrimary,
+                surface: colors.onPrimary,
+              ),
+              textTheme: Theme.of(context).textTheme.copyWith(
+                    headlineMedium: TextStyle(color: colors.primary),
+                    titleLarge: TextStyle(color: colors.primary),
+                  ),
+            ),
+            child: child!,
+          );
+        },
       );
       if (picked != null) {
         Navigator.of(context).pop({'careType': careType, 'date': picked});

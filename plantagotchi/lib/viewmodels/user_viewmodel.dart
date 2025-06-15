@@ -7,6 +7,7 @@ import 'package:plantagotchi/models/badge_conditions.dart';
 import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/models/userbadge.dart';
+import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
 import 'package:plantagotchi/widgets/custom_dialog.dart';
 
@@ -85,7 +86,7 @@ class UserViewModel extends ChangeNotifier {
     return careHistory;
   }
 
-  void addXP(String activity, BuildContext context) {
+  Future<void> addXP(String activity, BuildContext context) async {
     addedXP = activityXP[activity] ??
         0; // Get the XP for the activity, default to 0 if not found
 
@@ -98,14 +99,24 @@ class UserViewModel extends ChangeNotifier {
           "Glückwunsch!\n\n  Deine Pflanzen danken es dir! Weiter so!";
       String image = "assets/images/level-up.png"; // Path to the level up image
 
-      showDialog(
+      await showGeneralDialog(
         context: context,
-        builder: (context) => CustomDialog(
+        transitionDuration: const Duration(milliseconds: 800),
+        pageBuilder: (context, animation, secondaryAnimation) => CustomDialog(
           imagePath: image,
           title: title,
           content: message,
           onConfirm: () => Navigator.of(context).pop(),
         ),
+        transitionBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOutCubic, // Stärkere Kurve für mehr "Fade"
+            ),
+            child: child,
+          );
+        },
       );
 
       user.level =
@@ -166,15 +177,10 @@ class UserViewModel extends ChangeNotifier {
     }
   }
 
-  void updateUserPlantLastWatered(String plantId, DateTime date) {
-    final plant = user.plants?.firstWhere(
-      (plant) => plant.id == plantId,
-      orElse: () => null as dynamic, // workaround for null safety
-    );
-    if (plant != null) {
-      plant.lastWatered = date;
-      notifyListeners();
-    }
+  void updateCurrentPlantSkin(
+      UserPlants plant, String newSkinId, BuildContext context) {
+    plant.currentSkin = newSkinId;
+    notifyListeners();
   }
 
   Future<void> checkIfUserGetBadgeForActivity(
@@ -206,14 +212,24 @@ class UserViewModel extends ChangeNotifier {
           earnedAt: DateTime.now());
       user.badges?.add(newBadge);
 
-      await showDialog(
+      await showGeneralDialog(
         context: context,
-        builder: (context) => CustomDialog(
+        transitionDuration: const Duration(milliseconds: 500),
+        pageBuilder: (context, animation, secondaryAnimation) => CustomDialog(
           imagePath: image,
           title: title,
           content: message,
           onConfirm: () => Navigator.of(context).pop(),
         ),
+        transitionBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: CurvedAnimation(
+              parent: animation,
+              curve: Curves.easeInOutCubic,
+            ),
+            child: child,
+          );
+        },
       );
 
       // Alle Badges in der Konsole ausgeben:

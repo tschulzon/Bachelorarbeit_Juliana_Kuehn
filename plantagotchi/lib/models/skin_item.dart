@@ -3,12 +3,16 @@ class SkinItem {
   final String name;
   final int price;
   final String skinUrl;
+  final String? skinThirsty;
+  final String? skinHungry;
 
   SkinItem({
     required this.id,
     required this.name,
     required this.price,
     required this.skinUrl,
+    this.skinThirsty,
+    this.skinHungry,
   });
 
   factory SkinItem.fromJson(Map<String, dynamic> json) {
@@ -17,6 +21,8 @@ class SkinItem {
       name: json['name'] as String,
       price: (json['price'] as num).toInt(),
       skinUrl: json['skinUrl'] as String,
+      skinThirsty: json['skinThirsty'] as String,
+      skinHungry: json['skinHungry'] as String,
     );
   }
 
@@ -26,6 +32,8 @@ class SkinItem {
       'name': name,
       'price': price,
       'skinUrl': skinUrl,
+      'skinThirsty': skinThirsty,
+      'skinHungry': skinHungry,
     };
   }
 }
