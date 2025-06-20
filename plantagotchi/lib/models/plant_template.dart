@@ -27,6 +27,7 @@ class PlantTemplate {
   String? avatarUrl;
   String? avatarUrlThirsty;
   String? avatarUrlHungry;
+  String? avatarUrlRepotting;
   List<SkinItem> avatarSkins;
 
   PlantTemplate({
@@ -56,6 +57,7 @@ class PlantTemplate {
     required this.avatarUrl,
     required this.avatarUrlThirsty,
     required this.avatarUrlHungry,
+    required this.avatarUrlRepotting,
     required this.avatarSkins,
   });
 
@@ -89,6 +91,7 @@ class PlantTemplate {
       'avatarUrl': avatarUrl,
       'avatarUrlThirsty': avatarUrlThirsty,
       'avatarUrlHungry': avatarUrlHungry,
+      'avatarUrlRepotting': avatarUrlRepotting,
       'avatarSkins': avatarSkins,
     };
   }
@@ -128,6 +131,7 @@ class PlantTemplate {
       avatarUrl: json['avatarUrl'] ?? "-",
       avatarUrlThirsty: json['avatarUrlThirsty'] ?? "-",
       avatarUrlHungry: json['avatarUrlHungry'] ?? "-",
+      avatarUrlRepotting: json['avatarUrlRepotting'] ?? "-",
       avatarSkins: (json['avatarSkins'] as List<dynamic>?)
               ?.map((item) => SkinItem.fromJson(item as Map<String, dynamic>))
               .toList() ??

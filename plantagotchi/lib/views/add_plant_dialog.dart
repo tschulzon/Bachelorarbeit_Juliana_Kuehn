@@ -31,20 +31,6 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     final nav = Provider.of<NavigationViewmodel>(context);
 
-    DateTime parseGermanDate(String? input) {
-      if (input == null || input.isEmpty) return DateTime.now();
-      try {
-        final parts = input.split('.');
-        if (parts.length == 3) {
-          final day = int.parse(parts[0]);
-          final month = int.parse(parts[1]);
-          final year = int.parse(parts[2]);
-          return DateTime(year, month, day);
-        }
-      } catch (_) {}
-      return DateTime.now();
-    }
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -133,37 +119,9 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                     label: const Text('Bestätigen',
                         style: TextStyle(fontSize: 14)),
                     onPressed: () async {
-                      user.plants?.add(
-                        UserPlants(
-                          id: "plant-${user.plants!.length + 1}",
-                          userId: user.id,
-                          plantTemplate: PlantTemplate.fromJson(widget.plant),
-                          nickname: _plantChatAnswers!['nickname'] ??
-                              widget.plant['commonName'],
-                          plantImage: widget.plant['avatarUrl'],
-                          avatarSkin: _plantChatAnswers!['avatarSkin'] ?? '',
-                          dateAdded: DateTime.now(),
-                          location:
-                              _plantChatAnswers!['location'] ?? 'Keine Angabe',
-                          careHistory: [
-                            if (_plantChatAnswers!['lastWatered'] != null)
-                              CareEntry(
-                                id: 'care-${user.plants!.length + 1}',
-                                userPlantId: 'plant-${user.plants!.length + 1}',
-                                type: 'watering',
-                                date: parseGermanDate(
-                                    _plantChatAnswers!['lastWatered']),
-                              ),
-                            if (_plantChatAnswers!['lastFertilized'] != null)
-                              CareEntry(
-                                id: 'care-${user.plants!.length + 1}',
-                                userPlantId: 'plant-${user.plants!.length + 1}',
-                                type: 'fertilizing',
-                                date: parseGermanDate(
-                                    _plantChatAnswers!['lastFertilized']),
-                              ),
-                          ],
-                        ),
+                      userViewModel.addPlant(
+                        widget.plant,
+                        _plantChatAnswers,
                       );
                       await userViewModel.addXP('newPlant', context);
 

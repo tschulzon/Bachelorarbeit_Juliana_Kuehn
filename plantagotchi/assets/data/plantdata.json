@@ -41,6 +41,7 @@
     "avatarUrl": "assets/images/avatars/kaktus/default/Kaktus-default.png",
     "avatarUrlThirsty": "assets/images/avatars/kaktus/default/Kaktus-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/kaktus/default/Kaktus-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/kaktus/default/Kaktus-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",
@@ -102,6 +103,7 @@
     "avatarUrl": "assets/images/avatars/monstera/default/Monstera-default.png",
     "avatarUrlThirsty": "assets/images/avatars/monstera/default/Monstera-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/monstera/default/Monstera-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/monstera/default/Monstera-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",
@@ -163,6 +165,7 @@
     "avatarUrl": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-default.png",
     "avatarUrlThirsty": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/chrysanthemen/default/Chrysanthemen-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",
@@ -224,6 +227,7 @@
     "avatarUrl": "assets/images/avatars/orchidee/default/Orchidee-default.png",
     "avatarUrlThirsty": "assets/images/avatars/orchidee/default/Orchidee-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/orchidee/default/Orchidee-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/orchidee/default/Orchidee-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",
@@ -285,6 +289,7 @@
     "avatarUrl": "assets/images/avatars/bogenhanf/default/Bogenhanf-default.png",
     "avatarUrlThirsty": "assets/images/avatars/bogenhanf/default/Bogenhanf-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/bogenhanf/default/Bogenhanf-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/bogenhanf/default/Bogenhanf-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",
@@ -346,6 +351,7 @@
     "avatarUrl": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-default.png",
     "avatarUrlThirsty": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-thirsty.png",
     "avatarUrlHungry": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-hungry.png",
+    "avatarUrlRepotting": "assets/images/avatars/elefantenfuss/default/Elefantenfuss-repotting.png",
     "avatarSkins": [
         {
             "id": "skin-1",

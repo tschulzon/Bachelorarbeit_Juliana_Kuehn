@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:plantagotchi/models/badge.dart';
 import 'package:plantagotchi/models/badge_conditions.dart';
 import 'package:plantagotchi/models/care_entry.dart';
+import 'package:plantagotchi/models/plant_template.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/models/userbadge.dart';
 import 'package:plantagotchi/models/userplant.dart';
@@ -164,6 +165,53 @@ class UserViewModel extends ChangeNotifier {
     // Implement the saving logic here
     final storage = StorageService();
     await storage.saveUser(user);
+  }
+
+  DateTime parseGermanDate(String? input) {
+    if (input == null || input.isEmpty) return DateTime.now();
+    try {
+      final parts = input.split('.');
+      if (parts.length == 3) {
+        final day = int.parse(parts[0]);
+        final month = int.parse(parts[1]);
+        final year = int.parse(parts[2]);
+        return DateTime(year, month, day);
+      }
+    } catch (_) {}
+    return DateTime.now();
+  }
+
+  void addPlant(Map<String, dynamic> plant, Map<String, dynamic>? answers) {
+    final newPlant = UserPlants(
+      id: "plant-${user.plants!.length + 1}",
+      userId: user.id,
+      plantTemplate: PlantTemplate.fromJson(plant),
+      nickname: answers?['nickname'] ?? plant['commonName'],
+      plantImage: plant['avatarUrl'],
+      avatarSkin: answers?['avatarSkin'] ?? '',
+      dateAdded: DateTime.now(),
+      location: answers?['location'] ?? 'Keine Angabe',
+      careHistory: [
+        if (answers?['lastWatered'] != null)
+          CareEntry(
+            id: 'care-${user.plants!.length + 1}',
+            userPlantId: 'plant-${user.plants!.length + 1}',
+            type: 'watering',
+            date: parseGermanDate(answers?['lastWatered']),
+          ),
+        if (answers?['lastFertilized'] != null)
+          CareEntry(
+            id: 'care-${user.plants!.length + 1}',
+            userPlantId: 'plant-${user.plants!.length + 1}',
+            type: 'fertilizing',
+            date: parseGermanDate(answers?['lastFertilized']),
+          ),
+      ],
+    );
+
+    user.plants?.add(newPlant);
+    saveUser(); // Save the updated user data
+    notifyListeners();
   }
 
   void updateUserPlantNickname(String plantId, String newNickname) {
