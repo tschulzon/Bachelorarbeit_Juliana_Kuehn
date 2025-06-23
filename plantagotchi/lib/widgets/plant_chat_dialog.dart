@@ -56,12 +56,12 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     // flutterTts.setVolume(1.0);
     flutterTts.setSpeechRate(0.5);
 
-    _speakCurrentQuestion();
+    _speakCurrentSentence();
   }
 
   // This function speaks the current question
   // It will use the plant's voice
-  Future<void> _speakCurrentQuestion() async {
+  Future<void> _speakCurrentSentence() async {
     final voice = plantVoices[widget.plantId];
     if (voice != null) {
       await flutterTts.setVoice(voice);
@@ -110,7 +110,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
       controller.clear();
       currentQuestion++;
     });
-    _speakCurrentQuestion();
+    _speakCurrentSentence();
   }
 
   // Set the answer for the date picker question
@@ -138,7 +138,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
 
         currentQuestion++;
       });
-      _speakCurrentQuestion();
+      _speakCurrentSentence();
     }
   }
 
@@ -155,7 +155,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
       }
       currentQuestion++;
     });
-    _speakCurrentQuestion();
+    _speakCurrentSentence();
   }
 
   @override

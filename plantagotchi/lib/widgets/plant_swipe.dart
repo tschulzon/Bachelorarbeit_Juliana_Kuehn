@@ -23,7 +23,6 @@ class PlantSwipe extends StatefulWidget {
 
 class _PlantSwipeState extends State<PlantSwipe> {
   final PageController _controller = PageController();
-  String? _lastSpokenSentence;
   late FlutterTts flutterTts;
 
   Map<String, Map<String, String>> plantVoices = {
@@ -60,13 +59,13 @@ class _PlantSwipeState extends State<PlantSwipe> {
     flutterTts = FlutterTts();
     flutterTts.setLanguage("de-DE");
     flutterTts.setPitch(1.6);
-    // flutterTts.setVolume(1.0);
+    flutterTts.setVolume(1.0);
     flutterTts.setSpeechRate(0.5);
   }
 
-  // This function speaks the current question
+  // This function speaks the current sentence
   // It will use the plant's voice
-  Future<void> _speakCurrentQuestion(String plantId, String text) async {
+  Future<void> _speakCurrentSentence(String plantId, String text) async {
     final voice = plantVoices[plantId];
     if (voice != null) {
       await flutterTts.setVoice(voice);
@@ -134,7 +133,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
         debugPrint('Current Plant: ${plant.nickname}, Due Tasks: $dueTasks');
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          _speakCurrentQuestion(plant.plantTemplate!.id, plantSentence);
+          _speakCurrentSentence(plant.plantTemplate!.id, plantSentence);
         });
 
         return SingleChildScrollView(
