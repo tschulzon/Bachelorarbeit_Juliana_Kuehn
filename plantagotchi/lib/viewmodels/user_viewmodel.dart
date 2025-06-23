@@ -6,6 +6,7 @@ import 'package:plantagotchi/models/badge.dart';
 import 'package:plantagotchi/models/badge_conditions.dart';
 import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/plant_template.dart';
+import 'package:plantagotchi/models/skin_item.dart';
 import 'package:plantagotchi/models/user.dart';
 import 'package:plantagotchi/models/userbadge.dart';
 import 'package:plantagotchi/models/userplant.dart';
@@ -35,8 +36,8 @@ class UserViewModel extends ChangeNotifier {
 
   // Map to hold XP values for different activities
   Map<String, int> activityXP = {
-    'watering': 100,
-    'fertilizing': 250,
+    'watering': 10,
+    'fertilizing': 15,
     'pruning': 20,
     'repotting': 30,
     'newPlant': 50,
@@ -87,19 +88,22 @@ class UserViewModel extends ChangeNotifier {
     return careHistory;
   }
 
+  // This method adds XP for a specific activity and checks for level up
   Future<void> addXP(String activity, BuildContext context) async {
-    addedXP = activityXP[activity] ??
-        0; // Get the XP for the activity, default to 0 if not found
+    // Get the XP for the activity, default to 0 if not found
+    addedXP = activityXP[activity] ?? 0;
 
-    user.xp =
-        (user.xp ?? 0) + addedXP; // Increment the XP, defaulting to 0 if null
+    // Increment the XP, defaulting to 0 if null
+    user.xp = (user.xp ?? 0) + addedXP;
 
+    // Check if the user has enough XP to level up
     if (user.xp! >= neededXPforLevelUp) {
       String title = "Level ${user.level! + 1} erreicht!";
       String message =
           "Glückwunsch!\n\n  Deine Pflanzen danken es dir! Weiter so!";
-      String image = "assets/images/level-up.png"; // Path to the level up image
+      String image = "assets/images/level-up.png";
 
+      // Show a dialog to inform the user about the level up
       await showGeneralDialog(
         context: context,
         transitionDuration: const Duration(milliseconds: 800),
@@ -113,19 +117,18 @@ class UserViewModel extends ChangeNotifier {
           return FadeTransition(
             opacity: CurvedAnimation(
               parent: animation,
-              curve: Curves.easeInOutCubic, // Stärkere Kurve für mehr "Fade"
+              curve: Curves.easeInOutCubic,
             ),
             child: child,
           );
         },
       );
 
-      user.level =
-          (user.level ?? 0) + 1; // Increment the level, defaulting to 0 if null
-      neededXPforLevelUp =
-          neededXPforLevelUp + 500; // Update the XP needed for the next level
-      user.coins = (user.coins! +
-          coinsForLevel[user.level]!); // Increment coins on level up
+      // Increment the user's level and update the needed XP for the next level
+      // and increment coins on level up
+      user.level = (user.level ?? 0) + 1;
+      neededXPforLevelUp = neededXPforLevelUp + 500;
+      user.coins = (user.coins! + coinsForLevel[user.level]!);
     }
     saveUser(); // Save the updated user data
     notifyListeners(); // Notify listeners to update the UI when XP changes
@@ -225,41 +228,41 @@ class UserViewModel extends ChangeNotifier {
     }
   }
 
-  void updateCurrentPlantSkin(
-      UserPlants plant, String newSkinId, BuildContext context) {
-    plant.currentSkin = newSkinId;
-    notifyListeners();
-  }
-
+  // This method checks if the user gets a badge for a specific activity
   Future<void> checkIfUserGetBadgeForActivity(
       String activity, BuildContext context) async {
+    // Go through all badge conditions
     for (final cond in badgeConditions) {
+      // Check if the condition matches the activity and if the condition is met
       if ((cond.activity == activity || cond.activity == 'any') &&
           cond.condition(this)) {
+        // If the condition is met, check and add the badge
         await _checkAndAddBadge(cond.badgeId, context);
       }
     }
   }
 
+  // This method checks if the user gets a badge for a specific badgeId
   Future<void> _checkAndAddBadge(String badgeId, BuildContext context) async {
     // Check if the user already has the badge
     final hasBadge =
         user.badges?.any((badge) => badge.badge?.id == badgeId) ?? false;
 
-    //TODO: BADGES ID VERGLEICH STIMMT NICHT; ES WIRD IMMER HINZUGEFÜGT
+    // If the user does not have the badge, check if it exists in the allBadges map from the JSON
     if (!hasBadge && allBadges.containsKey(badgeId)) {
+      // If the badge exists, create a new UserBadge with the badge details
+      // and add it to the user's badges
       String title = allBadges[badgeId]!.name;
-      String message =
-          allBadges[badgeId]!.description; // Description of the badge
-      String image = allBadges[badgeId]!.imageUrl; // Path to the level up image
+      String message = allBadges[badgeId]!.description;
+      String image = allBadges[badgeId]!.imageUrl;
 
-      // If not, add the badge to the user's badges
       final newBadge = UserBadge(
           id: ((user.badges!.length + 1).toString()),
           badge: allBadges[badgeId]!,
           earnedAt: DateTime.now());
       user.badges?.add(newBadge);
 
+      // Show a dialog to inform the user about the new badge
       await showGeneralDialog(
         context: context,
         transitionDuration: const Duration(milliseconds: 500),
@@ -280,13 +283,8 @@ class UserViewModel extends ChangeNotifier {
         },
       );
 
-      // Alle Badges in der Konsole ausgeben:
-      if (user.badges != null) {
-        for (var badge in user.badges!) {
-          print(
-              'Badge: ${badge.badge?.name} (ID: ${badge.id}), Earned at: ${badge.earnedAt}');
-        }
-      }
+      // Save the updated user data
+      saveUser();
       notifyListeners(); // Notify listeners to update the UI
     }
   }
@@ -299,5 +297,55 @@ class UserViewModel extends ChangeNotifier {
     }
 
     return true; // All plants have care entries
+  }
+
+  // This method adds a skin to the user's owned skins
+  void addSkinToOwnedSkins(
+      SkinItem skin, UserPlants userPlant, BuildContext context) {
+    // Check if the user has enough coins to buy the skin
+    if (user.coins! >= skin.price) {
+      // add the skin to the user's owned skins and deduct the price from the user's coins
+      userPlant.ownedSkins!.add(skin);
+      user.coins = user.coins! - skin.price;
+
+      // Show a success message
+      Navigator.of(context).pop();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          'Skin "${skin.name}" erfolgreich gekauft!',
+          style: const TextStyle(
+            color: Color(0xFF3a5a40),
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        backgroundColor: const Color(0xFF88D886),
+      ));
+      // Or a message that the user has not enough coins
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(
+          'Nicht genügend Münzen für Skin "${skin.name}"!',
+          style: const TextStyle(
+            color: Color(0xFF3a5a40),
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
+          ),
+        ),
+        backgroundColor: const Color(0xFF88D886),
+      ));
+    }
+
+    saveUser(); // Save the updated user data
+    notifyListeners(); // Notify listeners to update the UI
+  }
+
+  // This method sets the current skin for a user plant
+  // It updates the currentSkin property of the userPlant and notifies listeners
+  void setCurrentSkin(
+      SkinItem skin, UserPlants userPlant, BuildContext context) {
+    userPlant.currentSkin = skin.id;
+    saveUser(); // Save the updated user data
+    notifyListeners(); // Notify listeners to update the UI
   }
 }

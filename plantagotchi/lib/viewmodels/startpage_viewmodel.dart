@@ -73,30 +73,31 @@ class StartpageViewModel extends ChangeNotifier {
     return now.difference(last).inDays >= intervalDays;
   }
 
-  // Get a list of due tasks for a specific user plant
+  // Get a list of due tasks for a user plant
   List<Map<String, dynamic>>? getDueTasks(UserPlants userPlant) {
+    // Initialize the list of due tasks
     List<Map<String, dynamic>> dueTasks = [];
-
-    debugPrint(
-        'Checking due tasks for plant: ${userPlant.nickname}, ID: ${userPlant.id}');
 
     // Check if watering or fertilizing is due
     if (isCareDue(userPlant, 'watering')) {
+      // Add watering task if due
       dueTasks.add({
         "careType": 'watering',
-        "task": '${userPlant.nickname} gegossen',
+        "task": '${userPlant.nickname} gießen',
         "plantSentence": 'Ich bin durstig, bitte gieße mich!',
         "isChecked": false,
       });
     }
     if (isCareDue(userPlant, 'fertilizing')) {
+      // Add fertilizing task if due
       dueTasks.add({
         "careType": 'fertilizing',
-        "task": '${userPlant.nickname} gedüngt',
+        "task": '${userPlant.nickname} düngen',
         "plantSentence": 'Ich bin hungrig, bitte füttere mich!',
         "isChecked": false,
       });
     }
+
     return dueTasks;
   }
 
@@ -168,6 +169,34 @@ class StartpageViewModel extends ChangeNotifier {
       task['isChecked'] = false;
       plant.careHistory?.removeWhere((entry) => entry.type == careType);
       notifyListeners();
+    }
+  }
+
+  // Function to get the correct emotion avatar for a plant based on its care status
+  String? getAvatarForPlant(UserPlants plant) {
+    // Check if the plant is thirsty or hungry based on care due
+    final thirstyPlant = isCareDue(plant, 'watering');
+    final hungryPlant = isCareDue(plant, 'fertilizing');
+
+    // Determine the avatar URL based on the plant's current skin and care status
+    if (thirstyPlant) {
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinThirsty // Use the skin's thirsty avatar if available
+          : plant.plantTemplate?.avatarUrlThirsty;
+    } else if (hungryPlant) {
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinHungry // Use the skin's hungry avatar if available
+          : plant.plantTemplate?.avatarUrlHungry;
+    } else {
+      return plant.currentSkin != null
+          ? plant.ownedSkins
+              ?.firstWhere((skin) => skin.id == plant.currentSkin)
+              .skinUrl // Use the skin's normal avatar
+          : plant.plantTemplate?.avatarUrl;
     }
   }
 }

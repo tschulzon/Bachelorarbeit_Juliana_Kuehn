@@ -78,7 +78,13 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
               // const SizedBox(height: 10),
               Column(
                 children: [
+                  // PlantChatDialog
+                  // with the callbacks onFinished and onLastQuestionShown
+                  // onFinished is called when the user has answered all questions
+                  // onLastQuestionShown is called when the last question is shown
+                  // to show the confirm button
                   PlantChatDialog(
+                    plantId: widget.plant['id'],
                     onFinished: (answers) {
                       setState(() {
                         _plantChatAnswers = answers;

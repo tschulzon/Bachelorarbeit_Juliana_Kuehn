@@ -7,6 +7,7 @@ import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:plantagotchi/widgets/bottom_modal.dart';
 import 'package:plantagotchi/widgets/caretask_checkbox.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class PlantSwipe extends StatefulWidget {
   final List<UserPlants> plants;
@@ -22,31 +23,55 @@ class PlantSwipe extends StatefulWidget {
 
 class _PlantSwipeState extends State<PlantSwipe> {
   final PageController _controller = PageController();
+  String? _lastSpokenSentence;
+  late FlutterTts flutterTts;
 
-  // Function to get the avatar for a plant based on its care status
-  String? getAvatarForPlant(UserPlants plant, StartpageViewModel viewModel) {
-    final thirstyPlant = viewModel.isCareDue(plant, 'watering');
-    final hungryPlant = viewModel.isCareDue(plant, 'fertilizing');
+  Map<String, Map<String, String>> plantVoices = {
+    "abd51cde-eee1-49ce-9604-4e7dce677d59": {
+      "name": "de-de-x-deg-network",
+      "locale": "de-DE"
+    }, //Kaktus
+    "70b95dd5-a2df-4984-bd50-0764f10a56de": {
+      "name": "de-de-x-nfh-local",
+      "locale": "de-DE"
+    }, //Monstera
+    "35100b63-2356-41b2-adcf-b3b593d5d3fc": {
+      "name": "de-de-x-nfh-network",
+      "locale": "de-DE"
+    }, //Chrysanthemen
+    "5785a41c-9f06-44c3-a44b-2b15b673580c": {
+      "name": "de-de-x-dea-network",
+      "locale": "de-DE"
+    }, //Orchidee
+    "783fd027-20ff-4387-b553-5a00363eee06": {
+      "name": "de-DE-language",
+      "locale": "de-DE"
+    }, //Bogenhanf
+    "7774f4e6-9424-4a23-82f5-20731800636a": {
+      "name": "de-de-x-deb-local",
+      "locale": "de-DE"
+    }, //Elefantenfuss
+  };
 
-    if (thirstyPlant) {
-      return plant.currentSkin != null
-          ? plant.ownedSkins
-              ?.firstWhere((skin) => skin.id == plant.currentSkin)
-              .skinThirsty
-          : plant.plantTemplate?.avatarUrlThirsty;
-    } else if (hungryPlant) {
-      return plant.currentSkin != null
-          ? plant.ownedSkins
-              ?.firstWhere((skin) => skin.id == plant.currentSkin)
-              .skinHungry
-          : plant.plantTemplate?.avatarUrlHungry;
-    } else {
-      return plant.currentSkin != null
-          ? plant.ownedSkins
-              ?.firstWhere((skin) => skin.id == plant.currentSkin)
-              .skinUrl
-          : plant.plantTemplate?.avatarUrl;
+  // Initialize the FlutterTts instance and set the language and voice
+  @override
+  void initState() {
+    super.initState();
+    flutterTts = FlutterTts();
+    flutterTts.setLanguage("de-DE");
+    flutterTts.setPitch(1.6);
+    // flutterTts.setVolume(1.0);
+    flutterTts.setSpeechRate(0.5);
+  }
+
+  // This function speaks the current question
+  // It will use the plant's voice
+  Future<void> _speakCurrentQuestion(String plantId, String text) async {
+    final voice = plantVoices[plantId];
+    if (voice != null) {
+      await flutterTts.setVoice(voice);
     }
+    await flutterTts.speak(text);
   }
 
   void testDebugPrint() {
@@ -87,15 +112,30 @@ class _PlantSwipeState extends State<PlantSwipe> {
       }
     }
 
+    @override
+    void dispose() {
+      flutterTts.stop();
+      // controller.dispose();
+      super.dispose();
+    }
+
     return PageView.builder(
       controller: _controller,
       itemCount: widget.plants.length,
       itemBuilder: (context, index) {
         final plant = widget.plants[index];
         final dueTasks = startPageViewModel.getDueTasks(plant);
-        final avatarPath = getAvatarForPlant(plant, startPageViewModel);
+        final avatarPath = startPageViewModel.getAvatarForPlant(plant);
+
+        final plantSentence = dueTasks!.isNotEmpty
+            ? dueTasks.first['plantSentence']!
+            : 'Mir geht es gut! 🥰';
 
         debugPrint('Current Plant: ${plant.nickname}, Due Tasks: $dueTasks');
+
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _speakCurrentQuestion(plant.plantTemplate!.id, plantSentence);
+        });
 
         return SingleChildScrollView(
           child: Column(
@@ -104,14 +144,14 @@ class _PlantSwipeState extends State<PlantSwipe> {
               // Row with Text and Icon Button
               // Plant Image with speech Bubbles and arrows
               SizedBox(
-                height: 170,
+                height: 200,
                 width: double.infinity,
                 child: Stack(
                   alignment: Alignment.center,
                   children: [
                     Positioned(
                       left: 280,
-                      bottom: 120,
+                      bottom: 160,
                       child: Container(
                         height: 35,
                         width: 35,
@@ -121,7 +161,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
                         ),
                         child: IconButton(
                           icon: Icon(Icons.dry_cleaning,
-                              size: 21, color: colors.onPrimary),
+                              size: 20, color: colors.onPrimary),
                           onPressed: () {
                             Navigator.of(context).push(
                               MaterialPageRoute(
@@ -152,8 +192,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
                     Center(
                       child: Image.asset(
                         avatarPath!,
-                        // height: 180,
-                        // width: 180,
+                        height: 200,
+                        width: 200,
                         fit: BoxFit.fitHeight,
                       ),
                     ),
@@ -174,9 +214,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
                       borderRadius: BorderRadius.circular(16.0),
                     ),
                     child: Text(
-                      dueTasks!.isNotEmpty
-                          ? dueTasks.first['plantSentence']!
-                          : 'Mir geht es gut! 🥰',
+                      plantSentence,
                       style: fontstyle.titleLarge,
                     ),
                   ),

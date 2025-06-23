@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 class SkinView extends StatelessWidget {
   final PlantTemplate? plant;
-  final UserPlants? userPlant;
+  final UserPlants userPlant;
 
   const SkinView({super.key, required this.plant, required this.userPlant});
 
@@ -18,21 +18,6 @@ class SkinView extends StatelessWidget {
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
-
-    void addSkinToOwnedSkins(SkinItem skin) {
-      if (userPlant != null) {
-        userPlant!.ownedSkins!.add(skin);
-      }
-    }
-
-    void setCurrentSkin(SkinItem skin) {
-      if (userPlant != null) {
-        userPlant!.currentSkin = skin.id;
-      }
-      userViewModel.updateCurrentPlantSkin(userPlant!, skin.id, context);
-
-      print("Current skin set to: ${userPlant!.currentSkin}");
-    }
 
     final PageController _controller = PageController();
 
@@ -124,7 +109,7 @@ class SkinView extends StatelessWidget {
                                     Text("Kosten",
                                         style: fontstyle.labelMedium),
                                     const SizedBox(height: 10),
-                                    (userPlant?.ownedSkins
+                                    (userPlant.ownedSkins
                                                 ?.any((s) => s.id == skin.id) ??
                                             false)
                                         ? Text("Bereits erworben",
@@ -156,39 +141,8 @@ class SkinView extends StatelessWidget {
                         ActionButton(
                             label: "Skin kaufen",
                             onPressed: () => {
-                                  if (user.coins! >= skin.price)
-                                    {
-                                      addSkinToOwnedSkins(skin),
-                                      user.coins = user.coins! - skin.price,
-                                      Navigator.of(context).pop(),
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                        content: Text(
-                                          'Skin "${skin.name}" erfolgreich gekauft!',
-                                          style: TextStyle(
-                                            color: colors.onPrimary,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        backgroundColor: colors.secondary,
-                                      )),
-                                    }
-                                  else
-                                    {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(SnackBar(
-                                        content: Text(
-                                          'Nicht genügend Münzen für Skin "${skin.name}"!',
-                                          style: TextStyle(
-                                            color: colors.onPrimary,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                        backgroundColor: colors.secondary,
-                                      )),
-                                    },
+                                  userViewModel.addSkinToOwnedSkins(
+                                      skin, userPlant, context)
                                 },
                             greenToYellow: false),
                       ],
@@ -205,9 +159,8 @@ class SkinView extends StatelessWidget {
             const SizedBox(height: 10),
             SizedBox(
               height: 70,
-              child: (userPlant == null ||
-                      userPlant!.ownedSkins == null ||
-                      userPlant!.ownedSkins!.isEmpty)
+              child: (userPlant.ownedSkins == null ||
+                      userPlant.ownedSkins!.isEmpty)
                   ? Center(
                       child: Text(
                         'Keine Skins erworben',
@@ -216,19 +169,19 @@ class SkinView extends StatelessWidget {
                     )
                   : ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: userPlant!.ownedSkins?.length ?? 0,
+                      itemCount: userPlant.ownedSkins?.length ?? 0,
                       itemBuilder: (context, index) {
-                        final skin = userPlant!.ownedSkins![index];
+                        final skin = userPlant.ownedSkins![index];
                         return InkWell(
                           borderRadius: BorderRadius.circular(12.0),
                           onTap: () {
-                            setCurrentSkin(skin);
+                            userViewModel.setCurrentSkin(
+                                skin, userPlant, context);
                           },
                           child: Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 12.0),
-                            // TODO: Klickbar machen um CurrentSkin zu setzen!
-                            child: (userPlant?.currentSkin == skin.id)
+                            child: (userPlant.currentSkin == skin.id)
                                 ? Badge(
                                     backgroundColor: colors.primary,
                                     label: Icon(Icons.check,
