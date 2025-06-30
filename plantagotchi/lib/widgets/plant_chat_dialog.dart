@@ -292,7 +292,23 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
                             fontWeight: FontWeight.w400,
                           ),
                           decoration: InputDecoration(
-                              border: InputBorder.none,
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                    color: colors.primary), // Standard-Border
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                    color: colors
+                                        .primary), // Farbe wenn nicht fokussiert
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(12),
+                                borderSide: BorderSide(
+                                    color: colors
+                                        .secondary), // Farbe wenn fokussiert
+                              ),
                               hintText: "Deine Antwort...",
                               hintStyle: TextStyle(
                                   color: colors.primary,

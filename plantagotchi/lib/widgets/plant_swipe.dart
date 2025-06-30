@@ -25,6 +25,9 @@ class _PlantSwipeState extends State<PlantSwipe> {
   final PageController _controller = PageController();
   late FlutterTts flutterTts;
 
+  String? _lastSpokenSentence;
+  String? _lastSpokenPlantId;
+
   Map<String, Map<String, String>> plantVoices = {
     "abd51cde-eee1-49ce-9604-4e7dce677d59": {
       "name": "de-de-x-deg-network",
@@ -75,6 +78,14 @@ class _PlantSwipeState extends State<PlantSwipe> {
 
   void testDebugPrint() {
     debugPrint("Button pressed");
+  }
+
+  void _speakIfChanged(String plantId, String text) {
+    if (_lastSpokenSentence != text || _lastSpokenPlantId != plantId) {
+      _lastSpokenSentence = text;
+      _lastSpokenPlantId = plantId;
+      _speakCurrentSentence(plantId, text);
+    }
   }
 
   @override
@@ -128,12 +139,12 @@ class _PlantSwipeState extends State<PlantSwipe> {
 
         final plantSentence = dueTasks!.isNotEmpty
             ? dueTasks.first['plantSentence']!
-            : 'Mir geht es gut! 🥰';
+            : 'Mir geht es gut!';
 
         debugPrint('Current Plant: ${plant.nickname}, Due Tasks: $dueTasks');
 
         WidgetsBinding.instance.addPostFrameCallback((_) {
-          _speakCurrentSentence(plant.plantTemplate!.id, plantSentence);
+          _speakIfChanged(plant.plantTemplate!.id, plantSentence);
         });
 
         return SingleChildScrollView(

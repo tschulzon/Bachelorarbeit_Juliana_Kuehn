@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
+import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:provider/provider.dart';
 
 class Profilepage extends StatelessWidget {
@@ -230,11 +231,73 @@ class Profilepage extends StatelessWidget {
                         final badge = userBadges[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Image.asset(
-                              badge.badge?.imageUrl ??
-                                  'assets/images/default_badge.png',
-                              height: 50,
-                              width: 50),
+                          child: GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colors.primary,
+                                  title: Text(
+                                    badge.badge?.name ?? "Abzeichen",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      color: colors.onPrimary,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  ),
+                                  content: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Divider(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary,
+                                        thickness: 1,
+                                        height: 15,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Image.asset(
+                                          badge.badge?.imageUrl ??
+                                              'assets/images/default_badge.png',
+                                          height: 150,
+                                          width: 150,
+                                          fit: BoxFit.fitHeight,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 12),
+                                      Text(
+                                          badge.badge?.description ??
+                                              "Keine Beschreibung vorhanden.",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            color: colors.onPrimary,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          )),
+                                    ],
+                                  ),
+                                  actions: [
+                                    Center(
+                                        child: ActionButton(
+                                      label: "Schließen",
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      greenToYellow: true,
+                                    ))
+                                  ],
+                                ),
+                              );
+                            },
+                            child: Image.asset(
+                                badge.badge?.imageUrl ??
+                                    'assets/images/default_badge.png',
+                                height: 60,
+                                width: 60),
+                          ),
                         );
                       },
                     ),

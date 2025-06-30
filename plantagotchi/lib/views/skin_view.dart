@@ -102,8 +102,8 @@ class SkinView extends StatelessWidget {
                                 child: Column(
                                   children: [
                                     Image.asset(skin.skinUrl,
-                                        height: 250,
-                                        width: 250,
+                                        height: 230,
+                                        width: 230,
                                         fit: BoxFit.fitHeight),
                                     const SizedBox(height: 10),
                                     Text("Kosten",

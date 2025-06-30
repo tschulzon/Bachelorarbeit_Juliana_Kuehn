@@ -4,14 +4,14 @@
         "name": "Grüne:r Einsteiger:in",
         "milestone": "Erste Pflanze angelegt",
         "description": "Deine Reise beginnt – du hast deine erste Pflanze angelegt!",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
+        "imageUrl": "assets/images/badges/badge-first-plant.png"
     },
     {
         "id": "badge-newplant-2",
         "name": "Sortenentdecker:in",
         "milestone": "5 Pflanzen angelegt",
         "description": "Du hast bereits 5 Pflanzen angelegt und entdeckst langsam die Vielfalt der Pflanzenarten.",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
+        "imageUrl": "assets/images/badges/badge-five-plants.png"
     },
     {
         "id": "badge-newplant-3",
@@ -25,28 +25,28 @@
         "name": "Durstlöscher:in",
         "milestone": "Erste Pflanze gegossen",
         "description": "Du hast deine Pflanze das erste Mal mit Wasser versorgt.",
-        "imageUrl": "assets/images/badges/badge-beispiel-2.png"
+        "imageUrl": "assets/images/badges/badge-first-watering.png"
     },
     {
         "id": "badge-fertilizing-1",
         "name": "Nährstoffgeber:in",
         "milestone": "Erste Pflanze gedüngt",
         "description": "Du hast deine Pflanze das erste mal mit Nährstoffen versorgt.",
-        "imageUrl": "assets/images/badges/badge-beispiel-3.png"
+        "imageUrl": "assets/images/badges/badge-first-ferti.png"
     },
     {
         "id": "badge-repotting-1",
         "name": "Wurzelwerker:in",
         "milestone": "Erste Pflanze umgetopft",
         "description": "Du hast deine Pflanze umgetopft und ihr neuen Raum zum Wachsen gegeben.",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
+        "imageUrl": "assets/images/badges/badge-first-repotting.png"
     },
     {
         "id": "badge-care-1",
         "name": "Vielfaltsbetreuer:in",
         "milestone": "5 verschiedene Pflanzen gepflegt",
         "description": "Du hast dich um all deine 5 Pflanzen gekümmert und sie mit Liebe versorgt.",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
+        "imageUrl": "assets/images/badges/badge-five-care.png"
     },
     {
         "id": "badge-photo-1",

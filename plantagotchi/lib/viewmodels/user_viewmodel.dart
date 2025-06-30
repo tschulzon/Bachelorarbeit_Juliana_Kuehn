@@ -36,21 +36,28 @@ class UserViewModel extends ChangeNotifier {
 
   // Map to hold XP values for different activities
   Map<String, int> activityXP = {
-    'watering': 10,
-    'fertilizing': 15,
-    'pruning': 20,
-    'repotting': 30,
-    'newPlant': 50,
-    'note': 10,
-    'photo': 10,
+    // 'watering': 10,
+    // 'fertilizing': 15,
+    // 'pruning': 20,
+    // 'repotting': 30,
+    // 'newPlant': 50,
+    // 'note': 10,
+    // 'photo': 10,
+    'watering': 50,
+    'fertilizing': 60,
+    'pruning': 70,
+    'repotting': 80,
+    'newPlant': 100,
+    'note': 50,
+    'photo': 50,
   };
 
   // Map to hold coins for different levels
   Map<int, int> coinsForLevel = {
-    2: 20,
-    3: 30,
-    4: 40,
-    5: 50,
+    2: 200,
+    3: 300,
+    4: 400,
+    5: 500,
   };
 
   Map<String, PlantBadge> allBadges = {};
@@ -112,6 +119,7 @@ class UserViewModel extends ChangeNotifier {
           title: title,
           content: message,
           onConfirm: () => Navigator.of(context).pop(),
+          isAchievement: false,
         ),
         transitionBuilder: (context, animation, secondaryAnimation, child) {
           return FadeTransition(
@@ -271,6 +279,7 @@ class UserViewModel extends ChangeNotifier {
           title: title,
           content: message,
           onConfirm: () => Navigator.of(context).pop(),
+          isAchievement: true,
         ),
         transitionBuilder: (context, animation, secondaryAnimation, child) {
           return FadeTransition(

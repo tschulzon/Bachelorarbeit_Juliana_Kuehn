@@ -109,17 +109,17 @@
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
+            "skinUrl": "assets/images/avatars/monstera/skin-winter/Monstera-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/monstera/skin-winter/Monstera-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/monstera/skin-winter/Monstera-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
+            "skinUrl": "assets/images/avatars/monstera/skin-summer/Monstera-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/monstera/skin-summer/Monstera-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/monstera/skin-summer/Monstera-skin-summer-hungry.png"
         }
     ]
   },
@@ -171,16 +171,16 @@
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
+            "skinUrl": "assets/images/avatars/chrysanthemen/skin-winter/Chrysanthemen-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/chrysanthemen/skin-winter/Chrysanthemen-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/chrysanthemen/skin-winter/Chrysanthemen-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
+            "skinUrl": "assets/images/avatars/chrysanthemen/skin-summer/Chrysanthemen-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/chrysanthemen/skin-summer/Chrysanthemen-skin-summer-thirsty.png",
             "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
         }
     ]
@@ -233,17 +233,17 @@
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
+            "skinUrl": "assets/images/avatars/orchidee/skin-winter/Orchidee-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/orchidee/skin-winter/Orchidee-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/orchidee/skin-winter/Orchidee-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
+            "skinUrl": "assets/images/avatars/orchidee/skin-summer/Orchidee-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/orchidee/skin-summer/Orchidee-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/orchidee/skin-summer/Orchidee-skin-summer-hungry.png"
         }
     ]
   },
@@ -295,17 +295,17 @@
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
+            "skinUrl": "assets/images/avatars/bogenhanf/skin-winter/Bogenhanf-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/bogenhanf/skin-winter/Bogenhanf-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/bogenhanf/skin-winter/Bogenhanf-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
+            "skinUrl": "assets/images/avatars/bogenhanf/skin-summer/Bogenhanf-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/bogenhanf/skin-summer/Bogenhanf-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/bogenhanf/skin-summer/Bogenhanf-skin-summer-hungry.png"
         }
     ]
   },
@@ -357,17 +357,17 @@
             "id": "skin-1",
             "name": "Winter",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-winter/Kaktus-skin-winter-hungry.png"
+            "skinUrl": "assets/images/avatars/elefantenfuss/skin-winter/Elefantenfuss-skin-winter-default.png",
+            "skinThirsty": "assets/images/avatars/elefantenfuss/skin-winter/Elefantenfuss-skin-winter-thirsty.png",
+            "skinHungry": "assets/images/avatars/elefantenfuss/skin-winter/Elefantenfuss-skin-winter-hungry.png"
         },
         {
             "id": "skin-2",
             "name": "Sommer",
             "price": 200,
-            "skinUrl": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-default.png",
-            "skinThirsty": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-thirsty.png",
-            "skinHungry": "assets/images/avatars/kaktus/skin-summer/Kaktus-skin-summer-hungry.png"
+            "skinUrl": "assets/images/avatars/elefantenfuss/skin-summer/Elefantenfuss-skin-summer-default.png",
+            "skinThirsty": "assets/images/avatars/elefantenfuss/skin-summer/Elefantenfuss-skin-summer-thirsty.png",
+            "skinHungry": "assets/images/avatars/elefantenfuss/skin-summer/Elefantenfuss-skin-summer-hungry.png"
         }
     ]
   }
