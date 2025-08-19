@@ -14,13 +14,6 @@
         "imageUrl": "assets/images/badges/badge-five-plants.png"
     },
     {
-        "id": "badge-newplant-3",
-        "name": "Pflanzenfreund:in",
-        "milestone": "10 Pflanzen angelegt",
-        "description": "Du baust eine tiefergehende Beziehung zu deinen Pflanzen auf.",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
-    },
-    {
         "id": "badge-watering-1",
         "name": "Durstlöscher:in",
         "milestone": "Erste Pflanze gegossen",
@@ -35,6 +28,13 @@
         "imageUrl": "assets/images/badges/badge-first-ferti.png"
     },
     {
+        "id": "badge-pruning-1",
+        "name": "Pflanzenfriseur:in",
+        "milestone": "Erste Pflanze zugeschnitten",
+        "description": "Du hast deine Pflanze einen neuen Schnitt verpasst – sie sieht jetzt noch schöner aus!",
+        "imageUrl": "assets/images/badges/badge-first-pruning.png"
+    },
+    {
         "id": "badge-repotting-1",
         "name": "Wurzelwerker:in",
         "milestone": "Erste Pflanze umgetopft",
@@ -43,17 +43,17 @@
     },
     {
         "id": "badge-care-1",
-        "name": "Vielfaltsbetreuer:in",
+        "name": "Pflanzenfreund:in",
         "milestone": "5 verschiedene Pflanzen gepflegt",
         "description": "Du hast dich um all deine 5 Pflanzen gekümmert und sie mit Liebe versorgt.",
         "imageUrl": "assets/images/badges/badge-five-care.png"
     },
     {
-        "id": "badge-photo-1",
-        "name": "Pflanzenfotograf:in",
-        "milestone": "Erste Pflanze fotografiert",
-        "description": "Du hast das erste Foto von einer Pflanze gemacht und sie für die Ewigkeit festgehalten.",
-        "imageUrl": "assets/images/badges/badge-beispiel.png"
+        "id": "badge-skin-1",
+        "name": "Pflanzen-Stylist:in",
+        "milestone": "Ersten Skin gekauft",
+        "description": "Du hast den ersten Skin für eine Pflanze gekauft – deine Pflanze sieht nun noch hübscher aus!",
+        "imageUrl": "assets/images/badges/badge-first-skin.png"
     }
 
 ]

@@ -167,6 +167,18 @@ class _BottomModalState extends State<BottomModal> {
                     if (result != null) {
                       Navigator.of(context).pop(
                           result); // Gives the result back to the BottomSheet
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Notiz erfolgreich erfasst!',
+                          style: TextStyle(
+                            color: Color(0xFF3a5a40),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                        backgroundColor: Color(0xFF88D886),
+                      ));
                     }
                   },
                   splashColor:
@@ -278,6 +290,18 @@ class _BottomModalState extends State<BottomModal> {
                     );
                     if (result != null) {
                       Navigator.of(context).pop(result);
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Aktivität erfolgreich gespeichert!',
+                          style: TextStyle(
+                            color: Color(0xFF3a5a40),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                        backgroundColor: Color(0xFF88D886),
+                      ));
                     }
                   },
                   splashColor:
@@ -364,6 +388,18 @@ class _BottomModalState extends State<BottomModal> {
                     );
                     if (result != null) {
                       Navigator.of(context).pop(result);
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Aktivität erfolgreich gespeichert!',
+                          style: TextStyle(
+                            color: Color(0xFF3a5a40),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                        backgroundColor: Color(0xFF88D886),
+                      ));
                     }
                   },
                   splashColor:
@@ -450,6 +486,18 @@ class _BottomModalState extends State<BottomModal> {
                     );
                     if (result != null) {
                       Navigator.of(context).pop(result);
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Aktivität erfolgreich gespeichert!',
+                          style: TextStyle(
+                            color: Color(0xFF3a5a40),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                        backgroundColor: Color(0xFF88D886),
+                      ));
                     }
                   },
                   splashColor:
@@ -536,6 +584,18 @@ class _BottomModalState extends State<BottomModal> {
                     );
                     if (result != null) {
                       Navigator.of(context).pop(result);
+                      // Show a success message
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                          'Aktivität erfolgreich gespeichert!',
+                          style: TextStyle(
+                            color: Color(0xFF3a5a40),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        ),
+                        backgroundColor: Color(0xFF88D886),
+                      ));
                     }
                   },
                   splashColor:

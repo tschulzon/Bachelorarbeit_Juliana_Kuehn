@@ -43,13 +43,14 @@ class UserViewModel extends ChangeNotifier {
     // 'newPlant': 50,
     // 'note': 10,
     // 'photo': 10,
-    'watering': 50,
-    'fertilizing': 60,
-    'pruning': 70,
-    'repotting': 80,
-    'newPlant': 100,
-    'note': 50,
+    'watering': 100,
+    'fertilizing': 100,
+    'pruning': 100,
+    'repotting': 100,
+    'newPlant': 150,
+    'note': 100,
     'photo': 50,
+    'newSkin': 100
   };
 
   // Map to hold coins for different levels
@@ -107,7 +108,8 @@ class UserViewModel extends ChangeNotifier {
     if (user.xp! >= neededXPforLevelUp) {
       String title = "Level ${user.level! + 1} erreicht!";
       String message =
-          "Glückwunsch!\n\n  Deine Pflanzen danken es dir! Weiter so!";
+          "Glückwunsch!\n\n  Deine Pflanzen danken es dir! Weiter so!\n\n Du erhältst 200 Münzen!";
+      ;
       String image = "assets/images/level-up.png";
 
       // Show a dialog to inform the user about the level up
@@ -136,7 +138,8 @@ class UserViewModel extends ChangeNotifier {
       // and increment coins on level up
       user.level = (user.level ?? 0) + 1;
       neededXPforLevelUp = neededXPforLevelUp + 500;
-      user.coins = (user.coins! + coinsForLevel[user.level]!);
+      // user.coins = (user.coins! + coinsForLevel[user.level]!);
+      user.coins = (user.coins! + 200);
     }
     saveUser(); // Save the updated user data
     notifyListeners(); // Notify listeners to update the UI when XP changes

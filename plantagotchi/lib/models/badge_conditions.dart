@@ -32,6 +32,12 @@ final List<BadgeConditions> badgeConditions = [
     badgeId: 'badge-repotting-1',
     condition: (user) => user.careHistory['repotting']?.isEmpty ?? true,
   ),
+  // Badge for pruning the first plant ever
+  BadgeConditions(
+    activity: 'pruning',
+    badgeId: 'badge-pruning-1',
+    condition: (user) => user.careHistory['pruning']?.isEmpty ?? true,
+  ),
   // Badge for adding the first plant ever
   BadgeConditions(
     activity: 'newPlant',
@@ -44,18 +50,6 @@ final List<BadgeConditions> badgeConditions = [
     badgeId: 'badge-newplant-2',
     condition: (user) => user.user.plants?.length == 5,
   ),
-  // Badge for adding the tenth plant
-  BadgeConditions(
-    activity: 'newPlant',
-    badgeId: 'badge-newplant-3',
-    condition: (user) => user.user.plants?.length == 10,
-  ),
-  // Badge for taking a photo of the first plant ever
-  BadgeConditions(
-    activity: 'photo',
-    badgeId: 'badge-photo-1',
-    condition: (user) => user.careHistory['photo']?.isEmpty ?? true,
-  ),
   // Badge for taking care of 5 plants
   // it checks if the user has 5 plants and has every care entry for each plant
   BadgeConditions(
@@ -64,4 +58,10 @@ final List<BadgeConditions> badgeConditions = [
     condition: (user) =>
         user.user.plants?.length == 5 && user.hasEveryPlantCareEntrys(),
   ),
+  BadgeConditions(
+    activity: 'newSkin',
+    badgeId: 'badge-skin-1',
+    condition: (user) =>
+        user.user.plants?.any((plant) => plant.ownedSkins!.isNotEmpty) ?? false,
+  )
 ];

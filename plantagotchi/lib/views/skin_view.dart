@@ -138,13 +138,68 @@ class SkinView extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height: 20),
-                        ActionButton(
-                            label: "Skin kaufen",
-                            onPressed: () => {
-                                  userViewModel.addSkinToOwnedSkins(
-                                      skin, userPlant, context)
-                                },
-                            greenToYellow: false),
+                        if (!(userPlant.ownedSkins
+                                ?.any((s) => s.id == skin.id) ??
+                            false))
+                          ActionButton(
+                              label: "Skin kaufen",
+                              onPressed: () async {
+                                userViewModel.addSkinToOwnedSkins(
+                                    skin, userPlant, context);
+                                userViewModel.checkIfUserGetBadgeForActivity(
+                                    'newSkin', context);
+                                userViewModel.addXP('newSkin', context);
+
+                                // Dialog anzeigen
+                                final result = await showDialog<bool>(
+                                  context: context,
+                                  builder: (context) => AlertDialog(
+                                    backgroundColor: colors.primary,
+                                    surfaceTintColor: colors.onPrimary,
+                                    title: Text('Skin anlegen?',
+                                        style: TextStyle(
+                                            color: colors.onPrimary,
+                                            fontWeight: FontWeight.bold)),
+                                    content: Text(
+                                      'Möchtest du den neuen Skin direkt für diese Pflanze anlegen?',
+                                      style: TextStyle(
+                                          color: colors.onPrimary,
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.of(context).pop(false),
+                                        child: Text('Nein',
+                                            style: TextStyle(
+                                              color: colors.onPrimary,
+                                            )),
+                                      ),
+                                      ElevatedButton(
+                                        onPressed: () =>
+                                            Navigator.of(context).pop(true),
+                                        style: ElevatedButton.styleFrom(
+                                          backgroundColor: colors.onPrimary,
+                                          foregroundColor: colors.primary,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 10.0, vertical: 0),
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(20.0),
+                                          ),
+                                        ),
+                                        child: const Text('Ja'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+
+                                if (result == true) {
+                                  userViewModel.setCurrentSkin(
+                                      skin, userPlant, context);
+                                }
+                              },
+                              greenToYellow: false),
                       ],
                     ),
                   );
