@@ -19,12 +19,27 @@ Plantagotchi is a smartphone application prototype designed to help users manage
 **Prerequisites**
 
 1. Install Flutter.
+2. Use a physical device or an emulator.
 
 **Installation & Launch**
 
 1. Open the project in your preferred IDE (e.g., Visual Studio Code) with Flutter installed.
 
-2. Run main.dart in debug mode to start the app.
+2. Install the dependencies:
+
+```bash
+   flutter pub get
+```
+
+(Hint: If your IDE still shows missing imports after installing, restart the IDE)
+
+3. Open the file **lib/main.dart**
+
+4. Run the app in debug mode, either by pressing F5 in the IDE or using
+
+```bash
+   flutter run
+```
 
 Plantagotchi is now ready to use—care for your plants in a fun and interactive way! 🌱
 
