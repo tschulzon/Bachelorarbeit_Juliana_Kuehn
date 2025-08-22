@@ -40,9 +40,6 @@ class _PlantspageState extends State<Plantspage> {
     final user = Provider.of<UserViewModel>(context).user;
 
     final dateFormat = DateFormat('dd.MM.yyyy', 'de_DE');
-    DateTime now = DateTime.now();
-    String currentMonthWithYear =
-        "${DateFormat.MMMM('de_DE').format(now)} ${now.year}";
 
     List<DateTime> months = List.generate(
       12,

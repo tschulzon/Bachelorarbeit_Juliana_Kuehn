@@ -1,4 +1,3 @@
-import 'package:plantagotchi/models/badge.dart';
 import 'package:plantagotchi/models/friend.dart';
 import 'package:plantagotchi/models/userbadge.dart';
 
