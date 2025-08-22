@@ -26,6 +26,6 @@ Plantagotchi is a smartphone application prototype designed to help users manage
 
 2. Run main.dart in debug mode to start the app.
 
-Plantagotchi is now ready to use—care for your digital plants in a fun and interactive way! 🌱
+Plantagotchi is now ready to use—care for your plants in a fun and interactive way! 🌱
 
 #### Made by Juliana Kühn 🌸
