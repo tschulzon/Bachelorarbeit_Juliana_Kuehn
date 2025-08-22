@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// This is the ActionButton widget
+// It is a reusable button widget that can be used throughout the app
 class ActionButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;

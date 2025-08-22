@@ -11,11 +11,13 @@ import 'package:plantagotchi/widgets/userplant_history.dart';
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+// This is the PlantDetailPage view
+// It displays detailed information about a plant, including its care instructions and history
 class PlantDetailPage extends StatelessWidget {
-  Map<String, dynamic> plant;
-  UserPlants? userPlant;
+  final Map<String, dynamic> plant;
+  final UserPlants? userPlant;
 
-  PlantDetailPage({
+  const PlantDetailPage({
     super.key,
     this.plant = const {},
     this.userPlant,
@@ -30,6 +32,7 @@ class PlantDetailPage extends StatelessWidget {
 
     final ItemScrollController itemScrollController = ItemScrollController();
 
+    // List of labels for the horizontal button row
     final labels = [
       "Beschreibung",
       "Pflege",
@@ -44,6 +47,8 @@ class PlantDetailPage extends StatelessWidget {
       "Giftig",
     ];
 
+    // Build the sections for the plant information cards
+    // Every Info Card has different topics like watering frequency, light requirements, etc.
     final sections = buildInfoCards(
         plant: plant.isNotEmpty
             ? plant
@@ -74,8 +79,6 @@ class PlantDetailPage extends StatelessWidget {
         viewModel.triggerXPAnimation();
       }
     }
-
-    print("CURRENT PLANT: $plant");
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -117,7 +120,6 @@ class PlantDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
                         child: Row(

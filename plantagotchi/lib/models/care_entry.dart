@@ -1,3 +1,4 @@
+// Class representing a care entry in the app
 class CareEntry {
   String? id;
   String? userPlantId;
@@ -15,6 +16,7 @@ class CareEntry {
     this.photo,
   });
 
+  // This is the method to convert the CareEntry object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -26,7 +28,7 @@ class CareEntry {
     };
   }
 
-// Daraus lesen wir Daten aus dem JSON File und erstellen ein Dart Objekt
+  // This is the factory method to create a CareEntry object from a JSON map
   factory CareEntry.fromJson(Map<String, dynamic> json) {
     return CareEntry(
       id: json['id'],

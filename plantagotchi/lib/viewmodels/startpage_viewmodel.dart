@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/userplant.dart';
 
+// ViewModel for the Start Page
+// This ViewModel manages the state and logic for the start page of the app
 class StartpageViewModel extends ChangeNotifier {
   List<UserPlants> userPlants = [];
   final Map<String, List<Map<String, dynamic>>> _plantTasks = {};
@@ -10,9 +12,9 @@ class StartpageViewModel extends ChangeNotifier {
 
   StartpageViewModel({required this.userPlants});
 
+  // This method can be used to trigger the XP animation
+  // For example, when a task is completed or a care entry is added
   void triggerXPAnimation() {
-    // This method can be used to trigger the XP animation
-    // For example, when a task is completed or a care entry is added
     _showXpAnimation = true;
     notifyListeners();
 
@@ -63,11 +65,6 @@ class StartpageViewModel extends ChangeNotifier {
       debugPrint("No last care entry found for $careType, task is due.");
       return true;
     }
-
-    debugPrint(
-        'Current Date: $now, Last Care Date: $last, Interval Days: $intervalDays');
-
-    debugPrint('Difference in days: ${now.difference(last).inDays}');
 
     // Check if the difference in days is greater than or equal to the interval
     return now.difference(last).inDays >= intervalDays;

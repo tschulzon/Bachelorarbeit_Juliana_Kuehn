@@ -1,9 +1,11 @@
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 
+// class representing conditions for earning badges
 class BadgeConditions {
   final String activity;
   final String badgeId;
-  final bool Function(UserViewModel user) condition;
+  final bool Function(UserViewModel user)
+      condition; // Function to check if the condition is met
 
   BadgeConditions({
     required this.activity,

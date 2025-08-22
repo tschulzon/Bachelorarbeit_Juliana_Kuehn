@@ -13,8 +13,10 @@ import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/services/shared_prefs_helper.dart';
 import 'package:plantagotchi/widgets/custom_dialog.dart';
 
+// ViewModel for managing user data and activities in the app
+// This ViewModel handles user activities, XP, badges, and plant care history
 class UserViewModel extends ChangeNotifier {
-  final User user; // Private field to hold the user data
+  final User user; // field to hold the user data
 
   int? currentXP;
   int? currentLevel;
@@ -23,6 +25,10 @@ class UserViewModel extends ChangeNotifier {
   int neededXPforLevelUp = 500;
   int get restXP => neededXPforLevelUp - (user.xp ?? 0);
   int addedXP = 0;
+
+  // Map to hold care history for each plant
+  // This map will be populated with care entries for each plant
+  late Map<String, List<CareEntry>> careHistory;
 
   // Constructor to initialize the UserViewModel with a User object
   UserViewModel(this.user) {
@@ -36,13 +42,6 @@ class UserViewModel extends ChangeNotifier {
 
   // Map to hold XP values for different activities
   Map<String, int> activityXP = {
-    // 'watering': 10,
-    // 'fertilizing': 15,
-    // 'pruning': 20,
-    // 'repotting': 30,
-    // 'newPlant': 50,
-    // 'note': 10,
-    // 'photo': 10,
     'watering': 100,
     'fertilizing': 100,
     'pruning': 100,
@@ -63,6 +62,8 @@ class UserViewModel extends ChangeNotifier {
 
   Map<String, PlantBadge> allBadges = {};
 
+  // Load badges from JSON file
+  // This method reads the badges from a JSON file and stores them in a map
   Future<void> loadBadgesData() async {
     final String jsonString =
         await rootBundle.loadString('assets/data/badges.json');
@@ -71,17 +72,10 @@ class UserViewModel extends ChangeNotifier {
       final badge = PlantBadge.fromJson(badgeJson);
       allBadges[badge.id] = badge; // Store badges in a map for easy access
     }
-
-    // Nach dem Laden: Alle Badges in der Konsole ausgeben
-    print('Alle geladenen Badges:');
-    for (var badge in allBadges.values) {
-      print(
-          'Badge: ${badge.name} (ID: ${badge.id}), Meilenstein: ${badge.milestone}, Beschreibung: ${badge.description}');
-    }
   }
 
-  late Map<String, List<CareEntry>> careHistory;
-
+  // This method loads the care history for each plant and returns a map
+  // The map will have care types as keys and lists of CareEntry as values
   Map<String, List<CareEntry>> loadCareHistory() {
     careHistory = {};
     for (var plant in user.plants ?? []) {
@@ -92,7 +86,6 @@ class UserViewModel extends ChangeNotifier {
         careHistory[entry.type]!.add(entry);
       }
     }
-
     return careHistory;
   }
 
@@ -138,8 +131,7 @@ class UserViewModel extends ChangeNotifier {
       // and increment coins on level up
       user.level = (user.level ?? 0) + 1;
       neededXPforLevelUp = neededXPforLevelUp + 500;
-      // user.coins = (user.coins! + coinsForLevel[user.level]!);
-      user.coins = (user.coins! + 200);
+      user.coins = (user.coins! + coinsForLevel[user.level]!);
     }
     saveUser(); // Save the updated user data
     notifyListeners(); // Notify listeners to update the UI when XP changes
@@ -166,6 +158,8 @@ class UserViewModel extends ChangeNotifier {
     notifyListeners(); // Notify listeners to update the UI when XP changes
   }
 
+  // This method increments the user's streak and saves the user data
+  // Feature for the Future
   void incrementStreak() {
     user.streak =
         (user.streak ?? 0) + 1; // Increment the streak, defaulting to 0 if null
@@ -173,14 +167,13 @@ class UserViewModel extends ChangeNotifier {
     notifyListeners(); // Notify listeners to update the UI when the streak changes
   }
 
+  // This method can be used to save the user data to persistent storage
   Future<void> saveUser() async {
-    // This method can be used to save the user data to persistent storage
-    // For example, using SharedPreferences or a database
-    // Implement the saving logic here
     final storage = StorageService();
     await storage.saveUser(user);
   }
 
+  // This method parses a German date string in the format "dd.MM.yyyy" to a DateTime object
   DateTime parseGermanDate(String? input) {
     if (input == null || input.isEmpty) return DateTime.now();
     try {
@@ -195,6 +188,8 @@ class UserViewModel extends ChangeNotifier {
     return DateTime.now();
   }
 
+  // This method adds a new plant to the user's plants list
+  // It creates a new UserPlants object and adds it to the user's plants
   void addPlant(Map<String, dynamic> plant, Map<String, dynamic>? answers) {
     final newPlant = UserPlants(
       id: "plant-${user.plants!.length + 1}",
@@ -228,6 +223,8 @@ class UserViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  // This method updates the nickname of a user plant when the user changes it
+  // It finds the plant by its ID and updates the nickname
   void updateUserPlantNickname(String plantId, String newNickname) {
     final plant = user.plants?.firstWhere(
       (plant) => plant.id == plantId,
@@ -301,6 +298,8 @@ class UserViewModel extends ChangeNotifier {
     }
   }
 
+  // This method checks if the user has every care entry for each plant
+  // It iterates through each plant and checks if it has care history entries
   bool hasEveryPlantCareEntrys() {
     for (var plant in user.plants ?? []) {
       if (plant.careHistory == null || plant.careHistory!.isEmpty) {

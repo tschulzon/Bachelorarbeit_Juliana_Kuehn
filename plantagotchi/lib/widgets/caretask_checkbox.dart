@@ -4,6 +4,8 @@ import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:provider/provider.dart';
 
+// This widget displays a list of care tasks for a specific plant
+// It allows the user to check off tasks as they are completed
 class CaretaskCheckbox extends StatelessWidget {
   final UserPlants plant;
   final StartpageViewModel viewModel;
@@ -17,9 +19,10 @@ class CaretaskCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final fontstyle = Theme.of(context).textTheme;
-    // final tasks = viewModel.getTasksForPlant(plant);
     final userViewModel = Provider.of<UserViewModel>(context, listen: true);
 
+    // This widget listens to the StartpageViewModel for changes in tasks
+    // It rebuilds the list of tasks whenever the tasks change
     return Consumer<StartpageViewModel>(builder: (context, viewModel, _) {
       final tasks = viewModel.getTasksForPlant(plant);
       return Column(

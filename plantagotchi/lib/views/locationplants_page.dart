@@ -3,6 +3,8 @@ import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/views/plant_detail_page.dart';
 import 'package:provider/provider.dart';
 
+// This is the LocationplantsPage view
+// It displays a list of plants in a specific location
 class LocationplantsPage extends StatelessWidget {
   final String location;
   final List<dynamic> plantsInLocation;

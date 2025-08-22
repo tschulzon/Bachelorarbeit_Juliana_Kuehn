@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/models/care_entry.dart';
-import 'package:plantagotchi/models/plant_template.dart';
-import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/navigation_viewmodel.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
-import 'package:plantagotchi/views/startpage.dart';
 import 'package:plantagotchi/widgets/plant_chat_dialog.dart';
 import 'package:provider/provider.dart';
 
+// Dialog for adding a new plant
+// This dialog allows the user to add a new plant by answering questions about it
 class AddPlantDialog extends StatefulWidget {
   final Map<String, dynamic> plant;
 
@@ -24,10 +21,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
-    final fontstyle = Theme.of(context).textTheme;
-    final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
     final nav = Provider.of<NavigationViewmodel>(context);
 
@@ -75,7 +69,6 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                   ),
                 ),
               ),
-              // const SizedBox(height: 10),
               Column(
                 children: [
                   // PlantChatDialog
@@ -89,7 +82,6 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                       setState(() {
                         _plantChatAnswers = answers;
                       });
-                      print("ANTWORTEN: $answers");
                     },
                     onLastQuestionShown: () {
                       setState(() {
@@ -103,7 +95,7 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
           ),
         ),
       ),
-      bottomNavigationBar: _plantChatAnswers != null
+      bottomNavigationBar: _plantChatAnswers != null && _showConfirmButton
           ? Container(
               decoration: BoxDecoration(
                 border: Border(
@@ -124,13 +116,13 @@ class _AddPlantDialogState extends State<AddPlantDialog> {
                     icon: const Icon(Icons.add_circle),
                     label: const Text('Bestätigen',
                         style: TextStyle(fontSize: 14)),
+                    // When the user taps the confirm button, the plant is added
                     onPressed: () async {
                       userViewModel.addPlant(
                         widget.plant,
                         _plantChatAnswers,
                       );
                       await userViewModel.addXP('newPlant', context);
-
                       await userViewModel.checkIfUserGetBadgeForActivity(
                           'newPlant', context);
 

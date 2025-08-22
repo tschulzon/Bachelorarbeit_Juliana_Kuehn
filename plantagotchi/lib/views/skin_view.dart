@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/plant_template.dart';
-import 'package:plantagotchi/models/skin_item.dart';
 import 'package:plantagotchi/models/userplant.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:provider/provider.dart';
 
+// This is the SkinView (Skin Shop)
+// It allows users to view and purchase skins for their plants
 class SkinView extends StatelessWidget {
   final PlantTemplate? plant;
   final UserPlants userPlant;
@@ -19,7 +20,7 @@ class SkinView extends StatelessWidget {
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);
 
-    final PageController _controller = PageController();
+    final PageController controller = PageController();
 
     return Scaffold(
       appBar: AppBar(
@@ -75,7 +76,7 @@ class SkinView extends StatelessWidget {
             const SizedBox(height: 20),
             Expanded(
               child: PageView.builder(
-                controller: _controller,
+                controller: controller,
                 itemCount: plant!.avatarSkins.length,
                 itemBuilder: (context, index) {
                   final skin = plant!.avatarSkins[index];
@@ -194,6 +195,7 @@ class SkinView extends StatelessWidget {
                                   ),
                                 );
 
+                                // If the user confirms, set the skin as current skin
                                 if (result == true) {
                                   userViewModel.setCurrentSkin(
                                       skin, userPlant, context);
@@ -206,6 +208,7 @@ class SkinView extends StatelessWidget {
                 },
               ),
             ),
+            // Display the owned skins, where the user can select one as the current skin
             Text(
               'Vorhandene Skins',
               textAlign: TextAlign.center,

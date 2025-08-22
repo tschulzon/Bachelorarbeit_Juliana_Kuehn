@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/userplant.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
-import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
-import 'package:provider/provider.dart';
 
+// This is the BottomModal widget
+// It is used to display a bottom sheet with options for adding activities related to a plant
 class BottomModal extends StatefulWidget {
   final UserPlants? plant;
 
@@ -25,6 +23,7 @@ class _BottomModalState extends State<BottomModal> {
 
     Future<void> pickDate(String careType) async {
       final now = DateTime.now();
+      // DatePicker to select a date for the care activity
       final picked = await showDatePicker(
         context: context,
         initialDate: now,
@@ -87,6 +86,7 @@ class _BottomModalState extends State<BottomModal> {
               indent: 20,
               endIndent: 20,
             ),
+            // Option to add a note, a dialog will be shown to enter the note
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(
@@ -200,6 +200,7 @@ class _BottomModalState extends State<BottomModal> {
                 ),
               ),
             ),
+            // Option to add a photo (Future Feature)
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(
@@ -225,6 +226,7 @@ class _BottomModalState extends State<BottomModal> {
                 ),
               ),
             ),
+            // Option to add the care activity pruning
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(
@@ -323,6 +325,7 @@ class _BottomModalState extends State<BottomModal> {
                 ),
               ),
             ),
+            // Option to add the care activity repotting
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(
@@ -421,6 +424,7 @@ class _BottomModalState extends State<BottomModal> {
                 ),
               ),
             ),
+            // Option to add the care activity watering
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(
@@ -519,6 +523,7 @@ class _BottomModalState extends State<BottomModal> {
                 ),
               ),
             ),
+            // Option to add the care activity fertilizing
             Padding(
               padding: const EdgeInsets.only(left: 20.0, right: 20.0),
               child: Material(

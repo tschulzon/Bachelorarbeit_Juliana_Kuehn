@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/friend.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/toggle_switch.dart';
 import 'package:provider/provider.dart';
 
+// This is the Friendspage view
+// It displays a list of friends and a ranking of users based on their level and XP
+// In the future it will also allow users to add friends and view their plants
 class Friendspage extends StatefulWidget {
   const Friendspage({super.key});
 
@@ -17,7 +19,6 @@ class _FriendspageState extends State<Friendspage> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
@@ -143,7 +144,8 @@ class _FriendspageState extends State<Friendspage> {
       );
     }
 
-    // Create a Friend object for the current user
+    // Create a Friend object for the current user for displaying in the ranking
+    // This is used to show the current user's stats alongside friends in the ranking
     final currentUserAsFriend = Friend(
         id: user.id ?? '',
         name: user.username ?? 'Aktueller User',

@@ -4,6 +4,7 @@ import 'package:plantagotchi/models/userbadge.dart';
 
 import 'userplant.dart';
 
+// Class representing a user in the app
 class User {
   String? id;
   String? username;
@@ -29,6 +30,7 @@ class User {
     this.friends,
   });
 
+  // This is the method to convert the User object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -44,8 +46,8 @@ class User {
     };
   }
 
+  // This is the factory method to create a User object from a JSON map
   factory User.fromJson(Map<String, dynamic> json) {
-    print("streak raw value: ${json['streak']}"); // Debug output
     return User(
       id: json['id'],
       username: json['username'],

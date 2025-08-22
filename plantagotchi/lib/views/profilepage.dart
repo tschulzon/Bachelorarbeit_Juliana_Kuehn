@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 import 'package:provider/provider.dart';
 
+// This is the Profilepage view
+// It displays the user's profile information, plants, and badges
 class Profilepage extends StatelessWidget {
   const Profilepage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
     final userViewModel = Provider.of<UserViewModel>(context, listen: false);

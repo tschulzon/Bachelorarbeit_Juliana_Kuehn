@@ -1,5 +1,7 @@
 import 'package:plantagotchi/models/skin_item.dart';
 
+// Class representing a plant template
+// This class is used to define the properties of a plant that can be used in the app
 class PlantTemplate {
   String id;
   String commonName;
@@ -61,8 +63,7 @@ class PlantTemplate {
     required this.avatarSkins,
   });
 
-// Das brauchen wir um etwas in die Datenbank zu speichern
-  // und um es wieder auszulesen,  sinnvoll, wenn du das Objekt irgendwo wieder speichern, übertragen oder cachen willst
+  // This is the method to convert the PlantTemplate object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -96,7 +97,7 @@ class PlantTemplate {
     };
   }
 
-// Daraus lesen wir Daten aus dem JSON File und erstellen ein Dart Objekt
+  // This is the factory method to create a PlantTemplate object from a JSON map
   factory PlantTemplate.fromJson(Map<String, dynamic> json) {
     return PlantTemplate(
       id: json['id'],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// This widget builds a list of information cards for a plant
+// It displays various details about the plant such as description, care plan, watering, light, etc.
 List<Widget> buildInfoCards({
   required Map<String, dynamic> plant,
   required TextTheme fontstyle,
@@ -27,13 +29,6 @@ List<Widget> buildInfoCards({
             padding: const EdgeInsets.all(12.0),
             child: Row(
               children: [
-                // const SizedBox(width: 16.0),
-                // Icon(
-                //   Icons.info,
-                //   color: colors.onPrimary,
-                //   size: 30,
-                // ),
-                // const SizedBox(width: 20),
                 Expanded(
                   child: Text(
                     '${plant['description'] ?? "Keine Beschreibung vorhanden"}',
@@ -56,7 +51,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Pflegeplan Card
+    // CarePlan Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,22 +166,13 @@ List<Widget> buildInfoCards({
                     ],
                   ),
                 ),
-                // ClipRRect(
-                //   borderRadius: BorderRadius.circular(12),
-                //   child: Image.asset(
-                //       plant['avatarUrl'] ??
-                //           'assets/images/avatars/plant-transp.gif',
-                //       width: 130,
-                //       height: 130,
-                //       fit: BoxFit.cover),
-                // ),
               ],
             ),
           ),
         )
       ],
     ),
-    // Wasserinfo Card
+    // Watering Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -243,7 +229,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Licht Info Card
+    // Light Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -287,7 +273,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Temperatur Info Card
+    // Temperature Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -344,7 +330,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Dünger Info Card
+    // Fertilizing Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -401,7 +387,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Zuschneiden Info Card
+    // Pruning Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -445,7 +431,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Umtopfen Info Card
+    // Repotting Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -502,7 +488,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Blüte Info Card
+    // Flowering Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -546,7 +532,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Standort Info Card
+    // Location Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -590,7 +576,7 @@ List<Widget> buildInfoCards({
         ),
       ],
     ),
-    // Giftig Info Card
+    // Toxicity Info Card
     Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,

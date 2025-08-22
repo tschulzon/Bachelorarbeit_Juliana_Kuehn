@@ -1,3 +1,4 @@
+// Class representing a friend in the app
 class Friend {
   String id;
   String name;
@@ -15,6 +16,7 @@ class Friend {
     required this.xp,
   });
 
+  // This is the factory method to create a Friend object from a JSON map
   factory Friend.fromJson(Map<String, dynamic> json) {
     return Friend(
       id: json['id'],
@@ -26,6 +28,7 @@ class Friend {
     );
   }
 
+  // This is the method to convert the Friend object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,

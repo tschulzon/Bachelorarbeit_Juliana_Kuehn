@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// This widget displays a horizontal row of buttons
+// Each button can be selected, and the selected index is passed back to the parent widget
 class HorizontalButtonRow extends StatefulWidget {
   final List<String> labels;
   final ValueChanged<int> onSelected;

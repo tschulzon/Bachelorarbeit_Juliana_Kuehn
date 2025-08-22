@@ -1,13 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/models/userplant.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
-import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
-import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 
+// This widget displays the care history of a specific plant
+// It allows users to view care tasks performed on the plant over time
 class UserplantHistory extends StatefulWidget {
   final UserPlants? userplant;
 
@@ -35,21 +32,20 @@ class _UserplantHistoryState extends State<UserplantHistory> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
-    final user = Provider.of<UserViewModel>(context).user;
 
     final dateFormat = DateFormat('dd.MM.yyyy', 'de_DE');
-    DateTime now = DateTime.now();
-    String currentMonthWithYear =
-        "${DateFormat.MMMM('de_DE').format(now)} ${now.year}";
 
+    // Generate a list of months for the last 12 months
+    // This will be used to allow users to select a month for viewing care history
     List<DateTime> months = List.generate(
       12,
       (i) => DateTime(DateTime.now().year, DateTime.now().month - i),
     );
 
+    // Map to convert care types to user-friendly labels
+    // This will be used to display the type of care task in the history
     Map<String, String> labelCareTypes = {
       "watering": "Gegossen",
       "fertilizing": "Gedüngt",
@@ -59,6 +55,8 @@ class _UserplantHistoryState extends State<UserplantHistory> {
       "pruning": "Beschneiden",
     };
 
+    // Button to select a month for viewing care history
+    // This button opens a bottom sheet where users can select a month
     Widget monthButton = Center(
       child: InkWell(
         borderRadius: BorderRadius.circular(0),
@@ -111,16 +109,20 @@ class _UserplantHistoryState extends State<UserplantHistory> {
       ),
     );
 
+    // Map to store care entries grouped by date
+    // This will be used to display care tasks in a timeline format
     final Map<String, List<dynamic>> careEntrysMap = {};
 
+    // Iterate through the care history of the user plant
+    // and group entries by date
     for (var entry in widget.userplant?.careHistory ?? []) {
       String dateString;
 
+      // Check if the entry date is a DateTime or String
+      // and format it to a string in the format 'yyyy-MM-dd'
       if (entry.date is DateTime) {
-        print(entry.toJson());
-        dateString = (entry.date as DateTime)
-            .toIso8601String()
-            .substring(0, 10); // yyyy-MM-dd
+        dateString =
+            (entry.date as DateTime).toIso8601String().substring(0, 10);
       } else if (entry.date is String) {
         try {
           dateString =
@@ -132,6 +134,8 @@ class _UserplantHistoryState extends State<UserplantHistory> {
         dateString = 'Unbekannt'; // fallback for unexpected types
       }
 
+      // If the date string is not already in the map, initialize it
+      // Then add the entry to the list for that date
       if (!careEntrysMap.containsKey(dateString)) {
         careEntrysMap[dateString] = [];
       }
@@ -141,21 +145,8 @@ class _UserplantHistoryState extends State<UserplantHistory> {
       });
     }
 
-    // Sort dates descending (newest first)
-    final sortedDates = careEntrysMap.keys.toList()
-      ..sort((a, b) => b.compareTo(a));
-
-    // If a day is selected, only show that date in the timeline
-    // List<String> filteredDates;
-    // if (selectedDate != null) {
-    //   String selectedDateStr = dateFormat.format(selectedDate!);
-    //   filteredDates = careEntrysMap.keys
-    //       .where((d) => d == selectedDateStr)
-    //       .toList();
-    // } else {
-    //   filteredDates = sortedDates;
-    // }
-
+    // Filter the care entries to only include those from the selected month
+    // This will be used to display only the care tasks for the selected month
     List<String> filteredDates = careEntrysMap.keys.where((d) {
       DateTime entryDate = DateTime.tryParse(d) ?? DateTime(2000);
       return entryDate.year == selectedMonth.year &&
@@ -167,8 +158,7 @@ class _UserplantHistoryState extends State<UserplantHistory> {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back,
-              color: colors.primary), // Hier die Farbe anpassen!
+          icon: Icon(Icons.arrow_back, color: colors.primary),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Row(
@@ -221,6 +211,7 @@ class _UserplantHistoryState extends State<UserplantHistory> {
                           ),
                         ),
                       )
+                    // Timeline to display care tasks
                     : Timeline.tileBuilder(
                         theme: TimelineThemeData(
                           nodePosition: 0.10,

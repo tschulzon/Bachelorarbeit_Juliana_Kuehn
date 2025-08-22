@@ -2,6 +2,8 @@ import 'package:plantagotchi/models/care_entry.dart';
 import 'package:plantagotchi/models/plant_template.dart';
 import 'package:plantagotchi/models/skin_item.dart';
 
+// Class representing a user plant
+// This class is used to define the properties of a plant owned by a user
 class UserPlants {
   String? id;
   String? userId;
@@ -50,6 +52,7 @@ class UserPlants {
         (ownedSkins?.isNotEmpty == true ? ownedSkins![0].id : '');
   }
 
+  // This is the method to convert the UserPlants object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,
@@ -68,7 +71,7 @@ class UserPlants {
     };
   }
 
-// Daraus lesen wir Daten aus dem JSON File und erstellen ein Dart Objekt
+  // This is the factory method to create a UserPlants object from a JSON map
   factory UserPlants.fromJson(Map<String, dynamic> json) {
     return UserPlants(
       id: json['id'],
@@ -115,5 +118,7 @@ class UserPlants {
     } else if (entriesOfType.isEmpty && careType == 'fertilizing') {
       return lastFertilized;
     }
+
+    return null; // No entries found for this care type
   }
 }

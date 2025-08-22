@@ -3,6 +3,8 @@ import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:plantagotchi/widgets/action_button.dart';
 
+// Custom dialog widget for displaying achievements or important messages
+// It includes confetti animation and sound effects for achievements
 class CustomDialog extends StatefulWidget {
   final String imagePath;
   final String title;
@@ -32,8 +34,8 @@ class _CustomDialogState extends State<CustomDialog> {
     super.initState();
     _confettiController =
         ConfettiController(duration: const Duration(seconds: 2));
-    _confettiController.play(); // Startet das Konfetti beim Öffnen
-
+    _confettiController.play(); // Start confetti animation when dialog opens
+    // Initialize audio player for achievement sound
     _audioPlayer = AudioPlayer();
     _playAchievementSound();
   }

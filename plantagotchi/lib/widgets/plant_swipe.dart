@@ -9,6 +9,8 @@ import 'package:plantagotchi/widgets/caretask_checkbox.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+// Widget for swiping through plants
+// This widget allows the user to swipe through their plants and see care tasks
 class PlantSwipe extends StatefulWidget {
   final List<UserPlants> plants;
 
@@ -28,6 +30,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
   String? _lastSpokenSentence;
   String? _lastSpokenPlantId;
 
+  // This map contains the plant voices for different plants
+  // The keys are plant IDs and the values are the voice settings
   Map<String, Map<String, String>> plantVoices = {
     "abd51cde-eee1-49ce-9604-4e7dce677d59": {
       "name": "de-de-x-deg-network",
@@ -55,7 +59,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
     }, //Elefantenfuss
   };
 
-  // Initialize the FlutterTts instance and set the language and voice
+  // Initialize the FlutterTts instance and set the language and voice for speaking the plants needs
   @override
   void initState() {
     super.initState();
@@ -64,6 +68,12 @@ class _PlantSwipeState extends State<PlantSwipe> {
     flutterTts.setPitch(1.6);
     flutterTts.setVolume(1.0);
     flutterTts.setSpeechRate(0.5);
+  }
+
+  @override
+  void dispose() {
+    flutterTts.stop();
+    super.dispose();
   }
 
   // This function speaks the current sentence
@@ -76,10 +86,9 @@ class _PlantSwipeState extends State<PlantSwipe> {
     await flutterTts.speak(text);
   }
 
-  void testDebugPrint() {
-    debugPrint("Button pressed");
-  }
-
+  // This function checks if the last spoken sentence is different from the current one
+  // If it is, it will speak the new sentence
+  // This prevents the TTS from repeating the same sentence multiple times
   void _speakIfChanged(String plantId, String text) {
     if (_lastSpokenSentence != text || _lastSpokenPlantId != plantId) {
       _lastSpokenSentence = text;
@@ -95,10 +104,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
     final fontstyle = Theme.of(context).textTheme;
     final colors = Theme.of(context).colorScheme;
 
-    for (var p in widget.plants) {
-      debugPrint('Plant: ${p.nickname}, ID: ${p.id}');
-    }
-
+    // Function to open the bottom modal sheet for adding care tasks
+    // This function is called when the user taps the "Aktivität hinzufügen" button
     Future<void> openBottomModalSheet(
         BuildContext context, UserPlants plant) async {
       final result = await showModalBottomSheet<Map<String, dynamic>>(
@@ -122,13 +129,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
       }
     }
 
-    @override
-    void dispose() {
-      flutterTts.stop();
-      // controller.dispose();
-      super.dispose();
-    }
-
+    // PageView.builder to create a swipeable view for each plant
+    // It uses the PageController to manage the swiping
     return PageView.builder(
       controller: _controller,
       itemCount: widget.plants.length,
@@ -141,8 +143,8 @@ class _PlantSwipeState extends State<PlantSwipe> {
             ? dueTasks.first['plantSentence']!
             : 'Mir geht es gut!';
 
-        debugPrint('Current Plant: ${plant.nickname}, Due Tasks: $dueTasks');
-
+        // Speak the plant's needs if the sentence has changed
+        // This will only speak if the sentence is different from the last spoken one
         WidgetsBinding.instance.addPostFrameCallback((_) {
           _speakIfChanged(plant.plantTemplate!.id, plantSentence);
         });
@@ -152,7 +154,7 @@ class _PlantSwipeState extends State<PlantSwipe> {
             mainAxisSize: MainAxisSize.min,
             children: [
               // Row with Text and Icon Button
-              // Plant Image with speech Bubbles and arrows
+              // Plant Image with speech Bubble and arrows
               SizedBox(
                 height: 200,
                 width: double.infinity,
@@ -181,7 +183,6 @@ class _PlantSwipeState extends State<PlantSwipe> {
                                 ),
                               ),
                             );
-                            // startPageViewModel.showPlantDetails(plant);
                           },
                         ),
                       ),

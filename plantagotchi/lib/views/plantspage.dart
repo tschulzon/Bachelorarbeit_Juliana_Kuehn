@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:timelines_plus/timelines_plus.dart';
 import 'package:intl/intl.dart';
 
+// This is the Plantspage view, it displays the user's plants, their locations, and care history
 class Plantspage extends StatefulWidget {
   const Plantspage({super.key});
 
@@ -48,6 +49,8 @@ class _PlantspageState extends State<Plantspage> {
       (i) => DateTime(DateTime.now().year, DateTime.now().month - i),
     );
 
+    // Widget for the month selection button
+    // This button allows the user to select a month for viewing care history
     Widget monthButton = Center(
       child: InkWell(
         borderRadius: BorderRadius.circular(0),
@@ -84,14 +87,6 @@ class _PlantspageState extends State<Plantspage> {
           }
         },
         child: Container(
-          // decoration: BoxDecoration(
-          //   border: Border(
-          //     bottom: BorderSide(
-          //       color: colors.primary,
-          //       width: 1,
-          //     ),
-          //   ),
-          // ),
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -108,100 +103,10 @@ class _PlantspageState extends State<Plantspage> {
       ),
     );
 
-    Widget calendarBar = Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 5),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: colors.primary, width: 1),
-            bottom: BorderSide(color: colors.primary, width: 1),
-          ),
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
-                children: [
-                  Text(currentMonthWithYear, style: fontstyle.labelSmall)
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.chevron_left),
-                  color: colors.primary,
-                  onPressed: () {
-                    setState(() {
-                      weekStart = weekStart.subtract(const Duration(days: 7));
-                    });
-                  },
-                ),
-                ...List.generate(7, (i) {
-                  final day = weekStart.add(Duration(days: i));
-                  bool isSelected = selectedDate != null
-                      ? DateFormat('yyyy-MM-dd').format(selectedDate!) ==
-                          DateFormat('yyyy-MM-dd').format(day)
-                      : DateFormat('yyyy-MM-dd').format(DateTime.now()) ==
-                          DateFormat('yyyy-MM-dd').format(day);
-
-                  return Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          selectedDate = day;
-                        });
-                      },
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 2),
-                        padding: const EdgeInsets.symmetric(
-                            vertical: 6, horizontal: 0),
-                        decoration: BoxDecoration(
-                          color: isSelected ? colors.primary : colors.onPrimary,
-                          borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                            color:
-                                isSelected ? colors.onPrimary : colors.primary,
-                            width: 1,
-                          ),
-                        ),
-                        child: Column(
-                          children: [
-                            Text(
-                              DateFormat.d().format(day),
-                              style: TextStyle(
-                                color: isSelected
-                                    ? colors.onPrimary
-                                    : colors.primary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 12,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-                IconButton(
-                  icon: const Icon(Icons.chevron_right),
-                  color: colors.primary,
-                  onPressed: () {
-                    setState(() {
-                      weekStart = weekStart.add(const Duration(days: 7));
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-
+    // List of labels for the tab switch
     List<String> labelNames = ["Pflanzen", "Standorte", "Historie"];
 
+    // Map of care types to their labels for the care history and adding new care entry
     Map<String, String> labelCareTypes = {
       "watering": "Gegossen",
       "fertilizing": "Gedüngt",
@@ -487,11 +392,13 @@ class _PlantspageState extends State<Plantspage> {
                     String dateString;
 
                     if (entry.date is DateTime) {
-                      print(entry.toJson());
+                      // Format DateTime to a string in the format yyyy-MM-dd
                       dateString = (entry.date as DateTime)
                           .toIso8601String()
-                          .substring(0, 10); // yyyy-MM-dd
+                          .substring(0, 10);
                     } else if (entry.date is String) {
+                      // If date is a string, try to parse it
+                      // This is useful if the date was stored as a string in the past
                       try {
                         dateString = DateTime.parse(entry.date)
                             .toIso8601String()
@@ -513,22 +420,10 @@ class _PlantspageState extends State<Plantspage> {
                   }
                 }
 
-                // Sort dates descending (newest first)
-                final sortedDates = careEntrysMap.keys.toList()
-                  ..sort((a, b) => b.compareTo(a));
-
-                // If a day is selected, only show that date in the timeline
-                // List<String> filteredDates;
-                // if (selectedDate != null) {
-                //   String selectedDateStr = dateFormat.format(selectedDate!);
-                //   filteredDates = careEntrysMap.keys
-                //       .where((d) => d == selectedDateStr)
-                //       .toList();
-                // } else {
-                //   filteredDates = sortedDates;
-                // }
-
+                // Sort the dates in descending order
+                // so the most recent entries are shown first
                 List<String> filteredDates = careEntrysMap.keys.where((d) {
+                  // Filter dates to only include those from the selected month
                   DateTime entryDate = DateTime.tryParse(d) ?? DateTime(2000);
                   return entryDate.year == selectedMonth.year &&
                       entryDate.month == selectedMonth.month;

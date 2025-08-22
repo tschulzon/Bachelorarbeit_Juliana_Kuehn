@@ -2,12 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
-import 'package:plantagotchi/viewmodels/user_viewmodel.dart';
 import 'package:plantagotchi/views/add_plant_dialog.dart';
 import 'package:plantagotchi/views/plant_detail_page.dart';
-import 'package:provider/provider.dart';
 
+// This is the AddPlant view
+// It allows users to search for plants by name or scan them with the camera (Future Feature)
 class AddPlant extends StatefulWidget {
   const AddPlant({super.key});
 
@@ -24,6 +23,7 @@ class _AddPlantState extends State<AddPlant> {
     super.initState();
   }
 
+  // This method loads the current available plant data from a JSON file
   Future<List<dynamic>> loadPlantData() async {
     final String jsonString =
         await rootBundle.loadString('assets/data/plantdata.json');
@@ -33,14 +33,8 @@ class _AddPlantState extends State<AddPlant> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<StartpageViewModel>(context);
     final colors = Theme.of(context).colorScheme;
     final fontstyle = Theme.of(context).textTheme;
-    final user = Provider.of<UserViewModel>(context).user;
-
-    void testDebugPrint() {
-      print("Button clicked");
-    }
 
     return Scaffold(
       appBar: AppBar(
@@ -121,7 +115,15 @@ class _AddPlantState extends State<AddPlant> {
                 ),
                 const SizedBox(width: 10),
                 ElevatedButton.icon(
-                  onPressed: testDebugPrint,
+                  onPressed: () {
+                    // Future feature: Implement camera scanning functionality
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text(
+                            'Kamera-Scan-Funktion ist noch nicht implementiert.'),
+                      ),
+                    );
+                  },
                   icon: Icon(Icons.camera_alt, color: colors.onPrimary),
                   label: const Text(
                     "Scannen",

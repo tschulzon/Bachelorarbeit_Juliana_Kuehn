@@ -1,3 +1,4 @@
+// Class representing a skin item in the app
 class SkinItem {
   final String id;
   final String name;
@@ -15,6 +16,7 @@ class SkinItem {
     this.skinHungry,
   });
 
+  // This is the factory method to create a SkinItem object from a JSON map
   factory SkinItem.fromJson(Map<String, dynamic> json) {
     return SkinItem(
       id: json['id'] as String,
@@ -26,6 +28,7 @@ class SkinItem {
     );
   }
 
+  // This is the method to convert the SkinItem object to a JSON map
   Map<String, dynamic> toJson() {
     return {
       'id': id,

@@ -5,6 +5,8 @@ import 'package:plantagotchi/widgets/plant_swipe.dart';
 import 'package:provider/provider.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
+// This is the Startpage view
+// It displays the user's current plants, experience points, level, and streak and tasks for the plants
 class Startpage extends StatefulWidget {
   const Startpage({super.key});
 
@@ -20,8 +22,6 @@ class _StartpageState extends State<Startpage> {
     final fontstyle = Theme.of(context).textTheme;
     final user = Provider.of<UserViewModel>(context).user;
     final userViewModel = Provider.of<UserViewModel>(context, listen: true);
-
-    print("UserViewModel.user: ${user.username}, Streak: ${user.streak}");
 
     return Scaffold(
       appBar: AppBar(
@@ -192,6 +192,7 @@ class _StartpageState extends State<Startpage> {
               ),
             )
           else
+            // Display the user's plants using PlantSwipe widget
             Expanded(child: PlantSwipe(plants: user.plants ?? [])),
         ],
       ),

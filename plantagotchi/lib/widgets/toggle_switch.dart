@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
+// Custom toggle switch widget
+// This widget allows users to toggle between multiple options with a smooth animation
+// e.g. for selecting different content like location or care history in a page
 class CustomToggleSwitch extends StatelessWidget {
   final int countSwitches;
   final List<String> labels;

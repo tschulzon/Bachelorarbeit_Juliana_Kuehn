@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+// This widget displays a chat dialog between the user and a plant
+// It allows the user to answer questions about the plant
+// The Plant can speak its questions using text-to-speech
 class PlantChatDialog extends StatefulWidget {
   final void Function(Map<String, dynamic>) onFinished;
   final VoidCallback? onLastQuestionShown;
@@ -19,6 +22,8 @@ class PlantChatDialog extends StatefulWidget {
 class _PlantChatDialogState extends State<PlantChatDialog> {
   late FlutterTts flutterTts;
 
+  // This map contains the plant voices for different plants
+  // The keys are plant IDs and the values are the voice settings
   Map<String, Map<String, String>> plantVoices = {
     "abd51cde-eee1-49ce-9604-4e7dce677d59": {
       "name": "de-de-x-deg-network",
@@ -53,9 +58,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     flutterTts = FlutterTts();
     flutterTts.setLanguage("de-DE");
     flutterTts.setPitch(1.6);
-    // flutterTts.setVolume(1.0);
     flutterTts.setSpeechRate(0.5);
-
     _speakCurrentSentence();
   }
 
@@ -69,7 +72,11 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
     await flutterTts.speak(questions[currentQuestion]);
   }
 
+  // This list contains the questions that the plant will ask the user
+  // The user will answer these questions in the chat dialog
   final List<Map<String, String>> chat = [];
+  // This map will contain the user's answers to the questions
+  // The keys are the question numbers and the values are the user's answers
   final Map<String, dynamic> userAnswers = {};
 
   final List<String> questions = [
@@ -161,7 +168,6 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
   @override
   void dispose() {
     flutterTts.stop();
-    // controller.dispose();
     super.dispose();
   }
 
@@ -232,6 +238,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
                       fontSize: 14),
                 ),
               ),
+              // Questions about watering and fertilizing, showing Yes or No Buttons
               if (currentQuestion == 2 || currentQuestion == 3)
                 Container(
                   margin: const EdgeInsets.only(right: 10.0),
@@ -278,6 +285,7 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
                     ),
                   ),
                 )
+              // If the current question is not the last question, show the text field and send button
               else if (currentQuestion < questions.length - 1)
                 Row(
                   children: [
@@ -294,20 +302,15 @@ class _PlantChatDialogState extends State<PlantChatDialog> {
                           decoration: InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(
-                                    color: colors.primary), // Standard-Border
+                                borderSide: BorderSide(color: colors.primary),
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(
-                                    color: colors
-                                        .primary), // Farbe wenn nicht fokussiert
+                                borderSide: BorderSide(color: colors.primary),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(12),
-                                borderSide: BorderSide(
-                                    color: colors
-                                        .secondary), // Farbe wenn fokussiert
+                                borderSide: BorderSide(color: colors.secondary),
                               ),
                               hintText: "Deine Antwort...",
                               hintStyle: TextStyle(

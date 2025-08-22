@@ -7,6 +7,8 @@ import 'package:plantagotchi/views/profilepage.dart';
 import 'package:plantagotchi/views/startpage.dart';
 import 'package:provider/provider.dart';
 
+// This is the AppLayout widget
+// It serves as the main layout for the app, containing the bottom navigation bar
 class AppLayout extends StatelessWidget {
   AppLayout({super.key});
 

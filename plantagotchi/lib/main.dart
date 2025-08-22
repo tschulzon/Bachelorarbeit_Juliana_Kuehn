@@ -11,7 +11,10 @@ import 'package:plantagotchi/widgets/app_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:plantagotchi/viewmodels/startpage_viewmodel.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+// Main function to run the app
+// It initializes the app, loads the user data from shared preferences or JSON file,
+// and sets up the providers for state management
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +22,6 @@ Future<void> main() async {
 
   final storage = StorageService();
   User? user = await storage.loadUser();
-
-  // debugPrint("Loaded User: ${user?.username}"); // Debugging line
 
   if (user == null) {
     debugPrint("No user found in storage, loading from JSON file...");
@@ -30,12 +31,12 @@ Future<void> main() async {
     String jsonString = await rootBundle
         .loadString('assets/data/testuser_empty.json'); // Load JSON from assets
 
-    // debugPrint("JSON String: $jsonString"); // Debugging line
-
     user = User.fromJson(jsonDecode(jsonString)); // Decode JSON to User object
     await storage.saveUser(user);
   }
 
+  // Run the app with MultiProvider to manage state
+  // This allows us to access the UserViewModel and NavigationViewmodel and StartpageViewModel throughout the app
   runApp(
     MultiProvider(
       providers: [
@@ -56,11 +57,10 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // print('Initial User: ${initialUser?.username}'); // Debugging line
-    // print('JSON USER: ${jsonEncode(initialUser?.toJson())}'); // Debugging line
-
     return MaterialApp(
       title: 'Plantagotchi',
+      // Set the theme for the app
+      // It includes a custom color scheme, font family, and text theme
       theme: ThemeData(
         colorScheme: const ColorScheme(
           brightness: Brightness.light,
